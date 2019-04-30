@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов» [![Build status][travis-image]][travis-url]
 
-* Студент: [Vitalii Iashchuk](https://up.htmlacademy.ru/react/1/user/93555).
-* Наставник: `Неизвестно`.
+- Студент: [Vitalii Iashchuk](https://up.htmlacademy.ru/react/1/user/93555).
+- Наставник: [Денис Быков](https://up.htmlacademy.ru/react/1/user/66426).
 
 ---
 
