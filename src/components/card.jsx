@@ -1,6 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-const Card = ({title, image, type, price, rating, isPremium = false}) => {
+const Card = ({title, image, type, price, rating, isPremium}) => {
   return (
     <article className="cities__place-card place-card">
       {isPremium && (
@@ -45,6 +46,20 @@ const Card = ({title, image, type, price, rating, isPremium = false}) => {
       </div>
     </article>
   );
+};
+
+Card.defaultProps = {
+  rating: 0,
+  isPremium: false
+};
+
+Card.propTypes = {
+  title: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  rating: PropTypes.number,
+  isPremium: PropTypes.bool
 };
 
 export default Card;

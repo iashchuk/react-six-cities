@@ -1,6 +1,6 @@
 export default [
   {
-    title: `Beautiful luxurious apartment at great location`,
+    title: `Beautiful & luxurious apartment at great location`,
     image: `apartment-01.jpg`,
     type: `Apartment`,
     price: 120,
