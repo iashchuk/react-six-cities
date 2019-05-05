@@ -1,9 +1,9 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-import Card from "./card.jsx";
-import cardData from "../data/cards";
+import Card from "../card/card.jsx";
 
-const Main = () => {
+const Main = ({cards}) => {
   return (
     <main className="page__main page__main--index">
       <h1 className="visually-hidden">Cities</h1>
@@ -90,7 +90,7 @@ const Main = () => {
               </select>
             </form>
             <div className="cities__places-list places__list tabs__content">
-              {cardData.map((item, index) => {
+              {cards.map((item, index) => {
                 return (
                   <Card
                     key={index}
@@ -112,6 +112,19 @@ const Main = () => {
       </div>
     </main>
   );
+};
+
+Main.propTypes = {
+  cards: PropTypes.arrayOf(
+      PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        image: PropTypes.string.isRequired,
+        type: PropTypes.string.isRequired,
+        price: PropTypes.number.isRequired,
+        rating: PropTypes.number,
+        isPremium: PropTypes.bool
+      })
+  )
 };
 
 export default Main;
