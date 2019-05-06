@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import Card from "../card/card.jsx";
 
-const Main = ({cards}) => {
+const Main = ({cards, onCardTitleClick}) => {
   return (
     <main className="page__main page__main--index">
       <h1 className="visually-hidden">Cities</h1>
@@ -100,6 +100,7 @@ const Main = ({cards}) => {
                     price={item.price}
                     rating={item.rating}
                     isPremium={item.isPremium}
+                    onCardTitleClick={onCardTitleClick}
                   />
                 );
               })}
@@ -124,7 +125,8 @@ Main.propTypes = {
         rating: PropTypes.number,
         isPremium: PropTypes.bool
       })
-  )
+  ),
+  onCardTitleClick: PropTypes.func
 };
 
 export default Main;

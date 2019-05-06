@@ -1,7 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Card = ({title, image, type, price, rating, isPremium}) => {
+const Card = ({
+  title,
+  image,
+  type,
+  price,
+  rating,
+  isPremium,
+  onCardTitleClick
+}) => {
   return (
     <article className="cities__place-card place-card">
       {isPremium && (
@@ -40,7 +48,9 @@ const Card = ({title, image, type, price, rating, isPremium}) => {
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#">{title}</a>
+          <a href="#" onClick={(evt) => onCardTitleClick(evt)}>
+            {title}
+          </a>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>
@@ -59,7 +69,8 @@ Card.propTypes = {
   type: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   rating: PropTypes.number,
-  isPremium: PropTypes.bool
+  isPremium: PropTypes.bool,
+  onCardTitleClick: PropTypes.func
 };
 
 export default Card;
