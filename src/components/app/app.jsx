@@ -3,7 +3,7 @@ import React from "react";
 import Header from "../header/header.jsx";
 import Main from "../main/main.jsx";
 
-import cardData from "../../mock/cards";
+import cardsData from "../../mock/cards";
 
 const App = () => {
   const onCardTitleClick = (evt) => {
@@ -15,7 +15,7 @@ const App = () => {
   return (
     <>
       <Header />
-      <Main cards={cardData} onCardTitleClick={onCardTitleClick} />;
+      <Main cards={cardsData} onCardTitleClick={onCardTitleClick} />;
     </>
   );
 };
