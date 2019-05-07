@@ -6,8 +6,9 @@ import cardsData from "../../mock/cards";
 
 describe(`Main`, () => {
   it(`renders correctly`, () => {
+    const onCardTitleClick = jest.fn();
     const component = renderer
-      .create(<Main cards={cardsData} onCardTitleClick={jest.fn()} />)
+      .create(<Main cards={cardsData} onCardTitleClick={onCardTitleClick} />)
       .toJSON();
 
     expect(component).toMatchSnapshot();

@@ -13,6 +13,7 @@ const card = {
 
 describe(`Card`, () => {
   it(`renders correctly`, () => {
+    const onCardTitleClick = jest.fn();
     const component = renderer
       .create(
           <Card
@@ -22,7 +23,7 @@ describe(`Card`, () => {
             price={card.price}
             rating={card.rating}
             isPremium={card.isPremium}
-            onCardTitleClick={jest.fn()}
+            onCardTitleClick={onCardTitleClick}
           />
       )
       .toJSON();
