@@ -3,7 +3,7 @@ import React from "react";
 import Header from "../header/header.jsx";
 import Main from "../main/main.jsx";
 
-import cardsData from "../../mock/cards";
+import cardsData from "../../mocks/offers";
 
 const App = () => {
   const onCardTitleClick = (evt) => {

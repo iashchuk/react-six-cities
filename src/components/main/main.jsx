@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import Card from "../card/card.jsx";
+import OffersList from "../offers-list/offers-list.jsx";
 
 const Main = ({cards, onCardTitleClick}) => {
   return (
@@ -89,22 +89,7 @@ const Main = ({cards, onCardTitleClick}) => {
                 </option>
               </select>
             </form>
-            <div className="cities__places-list places__list tabs__content">
-              {cards.map((item, index) => {
-                return (
-                  <Card
-                    key={index}
-                    title={item.title}
-                    image={item.image}
-                    type={item.type}
-                    price={item.price}
-                    rating={item.rating}
-                    isPremium={item.isPremium}
-                    onCardTitleClick={onCardTitleClick}
-                  />
-                );
-              })}
-            </div>
+            <OffersList cards={cards} onCardTitleClick={onCardTitleClick} />
           </section>
           <div className="cities__right-section">
             <section className="cities__map map" />
