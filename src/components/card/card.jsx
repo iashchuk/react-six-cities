@@ -8,7 +8,7 @@ const Card = ({
   price,
   rating,
   isPremium,
-  onCardTitleClick
+  _onCardTitleClick
 }) => {
   return (
     <article className="cities__place-card place-card">
@@ -48,7 +48,7 @@ const Card = ({
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#" onClick={(evt) => onCardTitleClick(evt)}>
+          <a href="#" onClick={(evt) => _onCardTitleClick(evt)}>
             {title}
           </a>
         </h2>
@@ -70,7 +70,7 @@ Card.propTypes = {
   price: PropTypes.number.isRequired,
   rating: PropTypes.number,
   isPremium: PropTypes.bool,
-  onCardTitleClick: PropTypes.func
+  _onCardTitleClick: PropTypes.func
 };
 
 export default Card;
