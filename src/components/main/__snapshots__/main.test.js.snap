@@ -289,6 +289,7 @@ exports[`Main renders correctly 1`] = `
                 <a
                   href="#"
                   onClick={[Function]}
+                  onMouseOver={[Function]}
                 >
                   Beautiful & luxurious apartment at great location
                 </a>
@@ -385,6 +386,7 @@ exports[`Main renders correctly 1`] = `
                 <a
                   href="#"
                   onClick={[Function]}
+                  onMouseOver={[Function]}
                 >
                   Wood and stone place
                 </a>
@@ -481,6 +483,7 @@ exports[`Main renders correctly 1`] = `
                 <a
                   href="#"
                   onClick={[Function]}
+                  onMouseOver={[Function]}
                 >
                   Canal View Prinsengracht
                 </a>
@@ -584,6 +587,7 @@ exports[`Main renders correctly 1`] = `
                 <a
                   href="#"
                   onClick={[Function]}
+                  onMouseOver={[Function]}
                 >
                   Nice, cozy, warm big bed apartment
                 </a>
@@ -680,6 +684,7 @@ exports[`Main renders correctly 1`] = `
                 <a
                   href="#"
                   onClick={[Function]}
+                  onMouseOver={[Function]}
                 >
                   Wood and stone place
                 </a>

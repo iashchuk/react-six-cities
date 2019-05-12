@@ -16,7 +16,7 @@ const card = {
 
 it(`Card title test handler`, () => {
   const CARD_TITLE_ELEMENT = `.place-card__name a`;
-  const onCardTitleClick = jest.fn();
+  const _onCardTitleClick = jest.fn();
 
   const component = shallow(
       <Card
@@ -26,10 +26,10 @@ it(`Card title test handler`, () => {
         price={card.price}
         rating={card.rating}
         isPremium={card.isPremium}
-        onCardTitleClick={onCardTitleClick}
+        _onCardTitleClick={_onCardTitleClick}
       />
   );
 
   component.find(CARD_TITLE_ELEMENT).simulate(`click`);
-  expect(onCardTitleClick).toHaveBeenCalledTimes(1);
+  expect(_onCardTitleClick).toHaveBeenCalledTimes(1);
 });
