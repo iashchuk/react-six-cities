@@ -10,23 +10,38 @@ class App extends Component {
     super(props);
 
     this.state = {
-      cards: offersData
+      cards: offersData,
+      activeCard: null,
+      lastClickedCard: null
     };
 
     this._onCardTitleClick = this._onCardTitleClick.bind(this);
+    this._onCardHover = this._onCardHover.bind(this);
   }
 
   _onCardTitleClick(evt) {
     evt.preventDefault();
-    // eslint-disable-next-line no-console
-    console.log(`You are clicked on -> ${evt.target.textContent}`);
+    this.setState({
+      lastClickedCard: evt.target.textContent
+    });
+  }
+
+  _onCardHover(index) {
+    this.setState({
+      activeCard: index
+    });
   }
 
   render() {
     return (
       <>
         <Header />
-        <Main cards={offersData} _onCardTitleClick={this._onCardTitleClick} />;
+        <Main
+          cards={offersData}
+          _onCardTitleClick={this._onCardTitleClick}
+          _onCardHover={this._onCardHover}
+        />
+        ;
       </>
     );
   }
