@@ -6,14 +6,14 @@ import offersData from "../../mocks/offers";
 
 describe(`Main`, () => {
   it(`renders correctly`, () => {
-    const _onCardTitleClick = jest.fn();
-    const _onCardHover = jest.fn();
+    const onCardTitleClick = jest.fn();
+    const onCardHover = jest.fn();
     const component = renderer
       .create(
           <Main
             cards={offersData}
-            _onCardTitleClick={_onCardTitleClick}
-            _onCardHover={_onCardHover}
+            onCardTitleClick={onCardTitleClick}
+            onCardHover={onCardHover}
           />
       )
       .toJSON();

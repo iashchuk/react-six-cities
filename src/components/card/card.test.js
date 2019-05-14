@@ -13,8 +13,8 @@ const card = {
 
 describe(`Card`, () => {
   it(`renders correctly`, () => {
-    const _onCardTitleClick = jest.fn();
-    const _onCardHover = jest.fn();
+    const onCardTitleClick = jest.fn();
+    const onCardHover = jest.fn();
     const component = renderer
       .create(
           <Card
@@ -24,8 +24,8 @@ describe(`Card`, () => {
             price={card.price}
             rating={card.rating}
             isPremium={card.isPremium}
-            _onCardTitleClick={_onCardTitleClick}
-            _onCardHover={_onCardHover}
+            onCardTitleClick={onCardTitleClick}
+            onCardHover={onCardHover}
           />
       )
       .toJSON();

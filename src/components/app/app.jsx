@@ -38,8 +38,8 @@ class App extends Component {
         <Header />
         <Main
           cards={offersData}
-          _onCardTitleClick={this._onCardTitleClick}
-          _onCardHover={this._onCardHover}
+          onCardTitleClick={this._onCardTitleClick}
+          onCardHover={this._onCardHover}
         />
         ;
       </>

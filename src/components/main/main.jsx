@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import OffersList from "../offers-list/offers-list.jsx";
 
-const Main = ({cards, _onCardTitleClick, _onCardHover}) => {
+const Main = ({cards, onCardTitleClick, onCardHover}) => {
   return (
     <main className="page__main page__main--index">
       <h1 className="visually-hidden">Cities</h1>
@@ -91,8 +91,8 @@ const Main = ({cards, _onCardTitleClick, _onCardHover}) => {
             </form>
             <OffersList
               cards={cards}
-              _onCardTitleClick={_onCardTitleClick}
-              _onCardHover={_onCardHover}
+              onCardTitleClick={onCardTitleClick}
+              onCardHover={onCardHover}
             />
           </section>
           <div className="cities__right-section">
@@ -115,8 +115,8 @@ Main.propTypes = {
         isPremium: PropTypes.bool
       })
   ),
-  _onCardTitleClick: PropTypes.func,
-  _onCardHover: PropTypes.func
+  onCardTitleClick: PropTypes.func,
+  onCardHover: PropTypes.func
 };
 
 export default Main;
