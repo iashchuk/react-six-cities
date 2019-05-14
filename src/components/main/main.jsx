@@ -109,8 +109,10 @@ Main.propTypes = {
       PropTypes.shape({
         title: PropTypes.string.isRequired,
         image: PropTypes.string.isRequired,
+        imageExtension: PropTypes.string.isRequired,
         type: PropTypes.string.isRequired,
         price: PropTypes.number.isRequired,
+        currency: PropTypes.string.isRequired,
         rating: PropTypes.number,
         isPremium: PropTypes.bool
       })

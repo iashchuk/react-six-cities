@@ -12,8 +12,10 @@ const OffersList = ({cards, onCardTitleClick, onCardHover}) => {
             key={index}
             title={item.title}
             image={item.image}
+            imageExtension={item.imageExtension}
             type={item.type}
             price={item.price}
+            currency={item.currency}
             rating={item.rating}
             isPremium={item.isPremium}
             onCardTitleClick={onCardTitleClick}
@@ -30,8 +32,10 @@ OffersList.propTypes = {
       PropTypes.shape({
         title: PropTypes.string.isRequired,
         image: PropTypes.string.isRequired,
+        imageExtension: PropTypes.string.isRequired,
         type: PropTypes.string.isRequired,
         price: PropTypes.number.isRequired,
+        currency: PropTypes.string.isRequired,
         rating: PropTypes.number,
         isPremium: PropTypes.bool
       })

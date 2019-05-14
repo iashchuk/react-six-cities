@@ -8,7 +8,7 @@ import offersData from "../../mocks/offers";
 Enzyme.configure({adapter: new Adapter()});
 
 it(`State contains cards on mount`, () => {
-  const component = mount(<App />);
+  const component = mount(<App offersData={offersData} />);
   expect(component.state(`cards`)).toEqual(offersData);
 });
 
@@ -16,7 +16,7 @@ it(`Update state for activeCard at mouseover on title`, () => {
   const CARD_TITLE_ELEMENT = `.place-card__name a`;
   const CARD_INDEX = 1;
 
-  const component = mount(<App />);
+  const component = mount(<App offersData={offersData} />);
   expect(component.state(`activeCard`)).toEqual(null);
 
   component
@@ -32,7 +32,7 @@ it(`Update state for lastClickedCard at click on title`, () => {
   const CARD_INDEX = 1;
   const CARD_TEXTCONTENT = `Wood and stone place`;
 
-  const component = mount(<App />);
+  const component = mount(<App offersData={offersData} />);
   expect(component.state(`lastClickedCard`)).toEqual(null);
 
   component
