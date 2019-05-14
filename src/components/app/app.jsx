@@ -1,16 +1,15 @@
 import React, {Component} from "react";
+import PropTypes from "prop-types";
 
 import Header from "../header/header.jsx";
 import Main from "../main/main.jsx";
-
-import offersData from "../../mocks/offers";
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      cards: offersData,
+      cards: this.props.offersData,
       activeCard: null,
       lastClickedCard: null
     };
@@ -21,8 +20,9 @@ class App extends Component {
 
   _onCardTitleClick(evt) {
     evt.preventDefault();
+    const {target: element} = evt;
     this.setState({
-      lastClickedCard: evt.target.textContent
+      lastClickedCard: element.textContent
     });
   }
 
@@ -33,11 +33,13 @@ class App extends Component {
   }
 
   render() {
+    const {cards} = this.state;
+
     return (
       <>
         <Header />
         <Main
-          cards={offersData}
+          cards={cards}
           onCardTitleClick={this._onCardTitleClick}
           onCardHover={this._onCardHover}
         />
@@ -46,5 +48,18 @@ class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  offersData: PropTypes.arrayOf(
+      PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        image: PropTypes.string.isRequired,
+        type: PropTypes.string.isRequired,
+        price: PropTypes.number.isRequired,
+        rating: PropTypes.number,
+        isPremium: PropTypes.bool
+      })
+  )
+};
 
 export default App;
