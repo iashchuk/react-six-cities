@@ -4,11 +4,14 @@ import PropTypes from "prop-types";
 const Card = ({
   title,
   image,
+  imageExtension,
   type,
   price,
+  currency,
   rating,
   isPremium,
-  onCardTitleClick
+  onCardTitleClick,
+  onCardHover
 }) => {
   return (
     <article className="cities__place-card place-card">
@@ -21,7 +24,7 @@ const Card = ({
         <a href="#">
           <img
             className="place-card__image"
-            src={`img/${image}`}
+            src={`img/${image}.${imageExtension}`}
             width="260"
             height="200"
             alt="Place image"
@@ -31,7 +34,10 @@ const Card = ({
       <div className="place-card__info">
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
-            <b className="place-card__price-value">&euro;{price}</b>
+            <b className="place-card__price-value">
+              {currency}
+              {price}
+            </b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
           <button className="place-card__bookmark-button button" type="button">
@@ -48,7 +54,11 @@ const Card = ({
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#" onClick={(evt) => onCardTitleClick(evt)}>
+          <a
+            href="#"
+            onClick={(evt) => onCardTitleClick(evt)}
+            onMouseOver={onCardHover}
+          >
             {title}
           </a>
         </h2>
@@ -66,11 +76,14 @@ Card.defaultProps = {
 Card.propTypes = {
   title: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
+  imageExtension: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
+  currency: PropTypes.string.isRequired,
   rating: PropTypes.number,
   isPremium: PropTypes.bool,
-  onCardTitleClick: PropTypes.func
+  onCardTitleClick: PropTypes.func,
+  onCardHover: PropTypes.func
 };
 
 export default Card;

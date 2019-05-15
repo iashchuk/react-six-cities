@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import Card from "../card/card.jsx";
+import OffersList from "../offers-list/offers-list.jsx";
 
-const Main = ({cards, onCardTitleClick}) => {
+const Main = ({cards, onCardTitleClick, onCardHover}) => {
   return (
     <main className="page__main page__main--index">
       <h1 className="visually-hidden">Cities</h1>
@@ -89,22 +89,11 @@ const Main = ({cards, onCardTitleClick}) => {
                 </option>
               </select>
             </form>
-            <div className="cities__places-list places__list tabs__content">
-              {cards.map((item, index) => {
-                return (
-                  <Card
-                    key={index}
-                    title={item.title}
-                    image={item.image}
-                    type={item.type}
-                    price={item.price}
-                    rating={item.rating}
-                    isPremium={item.isPremium}
-                    onCardTitleClick={onCardTitleClick}
-                  />
-                );
-              })}
-            </div>
+            <OffersList
+              cards={cards}
+              onCardTitleClick={onCardTitleClick}
+              onCardHover={onCardHover}
+            />
           </section>
           <div className="cities__right-section">
             <section className="cities__map map" />
@@ -120,13 +109,16 @@ Main.propTypes = {
       PropTypes.shape({
         title: PropTypes.string.isRequired,
         image: PropTypes.string.isRequired,
+        imageExtension: PropTypes.string.isRequired,
         type: PropTypes.string.isRequired,
         price: PropTypes.number.isRequired,
+        currency: PropTypes.string.isRequired,
         rating: PropTypes.number,
         isPremium: PropTypes.bool
       })
   ),
-  onCardTitleClick: PropTypes.func
+  onCardTitleClick: PropTypes.func,
+  onCardHover: PropTypes.func
 };
 
 export default Main;
