@@ -1,28 +1,29 @@
-import React, {PureComponent} from "react";
+import React, {Component} from "react";
 import PropTypes from "prop-types";
+import leaflet from "leaflet";
 
-class Map extends PureComponent {
+class Map extends Component {
   constructor(props) {
     super(props);
   }
 
-  componentDidMount() {
-    const {city, leaflet} = this.props;
-
+  _initCard() {
+    const {cards} = this.props;
+    const city = [52.38333, 4.9];
+    const zoom = 12;
     const icon = leaflet.icon({
       iconUrl: `img/icon-pin.svg`,
       iconSize: [30, 30]
     });
 
-    const zooms = 12;
     const map = leaflet.map(`map`, {
       center: city,
-      zoom: zooms,
+      zoom,
       zoomControl: false,
       marker: true
     });
 
-    map.setView(city, zooms);
+    map.setView(city, zoom);
 
     leaflet
       .tileLayer(
@@ -32,11 +33,42 @@ class Map extends PureComponent {
           }
       )
       .addTo(map);
+
+    cards.map((card) => {
+      leaflet.marker(card.coords, {icon, title: card.title}).addTo(map);
+    });
+  }
+
+  componentDidMount() {
+    this._initCard();
   }
 
   render() {
-    return <div id="map" style={{height: 1000}} />;
+    return (
+      <div
+        id="map"
+        style={{
+          height: `800px`,
+          top: `170px`
+        }}
+      />
+    );
   }
 }
+
+Map.propTypes = {
+  cards: PropTypes.arrayOf(
+      PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        image: PropTypes.string.isRequired,
+        imageExtension: PropTypes.string.isRequired,
+        type: PropTypes.string.isRequired,
+        price: PropTypes.number.isRequired,
+        currency: PropTypes.string.isRequired,
+        rating: PropTypes.number,
+        isPremium: PropTypes.bool
+      })
+  )
+};
 
 export default Map;
