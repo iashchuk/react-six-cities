@@ -51,6 +51,7 @@ export default [
     price: 80,
     currency: `€`,
     rating: 80,
-    isPremium: false
+    isPremium: false,
+    coords: [52.3629453943538, 4.939309666406198]
   }
 ];

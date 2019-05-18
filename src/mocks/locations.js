@@ -1,26 +1,26 @@
 export default [
   {
     city: `Paris`,
-    active: false
+    isActive: false
   },
   {
     city: `Cologne`,
-    active: false
+    isActive: false
   },
   {
     city: `Brussels`,
-    active: false
+    isActive: false
   },
   {
     city: `Amsterdam`,
-    active: true
+    isActive: true
   },
   {
     city: `Hamburg`,
-    active: false
+    isActive: false
   },
   {
     city: `Dusseldorf`,
-    active: false
+    isActive: false
   }
 ];
