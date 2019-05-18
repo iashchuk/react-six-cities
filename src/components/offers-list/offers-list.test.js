@@ -11,7 +11,8 @@ const cards = [
     price: 120,
     currency: `€`,
     rating: 93,
-    isPremium: true
+    isPremium: true,
+    coords: [52.3909553943508, 4.85309666406198]
   },
   {
     title: `Wood and stone place`,
@@ -21,7 +22,8 @@ const cards = [
     price: 80,
     currency: `€`,
     rating: 80,
-    isPremium: false
+    isPremium: false,
+    coords: [52.369553943508, 4.85309666406198]
   }
 ];
 

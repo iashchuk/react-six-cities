@@ -46,46 +46,11 @@ exports[`Main renders correctly 1`] = `
           className="locations__item"
         >
           <a
-            className="locations__item-link tabs__item"
-            href="#"
-          >
-            <span>
-              Brussels
-            </span>
-          </a>
-        </li>
-        <li
-          className="locations__item"
-        >
-          <a
             className="locations__item-link tabs__item tabs__item--active"
+            href="#"
           >
             <span>
               Amsterdam
-            </span>
-          </a>
-        </li>
-        <li
-          className="locations__item"
-        >
-          <a
-            className="locations__item-link tabs__item"
-            href="#"
-          >
-            <span>
-              Hamburg
-            </span>
-          </a>
-        </li>
-        <li
-          className="locations__item"
-        >
-          <a
-            className="locations__item-link tabs__item"
-            href="#"
-          >
-            <span>
-              Dusseldorf
             </span>
           </a>
         </li>
@@ -405,7 +370,17 @@ exports[`Main renders correctly 1`] = `
       >
         <section
           className="cities__map map"
-        />
+        >
+          <div
+            id="map"
+            style={
+              Object {
+                "height": "800px",
+                "top": "170px",
+              }
+            }
+          />
+        </section>
       </div>
     </div>
   </div>

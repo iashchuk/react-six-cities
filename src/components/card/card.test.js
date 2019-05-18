@@ -10,7 +10,8 @@ const card = {
   price: 120,
   currency: `€`,
   rating: 93,
-  isPremium: true
+  isPremium: true,
+  coords: [52.3909553943508, 4.85309666406198]
 };
 
 describe(`Card`, () => {
