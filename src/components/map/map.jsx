@@ -3,13 +3,12 @@ import PropTypes from "prop-types";
 import leaflet from "leaflet";
 
 class Map extends Component {
-  constructor(props) {
-    super(props);
+  componentDidMount() {
+    this._initCard();
   }
 
   _initCard() {
-    const {cards} = this.props;
-    const city = [52.38333, 4.9];
+    const {cards, city} = this.props;
     const zoom = 12;
     const icon = leaflet.icon({
       iconUrl: `img/icon-pin.svg`,
@@ -39,10 +38,6 @@ class Map extends Component {
     });
   }
 
-  componentDidMount() {
-    this._initCard();
-  }
-
   render() {
     return (
       <div
@@ -68,7 +63,8 @@ Map.propTypes = {
         rating: PropTypes.number,
         isPremium: PropTypes.bool
       })
-  )
+  ),
+  city: PropTypes.arrayOf(PropTypes.number)
 };
 
 export default Map;

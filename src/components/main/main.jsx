@@ -6,7 +6,7 @@ import TabsList from "../tabs-list/tabs-list.jsx";
 import Map from "../map/map.jsx";
 import Form from "../form/form.jsx";
 
-const Main = ({cards, locations, onCardTitleClick, onCardHover}) => {
+const Main = ({cards, locations, city, onCardTitleClick, onCardHover}) => {
   return (
     <main className="page__main page__main--index">
       <h1 className="visually-hidden">Cities</h1>
@@ -25,7 +25,7 @@ const Main = ({cards, locations, onCardTitleClick, onCardHover}) => {
           </section>
           <div className="cities__right-section">
             <section className="cities__map map">
-              <Map cards={cards} />
+              <Map cards={cards} city={city} />
             </section>
           </div>
         </div>
@@ -53,6 +53,7 @@ Main.propTypes = {
         isActive: PropTypes.bool
       })
   ),
+  city: PropTypes.arrayOf(PropTypes.number),
   onCardTitleClick: PropTypes.func,
   onCardHover: PropTypes.func
 };

@@ -11,7 +11,8 @@ class App extends Component {
     this.state = {
       cards: this.props.offersData,
       activeCard: null,
-      lastClickedCard: null
+      lastClickedCard: null,
+      city: [52.38333, 4.9]
     };
 
     this._onCardTitleClick = this._onCardTitleClick.bind(this);
@@ -33,7 +34,7 @@ class App extends Component {
   }
 
   render() {
-    const {cards} = this.state;
+    const {cards, city} = this.state;
     const {locationsData} = this.props;
 
     return (
@@ -41,6 +42,7 @@ class App extends Component {
         <Header />
         <Main
           cards={cards}
+          city={city}
           locations={locationsData}
           onCardTitleClick={this._onCardTitleClick}
           onCardHover={this._onCardHover}
