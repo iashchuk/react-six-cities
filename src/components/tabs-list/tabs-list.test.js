@@ -2,24 +2,15 @@ import React from "react";
 import TabsList from "./tabs-list.jsx";
 import renderer from "react-test-renderer";
 
-const locations = [
-  {
-    city: `Paris`,
-    isActive: false
-  },
-  {
-    city: `Cologne`,
-    isActive: false
-  },
-  {
-    city: `Amsterdam`,
-    isActive: true
-  }
-];
+const city = `Amsterdam`;
+const locations = [`Paris`, `Cologne`, `Amsterdam`];
 
 describe(`TabsList`, () => {
   it(`renders correctly`, () => {
-    const component = renderer.create(<TabsList tabs={locations} />).toJSON();
+    const fillOffers = jest.fn();
+    const component = renderer
+      .create(<TabsList city={city} tabs={locations} fillOffers={fillOffers} />)
+      .toJSON();
 
     expect(component).toMatchSnapshot();
   });

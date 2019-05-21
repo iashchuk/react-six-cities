@@ -24,6 +24,7 @@ exports[`Main renders correctly 1`] = `
           <a
             className="locations__item-link tabs__item"
             href="#"
+            onClick={[Function]}
           >
             <span>
               Paris
@@ -36,6 +37,7 @@ exports[`Main renders correctly 1`] = `
           <a
             className="locations__item-link tabs__item"
             href="#"
+            onClick={[Function]}
           >
             <span>
               Cologne
@@ -48,6 +50,7 @@ exports[`Main renders correctly 1`] = `
           <a
             className="locations__item-link tabs__item tabs__item--active"
             href="#"
+            onClick={[Function]}
           >
             <span>
               Amsterdam
@@ -253,8 +256,6 @@ exports[`Main renders correctly 1`] = `
               >
                 <a
                   href="#"
-                  onClick={[Function]}
-                  onMouseOver={[Function]}
                 >
                   Beautiful & luxurious apartment at great location
                 </a>
@@ -350,8 +351,6 @@ exports[`Main renders correctly 1`] = `
               >
                 <a
                   href="#"
-                  onClick={[Function]}
-                  onMouseOver={[Function]}
                 >
                   Wood and stone place
                 </a>
@@ -375,8 +374,7 @@ exports[`Main renders correctly 1`] = `
             id="map"
             style={
               Object {
-                "height": "800px",
-                "top": "170px",
+                "height": "1000px",
               }
             }
           />

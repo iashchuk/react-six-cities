@@ -3,7 +3,9 @@ import Main from "./main.jsx";
 import renderer from "react-test-renderer";
 import Map from "../map/map.jsx";
 
-const offersData = [
+const city = `Amsterdam`;
+
+const cards = [
   {
     title: `Beautiful & luxurious apartment at great location`,
     image: `apartment-01`,
@@ -28,33 +30,21 @@ const offersData = [
   }
 ];
 
-const locationsData = [
-  {
-    city: `Paris`,
-    isActive: false
-  },
-  {
-    city: `Cologne`,
-    isActive: false
-  },
-  {
-    city: `Amsterdam`,
-    isActive: true
-  }
-];
+const locations = [`Paris`, `Cologne`, `Amsterdam`];
 
 describe(`Main`, () => {
   it(`renders correctly`, () => {
-    const onCardTitleClick = jest.fn();
-    const onCardHover = jest.fn();
+    const fillLocations = jest.fn();
+    const fillOffers = jest.fn();
     Map.prototype.componentDidMount = jest.fn();
     const component = renderer
       .create(
           <Main
-            cards={offersData}
-            locations={locationsData}
-            onCardTitleClick={onCardTitleClick}
-            onCardHover={onCardHover}
+            city={city}
+            cards={cards}
+            locations={locations}
+            fillOffers={fillOffers}
+            fillLocations={fillLocations}
           />
       )
       .toJSON();

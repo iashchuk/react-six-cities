@@ -29,17 +29,7 @@ const cards = [
 
 describe(`OffersList`, () => {
   it(`renders correctly`, () => {
-    const onCardTitleClick = jest.fn();
-    const onCardHover = jest.fn();
-    const component = renderer
-      .create(
-          <OffersList
-            cards={cards}
-            onCardTitleClick={onCardTitleClick}
-            onCardHover={onCardHover}
-          />
-      )
-      .toJSON();
+    const component = renderer.create(<OffersList cards={cards} />).toJSON();
 
     expect(component).toMatchSnapshot();
   });

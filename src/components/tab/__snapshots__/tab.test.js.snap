@@ -5,11 +5,12 @@ exports[`Tab renders correctly 1`] = `
   className="locations__item"
 >
   <a
-    className="locations__item-link tabs__item tabs__item--active"
+    className="locations__item-link tabs__item"
     href="#"
+    onClick={[Function]}
   >
     <span>
-      Amsterdam
+      Paris
     </span>
   </a>
 </li>
