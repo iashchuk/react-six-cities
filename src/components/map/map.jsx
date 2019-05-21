@@ -1,14 +1,13 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import leaflet from "leaflet";
 
 class Map extends Component {
   componentDidMount() {
-    this._initCard();
+    this._initCard(this.props.cards, this.props.city);
   }
 
-  _initCard() {
-    const {cards, city} = this.props;
+  _initCard(cards, city) {
     const zoom = 12;
     const icon = leaflet.icon({
       iconUrl: `img/icon-pin.svg`,
@@ -34,7 +33,7 @@ class Map extends Component {
       .addTo(map);
 
     cards.map((card) => {
-      leaflet.marker(card.coords, {icon, title: card.title}).addTo(map);
+      leaflet.marker(card.coords, { icon, title: card.title }).addTo(map);
     });
   }
 
@@ -43,13 +42,16 @@ class Map extends Component {
       <div
         id="map"
         style={{
-          height: `800px`,
-          top: `170px`
+          height: `1000px`
         }}
       />
     );
   }
 }
+
+Map.defaultProps = {
+  city: [52.38333, 4.9]
+};
 
 Map.propTypes = {
   cards: PropTypes.arrayOf(

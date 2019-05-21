@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import Card from "../card/card.jsx";
 
-const OffersList = ({cards, onCardTitleClick, onCardHover}) => {
+const OffersList = ({ cards }) => {
   return (
     <div className="cities__places-list places__list tabs__content">
       {cards.map((item, index) => {
@@ -18,8 +18,6 @@ const OffersList = ({cards, onCardTitleClick, onCardHover}) => {
             currency={item.currency}
             rating={item.rating}
             isPremium={item.isPremium}
-            onCardTitleClick={onCardTitleClick}
-            onCardHover={() => onCardHover(index)}
           />
         );
       })}
@@ -39,9 +37,7 @@ OffersList.propTypes = {
         rating: PropTypes.number,
         isPremium: PropTypes.bool
       })
-  ),
-  onCardTitleClick: PropTypes.func,
-  onCardHover: PropTypes.func
+  )
 };
 
 export default OffersList;

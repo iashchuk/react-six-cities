@@ -9,9 +9,7 @@ const Card = ({
   price,
   currency,
   rating,
-  isPremium,
-  onCardTitleClick,
-  onCardHover
+  isPremium
 }) => {
   return (
     <article className="cities__place-card place-card">
@@ -49,15 +47,15 @@ const Card = ({
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{width: `${rating}%`}} />
+            <span style={{ width: `${rating}%` }} />
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
         <h2 className="place-card__name">
           <a
             href="#"
-            onClick={(evt) => onCardTitleClick(evt)}
-            onMouseOver={onCardHover}
+            // onClick={(evt) => onCardTitleClick(evt)}
+            // onMouseOver={onCardHover}
           >
             {title}
           </a>

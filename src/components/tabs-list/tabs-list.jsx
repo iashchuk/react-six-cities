@@ -3,11 +3,16 @@ import PropTypes from "prop-types";
 
 import Tab from "../tab/tab.jsx";
 
-const TabsList = ({tabs}) => {
+const TabsList = ({ tabs, city, fillOffers }) => {
   const getTabs = () => {
     return tabs.map((item, index) => {
       return (
-        <Tab key={`tab-city-${index}`} label={item.city} isActive={item.isActive} />
+        <Tab
+          key={`tab-city-${index}`}
+          label={item}
+          city={city}
+          fillOffers={() => fillOffers(item)}
+        />
       );
     });
   };
@@ -22,11 +27,8 @@ const TabsList = ({tabs}) => {
 };
 
 TabsList.propTypes = {
-  tabs: PropTypes.arrayOf(
-      PropTypes.shape({
-        city: PropTypes.string.isRequired,
-        isActive: PropTypes.bool
-      })
-  )
+  tabs: PropTypes.arrayOf(PropTypes.string),
+  city: PropTypes.string.isRequired,
+  fillOffers: PropTypes.func
 };
 export default TabsList;
