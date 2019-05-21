@@ -1,0 +1,5 @@
+export const types = {
+  SET_CITY: `SET_CITY`,
+  FILL_OFFERS: `FILL_OFFERS`,
+  FILL_LOCATIONS: `FILL_LOCATIONS`
+};
