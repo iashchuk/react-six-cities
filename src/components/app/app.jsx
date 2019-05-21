@@ -1,77 +1,17 @@
-import React, {Component} from "react";
-import PropTypes from "prop-types";
+import React, { Component } from "react";
 
 import Header from "../header/header.jsx";
-import Main from "../main/main.jsx";
+import MainContainer from "../../containers/main-container.js";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      cards: this.props.offersData,
-      activeCard: null,
-      lastClickedCard: null,
-      city: [52.38333, 4.9]
-    };
-
-    this._onCardTitleClick = this._onCardTitleClick.bind(this);
-    this._onCardHover = this._onCardHover.bind(this);
-  }
-
-  _onCardTitleClick(evt) {
-    evt.preventDefault();
-    const {target: element} = evt;
-    this.setState({
-      lastClickedCard: element.textContent
-    });
-  }
-
-  _onCardHover(index) {
-    this.setState({
-      activeCard: index
-    });
-  }
-
   render() {
-    const {cards, city} = this.state;
-    const {locationsData} = this.props;
-
     return (
       <>
         <Header />
-        <Main
-          cards={cards}
-          city={city}
-          locations={locationsData}
-          onCardTitleClick={this._onCardTitleClick}
-          onCardHover={this._onCardHover}
-        />
-        ;
+        <MainContainer />
       </>
     );
   }
 }
-
-App.propTypes = {
-  offersData: PropTypes.arrayOf(
-      PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        image: PropTypes.string.isRequired,
-        imageExtension: PropTypes.string.isRequired,
-        type: PropTypes.string.isRequired,
-        price: PropTypes.number.isRequired,
-        currency: PropTypes.string.isRequired,
-        rating: PropTypes.number,
-        isPremium: PropTypes.bool
-      })
-  ),
-  locationsData: PropTypes.arrayOf(
-      PropTypes.shape({
-        city: PropTypes.string.isRequired,
-        isActive: PropTypes.bool
-      })
-  )
-};
 
 export default App;
