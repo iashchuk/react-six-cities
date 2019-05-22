@@ -3,26 +3,48 @@ import PropTypes from "prop-types";
 import leaflet from "leaflet";
 
 class Map extends Component {
+  constructor(props) {
+    super(props);
+    this.settings = {
+      center: props.city,
+      zoom: 12,
+      zoomControl: false,
+      marker: true
+    };
+  }
   componentDidMount() {
-    this._initCard(this.props.cards, this.props.city);
+    this._initMap();
   }
 
-  _initCard(cards, city) {
-    const zoom = 12;
-    const icon = leaflet.icon({
+  componentDidUpdate(prevProps) {
+    if (this.props.cards !== prevProps.cards) {
+      this._layerGroup.clearLayers();
+      this._map.setView(this.props.city, this.settings.zoom);
+      this._addMarkers();
+    }
+  }
+
+  get _icon() {
+    return leaflet.icon({
       iconUrl: `img/icon-pin.svg`,
       iconSize: [30, 30]
     });
+  }
 
-    const map = leaflet.map(`map`, {
-      center: city,
-      zoom,
-      zoomControl: false,
-      marker: true
+  _addMarkers() {
+    const icon = this._icon;
+    const { cards } = this.props;
+    this._layerGroup = leaflet.layerGroup().addTo(this._map);
+
+    cards.map(({ coords, title }) => {
+      leaflet.marker(coords, { icon, title }).addTo(this._layerGroup);
     });
+  }
 
-    map.setView(city, zoom);
-
+  _initMap() {
+    const { city } = this.props;
+    this._map = leaflet.map(`map`, this.settings);
+    this._map.setView(city, this.settings.zoom);
     leaflet
       .tileLayer(
           `https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`,
@@ -30,11 +52,8 @@ class Map extends Component {
             attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
           }
       )
-      .addTo(map);
-
-    cards.map((card) => {
-      leaflet.marker(card.coords, { icon, title: card.title }).addTo(map);
-    });
+      .addTo(this._map);
+    this._addMarkers();
   }
 
   render() {
