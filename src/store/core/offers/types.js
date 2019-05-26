@@ -1,5 +1,3 @@
-export const types = {
-  SET_CITY: `SET_CITY`,
-  GET_OFFERS: `GET_OFFERS`,
-  GET_LOCATIONS: `GET_LOCATIONS`
-};
+export const SET_CITY = `SET_CITY`;
+export const GET_OFFERS = `GET_OFFERS`;
+export const GET_LOCATIONS = `GET_LOCATIONS`;
