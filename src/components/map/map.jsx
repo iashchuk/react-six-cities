@@ -68,10 +68,6 @@ class Map extends Component {
   }
 }
 
-Map.defaultProps = {
-  city: [52.38333, 4.9]
-};
-
 Map.propTypes = {
   cards: PropTypes.arrayOf(
       PropTypes.shape({

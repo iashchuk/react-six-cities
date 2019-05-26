@@ -8,14 +8,14 @@ const initialState = {
 
 export const offersReducer = (state = initialState, { type, payload }) => {
   switch (type) {
-    case types.FILL_OFFERS:
+    case types.GET_OFFERS:
       return {
         ...state,
         city: payload.city,
         cards: payload.offers
       };
 
-    case types.FILL_LOCATIONS:
+    case types.GET_LOCATIONS:
       return {
         ...state,
         locations: payload

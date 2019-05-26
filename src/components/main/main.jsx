@@ -20,6 +20,8 @@ class Main extends React.Component {
       return `Загрузка...`;
     }
 
+    const cityCoords = locations.find((item) => item.name === city).coords;
+
     return (
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
@@ -28,13 +30,15 @@ class Main extends React.Component {
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">312 places to stay in Amsterdam</b>
+              <b className="places__found">{`${
+                cards.length
+              } places to stay in ${city}`}</b>
               <Form />
               <OffersList cards={cards} />
             </section>
             <div className="cities__right-section">
               <section className="cities__map map">
-                <Map cards={cards} />
+                <Map cards={cards} city={cityCoords} />
               </section>
             </div>
           </div>
@@ -57,7 +61,7 @@ Main.propTypes = {
         isPremium: PropTypes.bool
       })
   ),
-  locations: PropTypes.arrayOf(PropTypes.string),
+  locations: PropTypes.arrayOf(PropTypes.object),
   city: PropTypes.string.isRequired,
   fillLocations: PropTypes.func,
   fillOffers: PropTypes.func

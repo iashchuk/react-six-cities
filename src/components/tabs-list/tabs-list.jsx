@@ -9,9 +9,9 @@ const TabsList = ({ tabs, city, fillOffers }) => {
       return (
         <Tab
           key={`tab-city-${index}`}
-          label={item}
+          label={item.name}
           city={city}
-          fillOffers={() => fillOffers(item)}
+          fillOffers={() => fillOffers(item.name)}
         />
       );
     });
@@ -27,7 +27,7 @@ const TabsList = ({ tabs, city, fillOffers }) => {
 };
 
 TabsList.propTypes = {
-  tabs: PropTypes.arrayOf(PropTypes.string),
+  tabs: PropTypes.arrayOf(PropTypes.object),
   city: PropTypes.string.isRequired,
   fillOffers: PropTypes.func
 };
