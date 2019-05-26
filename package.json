@@ -15,10 +15,10 @@
     "@babel/preset-react": "7.0.0",
     "babel-jest": "24.8.0",
     "babel-loader": "8.0.5",
-    "@babel/plugin-proposal-class-properties": "^7.4.4",
-    "@babel/plugin-proposal-function-bind": "^7.2.0",
-    "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
-    "babel-eslint": "^10.0.1",
+    "@babel/plugin-proposal-class-properties": "7.4.4",
+    "@babel/plugin-proposal-function-bind": "7.2.0",
+    "@babel/plugin-proposal-object-rest-spread": ".4.4",
+    "babel-eslint": "10.0.1",
     "enzyme": "3.9.0",
     "enzyme-adapter-react-16": "1.12.1",
     "eslint": "5.13.0",
@@ -34,13 +34,13 @@
     "node": "10"
   },
   "dependencies": {
-    "classnames": "^2.2.6",
+    "classnames": "2.2.6",
     "leaflet": "1.5.1",
     "prop-types": "15.7.2",
     "react": "16.8.6",
     "react-dom": "16.8.6",
-    "react-redux": "^7.0.3",
-    "redux": "^4.0.1",
-    "redux-logger": "^3.0.6"
+    "react-redux": "7.0.3",
+    "redux": "4.0.1",
+    "redux-logger": "3.0.6"
   }
 }
