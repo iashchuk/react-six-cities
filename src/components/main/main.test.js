@@ -30,7 +30,20 @@ const cards = [
   }
 ];
 
-const locations = [`Paris`, `Cologne`, `Amsterdam`];
+const locations = [
+  {
+    name: `Amsterdam`,
+    coords: [52.38333, 4.9]
+  },
+  {
+    name: `Cologne`,
+    coords: [50.940667, 6.966584]
+  },
+  {
+    name: `Dusseldorf`,
+    coords: [51.226723, 6.772435]
+  }
+];
 
 describe(`Main`, () => {
   it(`renders correctly`, () => {
