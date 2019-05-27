@@ -7,7 +7,7 @@
     "build": "webpack --mode development",
     "start": "webpack-dev-server --open",
     "eslint": "eslint src/**/*.js src/**/*.jsx",
-    "test": "npm run eslint && jest"
+    "test": "cross-env NODE_ENV=test npm run eslint && jest"
   },
   "devDependencies": {
     "@babel/core": "7.4.4",
@@ -35,7 +35,8 @@
   },
   "dependencies": {
     "classnames": "2.2.6",
-    "core-js": "3.1.2",
+    "core-js": "^2.6.9",
+    "cross-env": "^5.2.0",
     "leaflet": "1.5.1",
     "prop-types": "15.7.2",
     "react": "16.8.6",
