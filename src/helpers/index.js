@@ -1,5 +1,5 @@
-import offers from "./offers";
-import locations from "./locations";
+import offers from "../mocks/offers";
+import locations from "../mocks/locations";
 
 export const getOffers = (city) => {
   return offers.find((item) => item.city === city).offers;

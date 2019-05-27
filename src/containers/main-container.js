@@ -1,7 +1,12 @@
+import React from "react";
 import { connect } from "react-redux";
 import Main from "../components/main/main.jsx";
 
-import { fillLocations, fillOffers } from "../store/core/offers/actions";
+import { fillLocations, fillOffers } from "../redux/offers/actions";
+
+const MainContainer = (props) => {
+  return <Main {...props} />;
+};
 
 const mapStateToProps = ({ offers }) => {
   return {
@@ -19,4 +24,4 @@ const mapDispatchToProps = {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(Main);
+)(MainContainer);

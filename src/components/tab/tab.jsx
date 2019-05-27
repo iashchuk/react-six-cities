@@ -1,20 +1,23 @@
 import React from "react";
 import PropTypes from "prop-types";
-import cx from "classnames";
+import cn from "classnames";
 
 const Tab = ({ label, city, fillOffers }) => {
+  const isActive = label === city;
+
+  const onClick = (evt) => {
+    evt.preventDefault();
+    fillOffers();
+  };
+
   return (
     <li className="locations__item">
       <a
-        className={cx(`locations__item-link tabs__item`, {
-          [`tabs__item--active`]: label === city
+        className={cn(`locations__item-link tabs__item`, {
+          [`tabs__item--active`]: isActive
         })}
         href="#"
-        onClick={(evt) => {
-          evt.preventDefault();
-
-          fillOffers();
-        }}
+        onClick={onClick}
       >
         <span>{label}</span>
       </a>

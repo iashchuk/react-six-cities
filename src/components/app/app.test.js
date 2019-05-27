@@ -3,7 +3,7 @@ import App from "./app.jsx";
 import renderer from "react-test-renderer";
 import Map from "../map/map.jsx";
 import { Provider } from "react-redux";
-import { store } from "../../store/index.js";
+import { store } from "../../redux/index.js";
 
 describe(`App`, () => {
   it(`renders correctly`, () => {
