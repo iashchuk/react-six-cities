@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware, compose } from "redux";
 import { createLogger } from "redux-logger";
-import { rootReducer } from "./rootReducer";
+import { rootReducer } from "./root-reducer";
 
 const logger = createLogger({
   duration: true,
@@ -14,8 +14,14 @@ const logger = createLogger({
   }
 });
 
+const middlewares = [];
+
+if (process.env.NODE_ENV !== `test`) {
+  middlewares.push(logger);
+}
+
 const devtools = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
 const composeEnhancers = devtools ? devtools : compose;
-const enhansedStore = composeEnhancers(applyMiddleware(logger));
+const enhansedStore = composeEnhancers(applyMiddleware(...middlewares));
 
 export const store = createStore(rootReducer, enhansedStore);

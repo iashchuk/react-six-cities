@@ -2,7 +2,7 @@
 import { combineReducers } from "redux";
 
 // Reducers
-import { offersReducer } from "./core/offers/reducer";
+import { offersReducer } from "./offers/reducer";
 
 export const rootReducer = combineReducers({
   offers: offersReducer

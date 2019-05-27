@@ -1,6 +1,6 @@
 import * as types from "./types";
 
-import { getLocations, getOffers } from "../../../mocks/helpers";
+import { getLocations, getOffers } from "../../helpers";
 
 export const fillLocations = () => {
   const locations = getLocations();
