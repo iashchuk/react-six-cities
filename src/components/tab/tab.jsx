@@ -2,11 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import cn from "classnames";
 
-const Tab = ({ label, city, fillOffers }) => {
-  const isActive = label === city;
-
+const Tab = ({ label, isActive, setActiveItem, fillOffers }) => {
   const onClick = (evt) => {
     evt.preventDefault();
+    setActiveItem();
     fillOffers();
   };
 
@@ -27,7 +26,8 @@ const Tab = ({ label, city, fillOffers }) => {
 
 Tab.propTypes = {
   label: PropTypes.string.isRequired,
-  city: PropTypes.string.isRequired,
+  isActive: PropTypes.bool,
+  setActiveItem: PropTypes.func,
   fillOffers: PropTypes.func
 };
 
