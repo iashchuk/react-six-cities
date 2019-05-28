@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import cn from "classnames";
 
 const Card = ({
   title,
@@ -9,17 +10,28 @@ const Card = ({
   price,
   currency,
   rating,
-  isPremium
+  isPremium,
+  isActive,
+  setActiveItem
 }) => {
+  const onCardClick = (evt) => {
+    evt.preventDefault();
+    setActiveItem();
+  };
+
   return (
-    <article className="cities__place-card place-card">
+    <article
+      className={cn(`cities__place-card place-card`, {
+        [`place-card--active`]: isActive
+      })}
+    >
       {isPremium && (
         <div className="place-card__mark">
           <span>Premium</span>
         </div>
       )}
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <a href="#">
+        <a href="#" onClick={onCardClick}>
           <img
             className="place-card__image"
             src={`img/${image}.${imageExtension}`}
@@ -52,11 +64,7 @@ const Card = ({
           </div>
         </div>
         <h2 className="place-card__name">
-          <a
-            href="#"
-            // onClick={(evt) => onCardTitleClick(evt)}
-            // onMouseOver={onCardHover}
-          >
+          <a href="#" onClick={onCardClick}>
             {title}
           </a>
         </h2>
@@ -80,8 +88,10 @@ Card.propTypes = {
   currency: PropTypes.string.isRequired,
   rating: PropTypes.number,
   isPremium: PropTypes.bool,
+  isActive: PropTypes.bool,
   onCardTitleClick: PropTypes.func,
-  onCardHover: PropTypes.func
+  onCardHover: PropTypes.func,
+  setActiveItem: PropTypes.func
 };
 
 export default Card;

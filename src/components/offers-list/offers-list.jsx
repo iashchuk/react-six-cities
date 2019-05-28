@@ -2,14 +2,18 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import Card from "../card/card.jsx";
+import withActiveItem from "../../hocs/with-active-item.js";
 
-const OffersList = ({ cards }) => {
+const OffersList = ({ cards, activeItem, setActiveItem }) => {
   return (
     <div className="cities__places-list places__list tabs__content">
       {cards.map((item, index) => {
+        const id = `${item.title}-${index}`;
+        const isActive = activeItem === id;
+
         return (
           <Card
-            key={index}
+            key={id}
             title={item.title}
             image={item.image}
             imageExtension={item.imageExtension}
@@ -18,6 +22,8 @@ const OffersList = ({ cards }) => {
             currency={item.currency}
             rating={item.rating}
             isPremium={item.isPremium}
+            isActive={isActive}
+            setActiveItem={() => setActiveItem(id)}
           />
         );
       })}
@@ -37,7 +43,9 @@ OffersList.propTypes = {
         rating: PropTypes.number,
         isPremium: PropTypes.bool
       })
-  )
+  ),
+  activeItem: PropTypes.string,
+  setActiveItem: PropTypes.func
 };
 
-export default OffersList;
+export default withActiveItem(OffersList);

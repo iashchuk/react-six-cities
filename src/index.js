@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 
 import App from "./components/app/app.jsx";
 
-import { store } from "./redux";
+import { store } from "./redux/index.js";
 
 import offersData from "./mocks/offers";
 import locationsData from "./mocks/locations";
