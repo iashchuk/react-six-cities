@@ -1,26 +1,26 @@
 export default [
   {
-    city: `Paris`,
-    isActive: false
+    name: `Amsterdam`,
+    coords: [52.38333, 4.9]
   },
   {
-    city: `Cologne`,
-    isActive: false
+    name: `Cologne`,
+    coords: [50.940667, 6.966584]
   },
   {
-    city: `Brussels`,
-    isActive: false
+    name: `Dusseldorf`,
+    coords: [51.226723, 6.772435]
   },
   {
-    city: `Amsterdam`,
-    isActive: true
+    name: `Hamburg`,
+    coords: [53.550131, 10.007442]
   },
   {
-    city: `Hamburg`,
-    isActive: false
+    name: `Brussels`,
+    coords: [50.850176, 4.354441]
   },
   {
-    city: `Dusseldorf`,
-    isActive: false
+    name: `Paris`,
+    coords: [48.857175, 2.349802]
   }
 ];

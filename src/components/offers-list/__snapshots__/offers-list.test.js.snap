@@ -95,8 +95,6 @@ exports[`OffersList renders correctly 1`] = `
       >
         <a
           href="#"
-          onClick={[Function]}
-          onMouseOver={[Function]}
         >
           Beautiful & luxurious apartment at great location
         </a>
@@ -192,8 +190,6 @@ exports[`OffersList renders correctly 1`] = `
       >
         <a
           href="#"
-          onClick={[Function]}
-          onMouseOver={[Function]}
         >
           Wood and stone place
         </a>

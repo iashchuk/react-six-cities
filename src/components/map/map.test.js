@@ -1,9 +1,6 @@
 import React from "react";
-import Main from "./main.jsx";
+import Map from "./map.jsx";
 import renderer from "react-test-renderer";
-import Map from "../map/map.jsx";
-
-const city = `Amsterdam`;
 
 const cards = [
   {
@@ -30,36 +27,13 @@ const cards = [
   }
 ];
 
-const locations = [
-  {
-    name: `Amsterdam`,
-    coords: [52.38333, 4.9]
-  },
-  {
-    name: `Cologne`,
-    coords: [50.940667, 6.966584]
-  },
-  {
-    name: `Dusseldorf`,
-    coords: [51.226723, 6.772435]
-  }
-];
+const city = [52.38333, 4.9];
 
-describe(`Main`, () => {
+describe(`Map`, () => {
   it(`renders correctly`, () => {
-    const fillLocations = jest.fn();
-    const fillOffers = jest.fn();
     Map.prototype.componentDidMount = jest.fn();
     const component = renderer
-      .create(
-          <Main
-            city={city}
-            cards={cards}
-            locations={locations}
-            fillOffers={fillOffers}
-            fillLocations={fillLocations}
-          />
-      )
+      .create(<Map cards={cards} city={city} />)
       .toJSON();
 
     expect(component).toMatchSnapshot();

@@ -1,15 +1,23 @@
 import React from "react";
 import PropTypes from "prop-types";
-import cx from "classnames";
+import cn from "classnames";
 
-const Tab = ({label, isActive}) => {
+const Tab = ({ label, city, fillOffers }) => {
+  const isActive = label === city;
+
+  const onClick = (evt) => {
+    evt.preventDefault();
+    fillOffers();
+  };
+
   return (
     <li className="locations__item">
       <a
-        className={cx(`locations__item-link tabs__item`, {
+        className={cn(`locations__item-link tabs__item`, {
           [`tabs__item--active`]: isActive
         })}
         href="#"
+        onClick={onClick}
       >
         <span>{label}</span>
       </a>
@@ -19,7 +27,8 @@ const Tab = ({label, isActive}) => {
 
 Tab.propTypes = {
   label: PropTypes.string.isRequired,
-  isActive: PropTypes.bool
+  city: PropTypes.string.isRequired,
+  fillOffers: PropTypes.func
 };
 
 export default Tab;
