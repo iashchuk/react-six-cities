@@ -2,11 +2,7 @@
 
 exports[`Map renders correctly 1`] = `
 <div
+  className="cities-map"
   id="map"
-  style={
-    Object {
-      "height": "1000px",
-    }
-  }
 />
 `;

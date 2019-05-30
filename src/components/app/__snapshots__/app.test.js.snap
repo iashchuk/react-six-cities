@@ -765,12 +765,8 @@ Array [
             className="cities__map map"
           >
             <div
+              className="cities-map"
               id="map"
-              style={
-                Object {
-                  "height": "1000px",
-                }
-              }
             />
           </section>
         </div>
