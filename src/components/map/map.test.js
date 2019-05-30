@@ -1,6 +1,6 @@
 import React from "react";
-import Map from "./map.jsx";
 import renderer from "react-test-renderer";
+import Map from "./map.jsx";
 
 const cards = [
   {

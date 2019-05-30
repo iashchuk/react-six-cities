@@ -1,6 +1,6 @@
 import React from "react";
-import Tab from "./tab.jsx";
 import renderer from "react-test-renderer";
+import Tab from "./tab.jsx";
 
 const item = `Paris`;
 const city = `Amsterdam`;

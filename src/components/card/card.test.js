@@ -1,6 +1,6 @@
 import React from "react";
-import Card from "./card.jsx";
 import renderer from "react-test-renderer";
+import Card from "./card.jsx";
 
 const card = {
   title: `Beautiful & luxurious apartment at great location`,
