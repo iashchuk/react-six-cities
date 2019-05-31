@@ -57,14 +57,7 @@ class Map extends Component {
   }
 
   render() {
-    return (
-      <div
-        id="map"
-        style={{
-          height: `1000px`
-        }}
-      />
-    );
+    return <div id="map" className={`cities-map`} />;
   }
 }
 

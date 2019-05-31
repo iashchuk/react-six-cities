@@ -34,7 +34,7 @@ class Main extends React.Component {
                 cards.length
               } places to stay in ${city}`}</b>
               <Form />
-              <OffersList cards={cards} />
+              <OffersList cards={cards} city={city} />
             </section>
             <div className="cities__right-section">
               <section className="cities__map map">

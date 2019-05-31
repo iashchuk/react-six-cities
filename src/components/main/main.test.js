@@ -1,6 +1,6 @@
 import React from "react";
-import Main from "./main.jsx";
 import renderer from "react-test-renderer";
+import Main from "./main.jsx";
 import Map from "../map/map.jsx";
 
 const city = `Amsterdam`;

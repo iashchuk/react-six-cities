@@ -1,6 +1,6 @@
 import React from "react";
-import TabsList from "./tabs-list.jsx";
 import renderer from "react-test-renderer";
+import TabsList from "./tabs-list.jsx";
 
 const city = `Amsterdam`;
 const locations = [

@@ -19,6 +19,7 @@ exports[`OffersList renders correctly 1`] = `
     >
       <a
         href="#"
+        onClick={[Function]}
       >
         <img
           alt="Place image"
@@ -95,6 +96,7 @@ exports[`OffersList renders correctly 1`] = `
       >
         <a
           href="#"
+          onClick={[Function]}
         >
           Beautiful & luxurious apartment at great location
         </a>
@@ -114,6 +116,7 @@ exports[`OffersList renders correctly 1`] = `
     >
       <a
         href="#"
+        onClick={[Function]}
       >
         <img
           alt="Place image"
@@ -190,6 +193,7 @@ exports[`OffersList renders correctly 1`] = `
       >
         <a
           href="#"
+          onClick={[Function]}
         >
           Wood and stone place
         </a>
