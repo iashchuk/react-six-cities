@@ -8,13 +8,14 @@ import Map from "../map/map.jsx";
 
 class Main extends React.Component {
   componentDidMount() {
-    const { city, fillLocations, fillOffers } = this.props;
+    const { city, fillLocations, fillOffers, getData } = this.props;
+    getData();
     fillLocations();
     fillOffers(city);
   }
 
   render() {
-    const { city, locations, cards, fillOffers } = this.props;
+    const { city, locations, cards, hotels, fillOffers } = this.props;
 
     if (!cards.length || !locations.length) {
       return `Загрузка...`;
