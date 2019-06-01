@@ -1,6 +1,8 @@
 import { createStore, applyMiddleware, compose } from "redux";
 import { createLogger } from "redux-logger";
 import { rootReducer } from "./root-reducer";
+import thunk from "redux-thunk";
+import { createAPI } from "../api/index.js";
 
 const logger = createLogger({
   duration: true,
@@ -19,6 +21,9 @@ const middlewares = [];
 if (process.env.NODE_ENV !== `test`) {
   middlewares.push(logger);
 }
+
+const api = createAPI(() => history.pushState(null, null, `/login`));
+middlewares.push(thunk.withExtraArgument(api));
 
 const devtools = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
 const composeEnhancers = devtools ? devtools : compose;
