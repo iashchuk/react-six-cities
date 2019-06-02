@@ -1,47 +1,40 @@
-import { offersReducer } from "./reducer";
-import * as types from "./types";
+import { hotelsReducer } from "./reducer.js";
+import * as types from "./types.js";
+
+const city = `Amsterdam`;
 
 const data = {
-  city: `Paris`,
-  offers: [
+  cities: [`Paris`, `Amsterdam`],
+  locations: [
     {
-      title: `Beautiful & luxurious apartment at great location`,
-      image: `apartment-01`,
-      imageExtension: `jpg`,
-      type: `Apartment`,
-      price: 120,
-      currency: `€`,
-      rating: 93,
-      isPremium: true,
-      coords: [52.3909553943508, 4.85309666406198]
+      city: `Paris`,
+      coords: { latitude: 50.846557, longitude: 4.351697, zoom: 13 }
     }
-  ]
+  ],
+  offers: [{ city: `Paris`, offers: []}]
 };
 
-const locations = [
-  {
-    name: `Amsterdam`,
-    coords: [52.38333, 4.9]
-  },
-  {
-    name: `Cologne`,
-    coords: [50.940667, 6.966584]
-  }
-];
-
-describe(`GET_OFFERS action`, () => {
-  it(`should get offers`, () => {
-    const state = offersReducer({}, { type: types.GET_OFFERS, payload: data });
-    expect(state).toEqual({ city: data.city, cards: data.offers });
+describe(`GET_HOTELS action`, () => {
+  it(`should get hotels`, () => {
+    const state = hotelsReducer(
+        {},
+        {
+          type: types.GET_HOTELS,
+          payload: data
+        }
+    );
+    expect(state).toEqual({
+      cities: data.cities,
+      locations: data.locations,
+      offers: data.offers,
+      city: data.cities[0]
+    });
   });
 });
 
-describe(`GET_LOCATIONS action`, () => {
-  it(`should get loactions`, () => {
-    const state = offersReducer(
-        {},
-        { type: types.GET_LOCATIONS, payload: locations }
-    );
-    expect(state).toEqual({ locations });
+describe(`SET_CITY action`, () => {
+  it(`should get offers`, () => {
+    const state = hotelsReducer({}, { type: types.SET_CITY, payload: city });
+    expect(state).toEqual({ city });
   });
 });
