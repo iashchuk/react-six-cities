@@ -17,7 +17,6 @@ class Main extends React.Component {
     if (!offers.length || !cities.length) {
       return `Загрузка...`;
     }
-    console.log(this.props);
 
     return (
       <main className="page__main page__main--index">
