@@ -12,16 +12,17 @@ class Main extends React.Component {
   }
 
   render() {
-    const { city, cityCoords, locations, offers, setCity } = this.props;
+    const { city, cityCoords, cities, offers, setCity } = this.props;
 
-    if (!offers.length || !locations.length) {
+    if (!offers.length || !cities.length) {
       return `Загрузка...`;
     }
+    console.log(this.props);
 
     return (
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
-        <TabsList tabs={locations} city={city} setCity={setCity} />
+        <TabsList tabs={cities} city={city} setCity={setCity} />
         <div className="cities__places-wrapper">
           <div className="cities__places-container container">
             <section className="cities__places places">
@@ -59,7 +60,7 @@ Main.propTypes = {
         isPremium: PropTypes.bool
       })
   ),
-  locations: PropTypes.arrayOf(PropTypes.string),
+  cities: PropTypes.arrayOf(PropTypes.string),
   city: PropTypes.string,
   cityCoords: PropTypes.object,
   getData: PropTypes.func,

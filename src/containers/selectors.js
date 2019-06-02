@@ -13,8 +13,8 @@ export const getCityOffers = createSelector(
 
 export const getCityCoords = createSelector(
     (f) => f,
-    ([locationsCoords, city]) => {
-      const currentCity = locationsCoords.find((item) => item.city === city);
+    ([locations, city]) => {
+      const currentCity = locations.find((item) => item.city === city);
       if (!currentCity) {
         return {};
       }

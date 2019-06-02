@@ -11,10 +11,10 @@ const MainContainer = (props) => {
 
 const mapStateToProps = ({ hotels }) => {
   return {
-    locations: hotels.locations,
+    cities: hotels.cities,
     offers: getCityOffers([hotels.offers, hotels.city]),
     city: hotels.city,
-    cityCoords: getCityCoords([hotels.locationsCoords, hotels.city])
+    cityCoords: getCityCoords([hotels.locations, hotels.city])
   };
 };
 

@@ -1,8 +1,8 @@
 import * as types from "./types";
 
 const initialState = {
+  cities: [],
   locations: [],
-  locationsCoords: [],
   offers: [],
   city: null
 };
@@ -12,10 +12,10 @@ export const hotelsReducer = (state = initialState, { type, payload }) => {
     case types.GET_HOTELS:
       return {
         ...state,
+        cities: payload.cities,
         locations: payload.locations,
-        locationsCoords: payload.locationsCoords,
         offers: payload.offers,
-        city: payload.locations[0]
+        city: payload.cities[0]
       };
 
     case types.SET_CITY:
