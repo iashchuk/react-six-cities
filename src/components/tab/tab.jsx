@@ -2,11 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import cn from "classnames";
 
-const Tab = ({ label, isActive, setActiveItem, fillOffers }) => {
+const Tab = ({ label, isActive, setActiveItem, setCity }) => {
   const onClick = (evt) => {
     evt.preventDefault();
     setActiveItem();
-    fillOffers();
+    setCity();
   };
 
   return (
@@ -28,7 +28,7 @@ Tab.propTypes = {
   label: PropTypes.string.isRequired,
   isActive: PropTypes.bool,
   setActiveItem: PropTypes.func,
-  fillOffers: PropTypes.func
+  setCity: PropTypes.func
 };
 
 export default Tab;

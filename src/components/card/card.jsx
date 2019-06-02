@@ -34,7 +34,7 @@ const Card = ({
         <a href="#" onClick={onCardClick}>
           <img
             className="place-card__image"
-            src={`img/${image}.${imageExtension}`}
+            src={image}
             width="260"
             height="200"
             alt="Place image"
@@ -82,7 +82,6 @@ Card.defaultProps = {
 Card.propTypes = {
   title: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
-  imageExtension: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   currency: PropTypes.string.isRequired,

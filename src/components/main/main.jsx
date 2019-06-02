@@ -8,38 +8,36 @@ import Map from "../map/map.jsx";
 
 class Main extends React.Component {
   componentDidMount() {
-    const { city, fillLocations, fillOffers, getData } = this.props;
-    getData();
-    fillLocations();
-    fillOffers(city);
+    this.props.getData();
   }
 
   render() {
-    const { city, locations, cards, hotels, fillOffers } = this.props;
+    const { city, cityCoords, locations, offers, setCity } = this.props;
 
-    if (!cards.length || !locations.length) {
+    if (!offers.length || !locations.length) {
       return `Загрузка...`;
     }
-
-    const cityCoords = locations.find((item) => item.name === city).coords;
 
     return (
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
-        <TabsList tabs={locations} city={city} fillOffers={fillOffers} />
+        <TabsList tabs={locations} city={city} setCity={setCity} />
         <div className="cities__places-wrapper">
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
               <b className="places__found">{`${
-                cards.length
+                offers.length
               } places to stay in ${city}`}</b>
               <Form />
-              <OffersList cards={cards} city={city} />
+              <OffersList cards={offers} city={city} />
             </section>
             <div className="cities__right-section">
               <section className="cities__map map">
-                <Map cards={cards} city={cityCoords} />
+                <Map
+                  cards={offers}
+                  city={[cityCoords.latitude, cityCoords.longitude]}
+                />
               </section>
             </div>
           </div>
@@ -54,7 +52,6 @@ Main.propTypes = {
       PropTypes.shape({
         title: PropTypes.string.isRequired,
         image: PropTypes.string.isRequired,
-        imageExtension: PropTypes.string.isRequired,
         type: PropTypes.string.isRequired,
         price: PropTypes.number.isRequired,
         currency: PropTypes.string.isRequired,
@@ -62,10 +59,8 @@ Main.propTypes = {
         isPremium: PropTypes.bool
       })
   ),
-  locations: PropTypes.arrayOf(PropTypes.object),
-  city: PropTypes.string.isRequired,
-  fillLocations: PropTypes.func,
-  fillOffers: PropTypes.func
+  locations: PropTypes.arrayOf(PropTypes.string),
+  city: PropTypes.string
 };
 
 export default Main;
