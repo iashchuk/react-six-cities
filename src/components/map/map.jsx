@@ -36,8 +36,10 @@ class Map extends Component {
     const { cards } = this.props;
     this._layerGroup = leaflet.layerGroup().addTo(this._map);
 
-    cards.map(({ coords, title }) => {
-      leaflet.marker(coords, { icon, title }).addTo(this._layerGroup);
+    cards.map(({ location: { latitude, longitude }, title }) => {
+      leaflet
+        .marker([latitude, longitude], { icon, title })
+        .addTo(this._layerGroup);
     });
   }
 
@@ -66,7 +68,6 @@ Map.propTypes = {
       PropTypes.shape({
         title: PropTypes.string.isRequired,
         image: PropTypes.string.isRequired,
-        imageExtension: PropTypes.string.isRequired,
         type: PropTypes.string.isRequired,
         price: PropTypes.number.isRequired,
         currency: PropTypes.string.isRequired,

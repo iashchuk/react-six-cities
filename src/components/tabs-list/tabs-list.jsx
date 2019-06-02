@@ -4,19 +4,19 @@ import PropTypes from "prop-types";
 import Tab from "../tab/tab.jsx";
 import withActiveItem from "../../hocs/with-active-item.js";
 
-const TabsList = ({ tabs, city, activeItem, setActiveItem, fillOffers }) => {
+const TabsList = ({ tabs, city, activeItem, setActiveItem, setCity }) => {
   const getTabs = () => {
     return tabs.map((item, index) => {
-      const id = `${item.name}-${index}`;
-      const isActive = activeItem === id || item.name === city;
+      const id = `${item}-${index}`;
+      const isActive = activeItem === id || item === city;
 
       return (
         <Tab
           key={id}
-          label={item.name}
+          label={item}
           isActive={isActive}
           setActiveItem={() => setActiveItem(id)}
-          fillOffers={() => fillOffers(item.name)}
+          setCity={() => setCity(item)}
         />
       );
     });
@@ -32,11 +32,11 @@ const TabsList = ({ tabs, city, activeItem, setActiveItem, fillOffers }) => {
 };
 
 TabsList.propTypes = {
-  tabs: PropTypes.arrayOf(PropTypes.object),
+  tabs: PropTypes.arrayOf(PropTypes.string),
   city: PropTypes.string.isRequired,
   activeItem: PropTypes.string,
   setActiveItem: PropTypes.func,
-  fillOffers: PropTypes.func
+  setCity: PropTypes.func
 };
 
 export default withActiveItem(TabsList);

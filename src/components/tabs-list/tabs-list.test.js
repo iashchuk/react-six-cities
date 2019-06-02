@@ -3,26 +3,13 @@ import renderer from "react-test-renderer";
 import TabsList from "./tabs-list.jsx";
 
 const city = `Amsterdam`;
-const locations = [
-  {
-    name: `Amsterdam`,
-    coords: [52.38333, 4.9]
-  },
-  {
-    name: `Cologne`,
-    coords: [50.940667, 6.966584]
-  },
-  {
-    name: `Dusseldorf`,
-    coords: [51.226723, 6.772435]
-  }
-];
+const cities = [`Amsterdam`, `Cologne`, `Dusseldorf`];
 
 describe(`TabsList`, () => {
   it(`renders correctly`, () => {
-    const fillOffers = jest.fn();
+    const setCity = jest.fn();
     const component = renderer
-      .create(<TabsList city={city} tabs={locations} fillOffers={fillOffers} />)
+      .create(<TabsList tabs={cities} city={city} setCity={setCity} />)
       .toJSON();
 
     expect(component).toMatchSnapshot();

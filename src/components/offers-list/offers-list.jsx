@@ -16,7 +16,6 @@ const OffersList = ({ cards, city, activeItem, setActiveItem }) => {
             key={id}
             title={item.title}
             image={item.image}
-            imageExtension={item.imageExtension}
             type={item.type}
             price={item.price}
             currency={item.currency}
@@ -35,9 +34,7 @@ OffersList.propTypes = {
   cards: PropTypes.arrayOf(
       PropTypes.shape({
         title: PropTypes.string.isRequired,
-
         image: PropTypes.string.isRequired,
-        imageExtension: PropTypes.string.isRequired,
         type: PropTypes.string.isRequired,
         price: PropTypes.number.isRequired,
         currency: PropTypes.string.isRequired,
