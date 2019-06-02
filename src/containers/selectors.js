@@ -5,7 +5,7 @@ export const getCityOffers = createSelector(
     ([offers, city]) => {
       const currentCity = offers.find((item) => item.city === city);
       if (!currentCity) {
-        return {};
+        return [];
       }
       return currentCity.offers;
     }

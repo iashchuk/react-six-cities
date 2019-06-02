@@ -48,7 +48,7 @@ class Main extends React.Component {
 }
 
 Main.propTypes = {
-  cards: PropTypes.arrayOf(
+  offers: PropTypes.arrayOf(
       PropTypes.shape({
         title: PropTypes.string.isRequired,
         image: PropTypes.string.isRequired,
@@ -60,7 +60,10 @@ Main.propTypes = {
       })
   ),
   locations: PropTypes.arrayOf(PropTypes.string),
-  city: PropTypes.string
+  city: PropTypes.string,
+  cityCoords: PropTypes.object,
+  getData: PropTypes.func,
+  setCity: PropTypes.func
 };
 
 export default Main;

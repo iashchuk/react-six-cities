@@ -5,7 +5,6 @@ import cn from "classnames";
 const Card = ({
   title,
   image,
-  imageExtension,
   type,
   price,
   currency,
