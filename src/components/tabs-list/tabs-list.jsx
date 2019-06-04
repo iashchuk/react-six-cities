@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import Tab from "../tab/tab.jsx";
-import withActiveItem from "../../hocs/with-active-item.js";
+import withActiveItem from "../../hocs/with-active-item/with-active-item.js";
 
 const TabsList = ({ tabs, city, activeItem, setActiveItem, setCity }) => {
   const getTabs = () => {

@@ -1,12 +1,19 @@
 import React from "react";
+import PropTypes from "prop-types";
+import withLogin from "../../hocs/with-login/with-login.js";
 
-const SignIn = () => {
+const SignIn = ({ handleInputChange, handleFormSubmit }) => {
   return (
     <main className="page__main page__main--login">
       <div className="page__login-container container">
         <section className="login">
           <h1 className="login__title">Sign in</h1>
-          <form className="login__form form" action="#" method="post">
+          <form
+            className="login__form form"
+            action="#"
+            method="post"
+            onSubmit={handleFormSubmit}
+          >
             <div className="login__input-wrapper form__input-wrapper">
               <label className="visually-hidden">E-mail</label>
               <input
@@ -15,6 +22,7 @@ const SignIn = () => {
                 name="email"
                 placeholder="Email"
                 required=""
+                onChange={handleInputChange}
               />
             </div>
             <div className="login__input-wrapper form__input-wrapper">
@@ -25,6 +33,7 @@ const SignIn = () => {
                 name="password"
                 placeholder="Password"
                 required=""
+                onChange={handleInputChange}
               />
             </div>
             <button className="login__submit form__submit button" type="submit">
@@ -44,4 +53,9 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+SignIn.propTypes = {
+  handleInputChange: PropTypes.func,
+  handleFormSubmit: PropTypes.func
+};
+
+export default withLogin(SignIn);
