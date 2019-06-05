@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import Card from "../card/card.jsx";
-import withActiveItem from "../../hocs/with-active-item.js";
+import withActiveItem from "../../hocs/with-active-item/with-active-item.js";
 
 const OffersList = ({ cards, city, activeItem, setActiveItem }) => {
   return (

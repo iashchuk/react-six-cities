@@ -1,5 +1,7 @@
 import axios from "axios";
 
+const FORBIDDEN_STATUS = 403;
+
 export const createAPI = (onLoginFail) => {
   const api = axios.create({
     baseURL: `https://es31-server.appspot.com/six-cities`,
@@ -10,8 +12,8 @@ export const createAPI = (onLoginFail) => {
   const onSuccess = (response) => response;
 
   const onFail = (err) => {
-    if (err.status === 403) {
-      onLoginFail();
+    if (err.status === FORBIDDEN_STATUS) {
+      onLoginFail(); // setAuthRequired
     }
     return err;
   };

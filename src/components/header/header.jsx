@@ -1,6 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-const Header = () => {
+const Header = ({ email, avatarUrl, isAuth, setAuthRequired }) => {
   return (
     <header className="header">
       <div className="container">
@@ -22,11 +23,29 @@ const Header = () => {
                 <a
                   className="header__nav-link header__nav-link--profile"
                   href="#"
+                  onClick={setAuthRequired}
                 >
-                  <div className="header__avatar-wrapper user__avatar-wrapper" />
-                  <span className="header__user-name user__name">
-                    Oliver.conner@gmail.com
-                  </span>
+                  {!isAuth ? (
+                    <>
+                      <div className="header__avatar-wrapper user__avatar-wrapper" />
+                      <span className="header__user-name user__name">
+                        Sign in
+                      </span>
+                    </>
+                  ) : (
+                    <>
+                      <div
+                        className="header__avatar-wrapper user__avatar-wrapper"
+                        style={{
+                          backgroundImage: `url(${avatarUrl})`,
+                          borderRadius: `50px`
+                        }}
+                      />
+                      <span className="header__user-name user__name">
+                        {email}
+                      </span>
+                    </>
+                  )}
                 </a>
               </li>
             </ul>
@@ -35,6 +54,13 @@ const Header = () => {
       </div>
     </header>
   );
+};
+
+Header.propTypes = {
+  email: PropTypes.string,
+  avatarUrl: PropTypes.string,
+  isAuth: PropTypes.bool,
+  setAuthRequired: PropTypes.func
 };
 
 export default Header;
