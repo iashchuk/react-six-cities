@@ -14,7 +14,10 @@ export const AppContainer = (props) => {
 
 const mapStateToProps = ({ auth }) => {
   return {
-    isAuthorizationRequired: auth.isAuthorizationRequired
+    isAuth: auth.isAuth,
+    isAuthorizationRequired: auth.isAuthorizationRequired,
+    avatarUrl: auth.avatarUrl,
+    email: auth.email
   };
 };
 
