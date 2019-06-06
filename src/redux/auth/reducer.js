@@ -1,7 +1,7 @@
 import * as types from "./types";
 
 const initialState = {
-  isAuthorizationRequired: true,
+  isAuthorizationRequired: false,
   isAuth: false,
   id: null,
   email: null,

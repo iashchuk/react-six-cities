@@ -6,10 +6,10 @@ import {
   removeAuthRequired
 } from "../../redux/auth/actions.js";
 
-import App from "../../components/app/app.jsx";
+import SignIn from "../../components/sign-in/sign-in.jsx";
 
-export const AppContainer = (props) => {
-  return <App {...props} />;
+export const SignInContainer = (props) => {
+  return <SignIn {...props} />;
 };
 
 const mapStateToProps = ({ auth }) => {
@@ -30,4 +30,4 @@ const mapDispatchToProps = {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(AppContainer);
+)(SignInContainer);
