@@ -10,7 +10,7 @@ const WithActiveItem = withActiveItem(Component);
 
 it(`should set activeItem`, () => {
   const component = shallow(<WithActiveItem />);
-  expect(component.props().activeItem).toEqual(``);
+  expect(component.props().activeItem).toEqual(-1);
   component.props().setActiveItem(`Paris`);
   expect(component.props().activeItem).toEqual(`Paris`);
 });

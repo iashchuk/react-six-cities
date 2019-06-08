@@ -17,6 +17,7 @@ const isAuthenticated = true;
 
 const offers = [
   {
+    id: 1,
     title: `Beautiful & luxurious apartment at great location`,
     image: `apartment-01.jpg`,
     type: `Apartment`,
@@ -27,6 +28,7 @@ const offers = [
     location: { latitude: 52.3909553943508, longitude: 4.85309666406198 }
   },
   {
+    id: 2,
     title: `Wood and stone place`,
     image: `room.jpg`,
     type: `Private room`,
