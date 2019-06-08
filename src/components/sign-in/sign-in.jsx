@@ -4,10 +4,10 @@ import Header from "../header/header.jsx";
 import withLogin from "../../hocs/with-login/with-login.js";
 
 const SignIn = ({
+  authError,
   email,
   avatarUrl,
   isAuthenticated,
-  setAuthRequired,
   handleInputChange,
   handleFormSubmit
 }) => {
@@ -17,7 +17,6 @@ const SignIn = ({
         email={email}
         avatarUrl={avatarUrl}
         isAuthenticated={isAuthenticated}
-        setAuthRequired={setAuthRequired}
       />
       <main className="page__main page__main--login">
         <div className="page__login-container container">
@@ -57,6 +56,7 @@ const SignIn = ({
               >
                 Sign in
               </button>
+              <span>{authError}</span>
             </form>
           </section>
           <section className="locations locations--login locations--current">
@@ -73,13 +73,13 @@ const SignIn = ({
 };
 
 SignIn.propTypes = {
+  authError: PropTypes.string,
   email: PropTypes.string,
   avatarUrl: PropTypes.string,
   isAuthenticated: PropTypes.bool,
   isAuthorizationRequired: PropTypes.bool,
   loginAsync: PropTypes.func,
   setAuthRequired: PropTypes.func,
-  removeAuthRequired: PropTypes.func,
   handleInputChange: PropTypes.func,
   handleFormSubmit: PropTypes.func
 };

@@ -1,10 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import {
-  loginAsync,
-  setAuthRequired,
-  removeAuthRequired
-} from "../../redux/auth/actions.js";
+import { loginAsync } from "../../redux/auth/actions.js";
 
 import SignIn from "../../components/sign-in/sign-in.jsx";
 
@@ -13,18 +9,18 @@ export const SignInContainer = (props) => {
 };
 
 const mapStateToProps = ({ auth }) => {
+  const { user } = auth;
   return {
     isAuthenticated: auth.isAuthenticated,
     isAuthorizationRequired: auth.isAuthorizationRequired,
-    avatarUrl: auth.avatarUrl,
-    email: auth.email
+    avatarUrl: user.avatarUrl,
+    email: user.email,
+    authError: auth.authError
   };
 };
 
 const mapDispatchToProps = {
-  loginAsync,
-  setAuthRequired,
-  removeAuthRequired
+  loginAsync
 };
 
 export default connect(

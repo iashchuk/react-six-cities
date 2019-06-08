@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import Main from "../../components/main/main.jsx";
 import { getData } from "../../redux/fetch/actions";
 import { setCity } from "../../redux/hotels/actions";
-import { setAuthRequired } from "../../redux/auth/actions.js";
 import { getCityOffers, getCityCoords } from "./selectors.js";
 
 export const MainContainer = (props) => {
@@ -12,11 +11,12 @@ export const MainContainer = (props) => {
 };
 
 const mapStateToProps = ({ hotels, auth }) => {
+  const { user } = auth;
   return {
     isAuthenticated: auth.isAuthenticated,
     isAuthorizationRequired: auth.isAuthorizationRequired,
-    avatarUrl: auth.avatarUrl,
-    email: auth.email,
+    avatarUrl: user.avatarUrl,
+    email: user.email,
     cities: hotels.cities,
     offers: getCityOffers([hotels.offers, hotels.city]),
     city: hotels.city,
@@ -26,7 +26,6 @@ const mapStateToProps = ({ hotels, auth }) => {
 
 const mapDispatchToProps = {
   getData,
-  setAuthRequired,
   setCity
 };
 

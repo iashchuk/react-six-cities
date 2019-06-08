@@ -27,10 +27,9 @@ const withLogin = (Component) => {
       evt.preventDefault();
 
       const { email, password } = this.state;
-      const { loginAsync, removeAuthRequired } = this.props;
+      const { loginAsync } = this.props;
 
       loginAsync(email, password);
-      removeAuthRequired();
     }
 
     render() {
@@ -45,8 +44,7 @@ const withLogin = (Component) => {
   }
 
   WithLogin.propTypes = {
-    loginAsync: PropTypes.func.isRequired,
-    removeAuthRequired: PropTypes.func.isRequired
+    loginAsync: PropTypes.func.isRequired
   };
 
   return WithLogin;

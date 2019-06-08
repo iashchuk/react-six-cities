@@ -5,6 +5,7 @@ import TabsList from "../tabs-list/tabs-list.jsx";
 import OffersList from "../offers-list/offers-list.jsx";
 import Form from "../form/form.jsx";
 import Map from "../map/map.jsx";
+import Footer from "../footer/footer.jsx";
 
 class Main extends React.Component {
   componentDidMount() {
@@ -20,7 +21,6 @@ class Main extends React.Component {
       cityCoords,
       cities,
       offers,
-      setAuthRequired,
       setCity
     } = this.props;
 
@@ -34,7 +34,6 @@ class Main extends React.Component {
           email={email}
           avatarUrl={avatarUrl}
           isAuthenticated={isAuthenticated}
-          setAuthRequired={setAuthRequired}
         />
         <main className="page__main page__main--index">
           <h1 className="visually-hidden">Cities</h1>
@@ -60,6 +59,7 @@ class Main extends React.Component {
             </div>
           </div>
         </main>
+        <Footer />
       </>
     );
   }
@@ -84,7 +84,6 @@ Main.propTypes = {
   city: PropTypes.string,
   cityCoords: PropTypes.object,
   getData: PropTypes.func,
-  setAuthRequired: PropTypes.func,
   setCity: PropTypes.func
 };
 

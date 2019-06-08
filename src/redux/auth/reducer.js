@@ -3,11 +3,8 @@ import * as types from "./types";
 const initialState = {
   isAuthorizationRequired: false,
   isAuthenticated: false,
-  id: null,
-  email: null,
-  name: null,
-  avatarUrl: null,
-  isPro: null
+  user: {},
+  authError: null
 };
 
 export const authReducer = (state = initialState, { type, payload }) => {
@@ -28,11 +25,16 @@ export const authReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         isAuthenticated: true,
-        id: payload.id,
-        email: payload.email,
-        name: payload.name,
-        avatarUrl: payload.avatarUrl,
-        isPro: payload.isPro
+        user: payload,
+        authError: null
+      };
+
+    case types.SET_AUTH_ERROR:
+      return {
+        ...state,
+        isAuthenticated: false,
+        user: {},
+        authError: payload
       };
 
     default:
