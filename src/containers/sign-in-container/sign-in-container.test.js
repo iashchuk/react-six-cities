@@ -1,13 +1,14 @@
 import React from "react";
 import { configure, shallow } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-import { AppContainer } from "./app-container.jsx";
+import { SignInContainer } from "./sign-in-container.jsx";
 
 configure({ adapter: new Adapter() });
+const loginAsync = jest.fn();
 
-describe(`AppContainer`, () => {
+describe(`SignInContainer`, () => {
   it(`renders correctly`, () => {
-    const component = shallow(<AppContainer />);
+    const component = shallow(<SignInContainer loginAsync={loginAsync} />);
     expect(component).toMatchSnapshot();
   });
 });

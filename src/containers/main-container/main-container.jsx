@@ -10,8 +10,13 @@ export const MainContainer = (props) => {
   return <Main {...props} />;
 };
 
-const mapStateToProps = ({ hotels }) => {
+const mapStateToProps = ({ hotels, auth }) => {
+  const { user } = auth;
   return {
+    isAuthenticated: auth.isAuthenticated,
+    isAuthorizationRequired: auth.isAuthorizationRequired,
+    avatarUrl: user.avatarUrl,
+    email: user.email,
     cities: hotels.cities,
     offers: getCityOffers([hotels.offers, hotels.city]),
     city: hotels.city,

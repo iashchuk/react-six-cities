@@ -1,4 +1,6 @@
 import { createStore, applyMiddleware, compose } from "redux";
+import { createBrowserHistory } from "history";
+import { routerMiddleware } from "connected-react-router";
 import { createLogger } from "redux-logger";
 import { rootReducer } from "./root-reducer";
 import thunk from "redux-thunk";
@@ -18,15 +20,21 @@ const logger = createLogger({
 
 const middlewares = [];
 
+const history = createBrowserHistory();
+const historyMiddleware = routerMiddleware(history);
+middlewares.push(historyMiddleware);
+
 if (process.env.NODE_ENV !== `test`) {
   middlewares.push(logger);
 }
 
-const api = createAPI(() => history.pushState(null, null, `/login`));
+const api = createAPI(() => history.push(`/login`));
 middlewares.push(thunk.withExtraArgument(api));
 
 const devtools = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
 const composeEnhancers = devtools ? devtools : compose;
 const enhansedStore = composeEnhancers(applyMiddleware(...middlewares));
 
-export const store = createStore(rootReducer, enhansedStore);
+const store = createStore(rootReducer(history), enhansedStore);
+
+export { store, history };

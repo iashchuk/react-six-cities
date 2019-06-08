@@ -1,10 +1,23 @@
 import * as types from "./types";
+import { history } from "../index.js";
 import { parseAuthData } from "../../helpers/parseAuthData.js";
 
 export const loginAsync = (email, password) => (dispatch, _getState, api) => {
-  return api.post(`/login`, { email, password }).then((response) => {
-    dispatch(login(response.data));
-  });
+  return api
+    .post(`/login`, { email, password })
+    .then((response) => {
+      if (response.data) {
+        history.push(`/`);
+        dispatch(login(response.data));
+      }
+    })
+    .catch((error) => {
+      if (error.response.status) {
+        if (error.response.status === 400) {
+          dispatch(setAuthError(error.response.data.error));
+        }
+      }
+    });
 };
 
 export const login = (authData) => {
@@ -15,14 +28,9 @@ export const login = (authData) => {
   };
 };
 
-export const setAuthRequired = () => {
+export const setAuthError = (error) => {
   return {
-    type: types.SET_AUTH_REQUIRED
-  };
-};
-
-export const removeAuthRequired = () => {
-  return {
-    type: types.REMOVE_AUTH_REQUIRED
+    type: types.SET_AUTH_ERROR,
+    payload: error
   };
 };

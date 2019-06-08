@@ -13,9 +13,10 @@ export const createAPI = (onLoginFail) => {
 
   const onFail = (err) => {
     if (err.status === FORBIDDEN_STATUS) {
-      onLoginFail(); // setAuthRequired
+      onLoginFail();
     }
-    return err;
+
+    throw err;
   };
 
   api.interceptors.response.use(onSuccess, onFail);

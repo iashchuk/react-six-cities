@@ -1,49 +1,19 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
+import { Switch, Route } from "react-router-dom";
 import MainContainer from "../../containers/main-container/main-container.jsx";
-import Header from "../header/header.jsx";
-import SignIn from "../sign-in/sign-in.jsx";
+import SignInContainer from "../../containers/sign-in-container/sign-in-container.jsx";
+import FavoritesContainer from "../../containers/favorites-container/favorites-container.jsx";
 
 class App extends Component {
   render() {
-    const {
-      email,
-      avatarUrl,
-      isAuth,
-      isAuthorizationRequired,
-      loginAsync,
-      setAuthRequired,
-      removeAuthRequired
-    } = this.props;
     return (
-      <>
-        <Header
-          email={email}
-          avatarUrl={avatarUrl}
-          isAuth={isAuth}
-          setAuthRequired={setAuthRequired}
-        />
-        {isAuthorizationRequired ? (
-          <SignIn
-            loginAsync={loginAsync}
-            removeAuthRequired={removeAuthRequired}
-          />
-        ) : (
-          <MainContainer />
-        )}
-      </>
+      <Switch>
+        <Route path="/" component={MainContainer} exact />
+        <Route path="/login" component={SignInContainer} />
+        <Route path="/favorites" component={FavoritesContainer} />
+      </Switch>
     );
   }
 }
-
-App.propTypes = {
-  email: PropTypes.string,
-  avatarUrl: PropTypes.string,
-  isAuth: PropTypes.bool,
-  isAuthorizationRequired: PropTypes.bool,
-  loginAsync: PropTypes.func,
-  setAuthRequired: PropTypes.func,
-  removeAuthRequired: PropTypes.func
-};
 
 export default App;
