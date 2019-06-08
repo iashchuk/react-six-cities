@@ -6,11 +6,13 @@ import { connectRouter } from "connected-react-router";
 import { fetchReducer } from "./fetch/reducer";
 import { hotelsReducer } from "./hotels/reducer";
 import { authReducer } from "./auth/reducer";
+import { offerReducer } from "./offer/reducer";
 
 export const rootReducer = (history) =>
   combineReducers({
     router: connectRouter(history),
     fetch: fetchReducer,
     hotels: hotelsReducer,
-    auth: authReducer
+    auth: authReducer,
+    offer: offerReducer
   });
