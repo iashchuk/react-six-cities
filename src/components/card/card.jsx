@@ -1,8 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import cn from "classnames";
 
 const Card = ({
+  id,
   title,
   image,
   type,
@@ -23,6 +25,7 @@ const Card = ({
       className={cn(`cities__place-card place-card`, {
         [`place-card--active`]: isActive
       })}
+      onClick={onCardClick}
     >
       {isPremium && (
         <div className="place-card__mark">
@@ -30,7 +33,7 @@ const Card = ({
         </div>
       )}
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <a href="#" onClick={onCardClick}>
+        <Link to={`/offer/${id}`}>
           <img
             className="place-card__image"
             src={image}
@@ -38,7 +41,7 @@ const Card = ({
             height="200"
             alt="Place image"
           />
-        </a>
+        </Link>
       </div>
       <div className="place-card__info">
         <div className="place-card__price-wrapper">
@@ -63,9 +66,7 @@ const Card = ({
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#" onClick={onCardClick}>
-            {title}
-          </a>
+          <Link to={`/offer/${id}`}>{title}</Link>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>
@@ -79,6 +80,7 @@ Card.defaultProps = {
 };
 
 Card.propTypes = {
+  id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,

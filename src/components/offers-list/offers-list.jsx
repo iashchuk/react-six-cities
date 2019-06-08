@@ -4,16 +4,16 @@ import PropTypes from "prop-types";
 import Card from "../card/card.jsx";
 import withActiveItem from "../../hocs/with-active-item/with-active-item.js";
 
-const OffersList = ({ cards, city, activeItem, setActiveItem }) => {
+const OffersList = ({ cards, activeItem, setActiveItem }) => {
   return (
     <div className="cities__places-list places__list tabs__content">
-      {cards.map((item, index) => {
-        const id = `${item.title}-${city}-${index}`;
-        const isActive = activeItem === id;
+      {cards.map((item) => {
+        const isActive = activeItem === item.id;
 
         return (
           <Card
-            key={id}
+            key={item.id}
+            id={item.id}
             title={item.title}
             image={item.image}
             type={item.type}
@@ -22,7 +22,7 @@ const OffersList = ({ cards, city, activeItem, setActiveItem }) => {
             rating={item.rating}
             isPremium={item.isPremium}
             isActive={isActive}
-            setActiveItem={() => setActiveItem(id)}
+            setActiveItem={() => setActiveItem(item.id)}
           />
         );
       })}
@@ -42,8 +42,7 @@ OffersList.propTypes = {
         isPremium: PropTypes.bool
       })
   ),
-  city: PropTypes.string,
-  activeItem: PropTypes.string,
+  activeItem: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   setActiveItem: PropTypes.func
 };
 

@@ -6,6 +6,7 @@ export const parseOffers = (locations, hotels) => {
         .filter((hotel) => hotel.city.name === city)
         .map((item) => {
           return {
+            id: item.id,
             city: item.city.name,
             title: item.title,
             type: item.type,
