@@ -6,7 +6,7 @@ import withLogin from "../../hocs/with-login/with-login.js";
 const SignIn = ({
   email,
   avatarUrl,
-  isAuth,
+  isAuthenticated,
   setAuthRequired,
   handleInputChange,
   handleFormSubmit
@@ -16,7 +16,7 @@ const SignIn = ({
       <Header
         email={email}
         avatarUrl={avatarUrl}
-        isAuth={isAuth}
+        isAuthenticated={isAuthenticated}
         setAuthRequired={setAuthRequired}
       />
       <main className="page__main page__main--login">
@@ -75,7 +75,7 @@ const SignIn = ({
 SignIn.propTypes = {
   email: PropTypes.string,
   avatarUrl: PropTypes.string,
-  isAuth: PropTypes.bool,
+  isAuthenticated: PropTypes.bool,
   isAuthorizationRequired: PropTypes.bool,
   loginAsync: PropTypes.func,
   setAuthRequired: PropTypes.func,

@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Header = ({ email, avatarUrl, isAuth, setAuthRequired }) => {
+const Header = ({ email, avatarUrl, isAuthenticated, setAuthRequired }) => {
   return (
     <header className="header">
       <div className="container">
@@ -25,7 +25,7 @@ const Header = ({ email, avatarUrl, isAuth, setAuthRequired }) => {
                   href="#"
                   onClick={setAuthRequired}
                 >
-                  {!isAuth ? (
+                  {!isAuthenticated ? (
                     <>
                       <div className="header__avatar-wrapper user__avatar-wrapper" />
                       <span className="header__user-name user__name">
@@ -59,7 +59,7 @@ const Header = ({ email, avatarUrl, isAuth, setAuthRequired }) => {
 Header.propTypes = {
   email: PropTypes.string,
   avatarUrl: PropTypes.string,
-  isAuth: PropTypes.bool,
+  isAuthenticated: PropTypes.bool,
   setAuthRequired: PropTypes.func
 };
 

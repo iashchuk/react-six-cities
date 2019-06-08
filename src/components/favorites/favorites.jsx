@@ -2,14 +2,15 @@ import React from "react";
 import PropTypes from "prop-types";
 import Header from "../header/header.jsx";
 import Footer from "../footer/footer.jsx";
+import withPrivateRoute from "../../hocs/with-private/with-private.js";
 
-const Favorites = ({ email, avatarUrl, isAuth, setAuthRequired }) => {
+const Favorites = ({ email, avatarUrl, isAuthenticated, setAuthRequired }) => {
   return (
     <>
       <Header
         email={email}
         avatarUrl={avatarUrl}
-        isAuth={isAuth}
+        isAuthenticated={isAuthenticated}
         setAuthRequired={setAuthRequired}
       />
       <main className="page__main page__main--favorites">
@@ -62,7 +63,7 @@ const Favorites = ({ email, avatarUrl, isAuth, setAuthRequired }) => {
                       </div>
                       <div className="place-card__rating rating">
                         <div className="place-card__stars rating__stars">
-                          <span style={{ width: `100%` }}/>
+                          <span style={{ width: `100%` }} />
                           <span className="visually-hidden">Rating</span>
                         </div>
                       </div>
@@ -109,7 +110,7 @@ const Favorites = ({ email, avatarUrl, isAuth, setAuthRequired }) => {
                       </div>
                       <div className="place-card__rating rating">
                         <div className="place-card__stars rating__stars">
-                          <span style={{ width: `80%` }}/>
+                          <span style={{ width: `80%` }} />
                           <span className="visually-hidden">Rating</span>
                         </div>
                       </div>
@@ -191,7 +192,7 @@ const Favorites = ({ email, avatarUrl, isAuth, setAuthRequired }) => {
 Favorites.propTypes = {
   email: PropTypes.string,
   avatarUrl: PropTypes.string,
-  isAuth: PropTypes.bool,
+  isAuthenticated: PropTypes.bool,
   isAuthorizationRequired: PropTypes.bool,
   loginAsync: PropTypes.func,
   setAuthRequired: PropTypes.func,
@@ -200,4 +201,4 @@ Favorites.propTypes = {
   handleFormSubmit: PropTypes.func
 };
 
-export default Favorites;
+export default withPrivateRoute(Favorites);

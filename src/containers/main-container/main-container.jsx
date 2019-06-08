@@ -13,7 +13,7 @@ export const MainContainer = (props) => {
 
 const mapStateToProps = ({ hotels, auth }) => {
   return {
-    isAuth: auth.isAuth,
+    isAuthenticated: auth.isAuthenticated,
     isAuthorizationRequired: auth.isAuthorizationRequired,
     avatarUrl: auth.avatarUrl,
     email: auth.email,

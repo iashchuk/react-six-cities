@@ -16,7 +16,7 @@ class Main extends React.Component {
       email,
       avatarUrl,
       city,
-      isAuth,
+      isAuthenticated,
       cityCoords,
       cities,
       offers,
@@ -33,7 +33,7 @@ class Main extends React.Component {
         <Header
           email={email}
           avatarUrl={avatarUrl}
-          isAuth={isAuth}
+          isAuthenticated={isAuthenticated}
           setAuthRequired={setAuthRequired}
         />
         <main className="page__main page__main--index">
@@ -79,7 +79,7 @@ Main.propTypes = {
   ),
   email: PropTypes.string,
   avatarUrl: PropTypes.string,
-  isAuth: PropTypes.bool,
+  isAuthenticated: PropTypes.bool,
   cities: PropTypes.arrayOf(PropTypes.string),
   city: PropTypes.string,
   cityCoords: PropTypes.object,

@@ -3,15 +3,14 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
-
-import App from "./components/app/app.jsx";
 import { store } from "./redux/index.js";
+import AppContainer from "./containers/app-container/app-container.jsx";
 
 const init = () => {
   ReactDOM.render(
       <Provider store={store}>
         <Router>
-          <App />
+          <AppContainer />
         </Router>
       </Provider>,
       document.querySelector(`#root`)

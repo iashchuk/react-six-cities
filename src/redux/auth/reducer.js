@@ -2,7 +2,7 @@ import * as types from "./types";
 
 const initialState = {
   isAuthorizationRequired: false,
-  isAuth: false,
+  isAuthenticated: false,
   id: null,
   email: null,
   name: null,
@@ -27,7 +27,7 @@ export const authReducer = (state = initialState, { type, payload }) => {
     case types.LOGIN:
       return {
         ...state,
-        isAuth: true,
+        isAuthenticated: true,
         id: payload.id,
         email: payload.email,
         name: payload.name,
