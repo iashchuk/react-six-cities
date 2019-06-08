@@ -1,5 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
+import { BrowserRouter as Router } from "react-router-dom";
+
 import Main from "./main.jsx";
 import Map from "../map/map.jsx";
 
@@ -9,6 +11,9 @@ const cityCoords = {
   longitude: 4.85309666406198,
   zoom: 13
 };
+const email = `test@test.ru`;
+const avatarUrl = `img/avatar.jpg`;
+const isAuthenticated = true;
 
 const offers = [
   {
@@ -42,14 +47,19 @@ describe(`Main`, () => {
     Map.prototype.componentDidMount = jest.fn();
     const component = renderer
       .create(
-          <Main
-            city={city}
-            cityCoords={cityCoords}
-            offers={offers}
-            cities={cities}
-            setCity={setCity}
-            getData={getData}
-          />
+          <Router>
+            <Main
+              email={email}
+              avatarUrl={avatarUrl}
+              isAuthenticated={isAuthenticated}
+              city={city}
+              cityCoords={cityCoords}
+              offers={offers}
+              cities={cities}
+              setCity={setCity}
+              getData={getData}
+            />
+          </Router>
       )
       .toJSON();
 
