@@ -5,6 +5,8 @@ import Footer from "../footer/footer.jsx";
 import OffersList from "../offers-list/offers-list.jsx";
 import Map from "../map/map.jsx";
 import ReviewsList from "../reviews-list/reviews-list.jsx";
+import ReviewForm from "../review-form/review-form.jsx";
+import SvgSprite from "../svg-sprite/svg-sprite.jsx";
 
 class Offer extends Component {
   componentDidMount() {
@@ -44,6 +46,7 @@ class Offer extends Component {
 
     return (
       <>
+        <SvgSprite />
         <Header
           email={email}
           avatarUrl={avatarUrl}
@@ -147,9 +150,10 @@ class Offer extends Component {
                   </div>
                 </div>
                 <ReviewsList />
+                <ReviewForm />
               </div>
             </div>
-            <section className="property__map map" style={{ height: `500px` }}>
+            <section className="property__map map map--offer">
               <Map
                 cards={offers}
                 city={[cityLocation.latitude, cityLocation.longitude]}

@@ -6,6 +6,7 @@ import OffersList from "../offers-list/offers-list.jsx";
 import Form from "../form/form.jsx";
 import Map from "../map/map.jsx";
 import Footer from "../footer/footer.jsx";
+import SvgSprite from "../svg-sprite/svg-sprite.jsx";
 
 class Main extends Component {
   componentDidMount() {
@@ -30,6 +31,7 @@ class Main extends Component {
 
     return (
       <>
+        <SvgSprite />
         <Header
           email={email}
           avatarUrl={avatarUrl}

@@ -3,10 +3,12 @@ import PropTypes from "prop-types";
 import Header from "../header/header.jsx";
 import Footer from "../footer/footer.jsx";
 import withPrivateRoute from "../../hocs/with-private/with-private.js";
+import SvgSprite from "../svg-sprite/svg-sprite.jsx";
 
 const Favorites = ({ email, avatarUrl, isAuthenticated, setAuthRequired }) => {
   return (
     <>
+      <SvgSprite />
       <Header
         email={email}
         avatarUrl={avatarUrl}
