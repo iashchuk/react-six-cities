@@ -3,6 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import MainContainer from "../../containers/main-container/main-container.jsx";
 import SignInContainer from "../../containers/sign-in-container/sign-in-container.jsx";
 import FavoritesContainer from "../../containers/favorites-container/favorites-container.jsx";
+import OfferContainer from "../../containers/offer-container/offer-container.jsx";
 
 class App extends Component {
   render() {
@@ -11,6 +12,7 @@ class App extends Component {
         <Route path="/" component={MainContainer} exact />
         <Route path="/login" component={SignInContainer} />
         <Route path="/favorites" component={FavoritesContainer} />
+        <Route path="/offer/:id" component={OfferContainer} />
       </Switch>
     );
   }

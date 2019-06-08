@@ -66,11 +66,11 @@ class Map extends Component {
 Map.propTypes = {
   cards: PropTypes.arrayOf(
       PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        image: PropTypes.string.isRequired,
-        type: PropTypes.string.isRequired,
-        price: PropTypes.number.isRequired,
-        currency: PropTypes.string.isRequired,
+        title: PropTypes.string,
+        image: PropTypes.string,
+        type: PropTypes.string,
+        price: PropTypes.number,
+        currency: PropTypes.string,
         rating: PropTypes.number,
         isPremium: PropTypes.bool
       })

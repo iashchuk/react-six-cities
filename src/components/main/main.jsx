@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Header from "../header/header.jsx";
 import TabsList from "../tabs-list/tabs-list.jsx";
@@ -7,7 +7,7 @@ import Form from "../form/form.jsx";
 import Map from "../map/map.jsx";
 import Footer from "../footer/footer.jsx";
 
-class Main extends React.Component {
+class Main extends Component {
   componentDidMount() {
     this.props.getData();
   }
@@ -46,10 +46,10 @@ class Main extends React.Component {
                   offers.length
                 } places to stay in ${city}`}</b>
                 <Form />
-                <OffersList cards={offers} city={city} />
+                <OffersList cards={offers} />
               </section>
               <div className="cities__right-section">
-                <section className="cities__map map">
+                <section className="cities__map map map--main">
                   <Map
                     cards={offers}
                     city={[cityCoords.latitude, cityCoords.longitude]}

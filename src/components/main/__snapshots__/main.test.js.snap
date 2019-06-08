@@ -46,7 +46,7 @@ Array [
                   className="header__avatar-wrapper user__avatar-wrapper"
                   style={
                     Object {
-                      "backgroundImage": "url(img/avatar.jpg)",
+                      "backgroundImage": "url(https://es31-server.appspot.com/six-citiesimg/avatar.jpg)",
                       "borderRadius": "50px",
                     }
                   }
@@ -229,6 +229,7 @@ Array [
           >
             <article
               className="cities__place-card place-card"
+              onClick={[Function]}
             >
               <div
                 className="place-card__mark"
@@ -241,7 +242,7 @@ Array [
                 className="cities__image-wrapper place-card__image-wrapper"
               >
                 <a
-                  href="#"
+                  href="/offer/1"
                   onClick={[Function]}
                 >
                   <img
@@ -318,7 +319,7 @@ Array [
                   className="place-card__name"
                 >
                   <a
-                    href="#"
+                    href="/offer/1"
                     onClick={[Function]}
                   >
                     Beautiful & luxurious apartment at great location
@@ -333,12 +334,13 @@ Array [
             </article>
             <article
               className="cities__place-card place-card"
+              onClick={[Function]}
             >
               <div
                 className="cities__image-wrapper place-card__image-wrapper"
               >
                 <a
-                  href="#"
+                  href="/offer/2"
                   onClick={[Function]}
                 >
                   <img
@@ -415,7 +417,7 @@ Array [
                   className="place-card__name"
                 >
                   <a
-                    href="#"
+                    href="/offer/2"
                     onClick={[Function]}
                   >
                     Wood and stone place
@@ -434,7 +436,7 @@ Array [
           className="cities__right-section"
         >
           <section
-            className="cities__map map"
+            className="cities__map map map--main"
           >
             <div
               className="cities-map"

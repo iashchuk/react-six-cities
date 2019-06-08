@@ -6,7 +6,7 @@ const withActiveItem = (Component) => {
       super(props);
 
       this.state = {
-        activeItem: ``
+        activeItem: -1
       };
 
       this._setActiveItem = this._setActiveItem.bind(this);
@@ -14,7 +14,7 @@ const withActiveItem = (Component) => {
 
     componentWillUnmount() {
       this.setState({
-        activeItem: ``
+        activeItem: -1
       });
     }
 
