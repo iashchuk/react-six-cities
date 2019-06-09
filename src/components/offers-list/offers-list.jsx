@@ -4,7 +4,13 @@ import PropTypes from "prop-types";
 import Card from "../card/card.jsx";
 import withActiveItem from "../../hocs/with-active-item/with-active-item.js";
 
-const OffersList = ({ cards, activeItem, setActiveItem }) => {
+const OffersList = ({
+  cards,
+  city,
+  activeItem,
+  setActiveItem,
+  setFavoriteAsync
+}) => {
   return (
     <div className="cities__places-list places__list tabs__content">
       {cards.map((item) => {
@@ -14,6 +20,7 @@ const OffersList = ({ cards, activeItem, setActiveItem }) => {
           <Card
             key={item.id}
             id={item.id}
+            city={city}
             title={item.title}
             image={item.image}
             type={item.type}
@@ -22,7 +29,9 @@ const OffersList = ({ cards, activeItem, setActiveItem }) => {
             rating={item.rating}
             isPremium={item.isPremium}
             isActive={isActive}
+            isFavorite={item.isFavorite}
             setActiveItem={() => setActiveItem(item.id)}
+            setFavoriteAsync={() => setFavoriteAsync(item.id, 1)}
           />
         );
       })}
@@ -42,8 +51,10 @@ OffersList.propTypes = {
         isPremium: PropTypes.bool
       })
   ),
+  city: PropTypes.string.isRequired,
   activeItem: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  setActiveItem: PropTypes.func
+  setActiveItem: PropTypes.func,
+  setFavoriteAsync: PropTypes.func
 };
 
 export default withActiveItem(OffersList);
