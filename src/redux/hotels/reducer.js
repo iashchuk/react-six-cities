@@ -24,6 +24,27 @@ export const hotelsReducer = (state = initialState, { type, payload }) => {
         city: payload
       };
 
+    case types.UPDATE_OFFERS:
+      const cityOffers = state.offers.find(
+          (item) => item.city === payload.city
+      );
+      const idxCity = state.offers.findIndex(
+          (item) => item.city === payload.city
+      );
+
+      const idx = cityOffers.offers.findIndex((item) => item.id === payload.id);
+      const before = cityOffers.offers.slice(0, idx);
+      const after = cityOffers.offers.slice(idx + 1);
+
+      return {
+        ...state,
+        offers: [
+          ...state.offers.slice(0, idxCity),
+          { city: cityOffers.city, offers: [...before, payload, ...after]},
+          ...state.offers.slice(idxCity + 1)
+        ]
+      };
+
     default:
       return state;
   }

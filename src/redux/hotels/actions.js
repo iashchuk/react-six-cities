@@ -1,7 +1,8 @@
 import * as types from "./types.js";
-import { parseLocations } from "../../helpers/parseLocations.js";
-import { parseOffers } from "../../helpers/parseOffers.js";
-import { parseCities } from "../../helpers/parseCities.js";
+import { parseLocations } from "../../helpers/parse-locations.js";
+import { parseOffers } from "../../helpers/parse-offers.js";
+import { parseCities } from "../../helpers/parse-cities.js";
+import { modifyOffer } from "../../helpers/modify-offer.js";
 
 export const loadHotels = (hotels) => {
   const cities = parseCities(hotels);
@@ -18,5 +19,12 @@ export const setCity = (city) => {
   return {
     type: types.SET_CITY,
     payload: city
+  };
+};
+
+export const updateOffers = (offer) => {
+  return {
+    type: types.UPDATE_OFFERS,
+    payload: modifyOffer(offer)
   };
 };

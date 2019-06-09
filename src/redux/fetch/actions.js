@@ -1,5 +1,5 @@
 import * as types from "./types.js";
-import { loadHotels } from "../hotels/actions.js";
+import { loadHotels, updateOffers } from "../hotels/actions.js";
 import { loadOffer, loadComments } from "../offer/actions.js";
 
 export const getData = () => (dispatch, _getState, api) => {
@@ -24,6 +24,23 @@ export const getComments = (id) => (dispatch, _getState, api) => {
     dispatch(loadComments(response.data));
     dispatch(loadingFinish());
   });
+};
+
+export const setFavoriteAsync = (hotelId, status) => (
+    dispatch,
+    _getState,
+    api
+) => {
+  return api
+    .post(`/favorite/${hotelId}/${status}`)
+    .then((response) => {
+      if (response.data) {
+        dispatch(updateOffers(response.data));
+      }
+    })
+    .catch((error) => {
+      throw error;
+    });
 };
 
 const loadingStart = () => {
