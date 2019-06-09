@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 
 import Offer from "../../components/offer/offer.jsx";
-import { getData, getOffer } from "../../redux/fetch/actions";
+import { getData, getOffer, getComments } from "../../redux/fetch/actions";
 import { getOfferNeighbourhoods } from "./selectors.js";
 
 export const OfferContainer = (props) => {
@@ -16,13 +16,15 @@ const mapStateToProps = ({ offer, auth, hotels }) => {
     avatarUrl: user.avatarUrl,
     email: user.email,
     offer: offer.offer,
-    offers: getOfferNeighbourhoods([hotels.offers, offer.city])
+    offers: getOfferNeighbourhoods([hotels.offers, offer.city]),
+    comments: offer.comments
   };
 };
 
 const mapDispatchToProps = {
   getOffer,
-  getData
+  getData,
+  getComments
 };
 
 export default connect(

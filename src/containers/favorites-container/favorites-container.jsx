@@ -3,13 +3,16 @@ import { connect } from "react-redux";
 
 import Favorites from "../../components/favorites/favorites.jsx";
 
+import { getFavoritesOffers } from "./selectors";
+
 export const FavoritesContainer = (props) => {
   return <Favorites {...props} />;
 };
 
-const mapStateToProps = ({ auth }) => {
+const mapStateToProps = ({ auth, hotels }) => {
   const { user } = auth;
   return {
+    offers: getFavoritesOffers(hotels.offers),
     isAuthenticated: auth.isAuthenticated,
     isAuthorizationRequired: auth.isAuthorizationRequired,
     avatarUrl: user.avatarUrl,

@@ -6,6 +6,7 @@ import OffersList from "../offers-list/offers-list.jsx";
 import Form from "../form/form.jsx";
 import Map from "../map/map.jsx";
 import Footer from "../footer/footer.jsx";
+import SvgSprite from "../svg-sprite/svg-sprite.jsx";
 
 class Main extends Component {
   componentDidMount() {
@@ -21,7 +22,8 @@ class Main extends Component {
       cityCoords,
       cities,
       offers,
-      setCity
+      setCity,
+      setFavoriteAsync
     } = this.props;
 
     if (!offers.length || !cities.length) {
@@ -30,6 +32,7 @@ class Main extends Component {
 
     return (
       <>
+        <SvgSprite />
         <Header
           email={email}
           avatarUrl={avatarUrl}
@@ -46,7 +49,11 @@ class Main extends Component {
                   offers.length
                 } places to stay in ${city}`}</b>
                 <Form />
-                <OffersList cards={offers} />
+                <OffersList
+                  cards={offers}
+                  city={city}
+                  setFavoriteAsync={setFavoriteAsync}
+                />
               </section>
               <div className="cities__right-section">
                 <section className="cities__map map map--main">
@@ -84,7 +91,8 @@ Main.propTypes = {
   city: PropTypes.string,
   cityCoords: PropTypes.object,
   getData: PropTypes.func,
-  setCity: PropTypes.func
+  setCity: PropTypes.func,
+  setFavoriteAsync: PropTypes.func
 };
 
 export default Main;

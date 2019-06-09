@@ -4,13 +4,17 @@ import Header from "../header/header.jsx";
 import Footer from "../footer/footer.jsx";
 import OffersList from "../offers-list/offers-list.jsx";
 import Map from "../map/map.jsx";
+import ReviewsList from "../reviews-list/reviews-list.jsx";
+import ReviewForm from "../review-form/review-form.jsx";
+import SvgSprite from "../svg-sprite/svg-sprite.jsx";
 
 class Offer extends Component {
   componentDidMount() {
-    const { match, getData, getOffer } = this.props;
+    const { match, getData, getOffer, getComments } = this.props;
     const id = match.params.id;
     getData();
     getOffer(id);
+    getComments(id);
   }
 
   componentDidUpdate(prevProps) {
@@ -20,20 +24,28 @@ class Offer extends Component {
   }
 
   render() {
-    const { offers, offer, email, avatarUrl, isAuthenticated } = this.props;
+    const {
+      offers,
+      offer,
+      comments,
+      email,
+      avatarUrl,
+      isAuthenticated
+    } = this.props;
 
-    if (!offer || !offers.length) {
+    if (!offer) {
       return `Загрузка...`;
     }
 
     const {
-      location,
+      cityLocation,
       bedrooms,
       rating,
       maxAdults,
       isPremium,
       images,
       title,
+      type,
       host,
       goods,
       price,
@@ -42,6 +54,7 @@ class Offer extends Component {
 
     return (
       <>
+        <SvgSprite />
         <Header
           email={email}
           avatarUrl={avatarUrl}
@@ -98,7 +111,7 @@ class Offer extends Component {
                 </div>
                 <ul className="property__features">
                   <li className="property__feature property__feature--entire">
-                    Entire place
+                    {type}
                   </li>
                   <li className="property__feature property__feature--bedrooms">
                     {bedrooms} Bedrooms
@@ -144,12 +157,14 @@ class Offer extends Component {
                     <p className="property__text">{description}</p>
                   </div>
                 </div>
+                <ReviewsList comments={comments} />
+                <ReviewForm />
               </div>
             </div>
-            <section className="property__map map" style={{ height: `500px` }}>
+            <section className="property__map map map--offer">
               <Map
-                cards={[offer]}
-                city={[location.latitude, location.longitude]}
+                cards={offers}
+                city={[cityLocation.latitude, cityLocation.longitude]}
               />
             </section>
           </section>
@@ -174,9 +189,11 @@ Offer.propTypes = {
   avatarUrl: PropTypes.string,
   offer: PropTypes.object,
   offers: PropTypes.array,
+  comments: PropTypes.array,
   match: PropTypes.object,
   getData: PropTypes.func,
-  getOffer: PropTypes.func
+  getOffer: PropTypes.func,
+  getComments: PropTypes.func
 };
 
 export default Offer;

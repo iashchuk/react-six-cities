@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 
 import Main from "../../components/main/main.jsx";
-import { getData } from "../../redux/fetch/actions";
+import { getData, setFavoriteAsync } from "../../redux/fetch/actions";
 import { setCity } from "../../redux/hotels/actions";
 import { getCityOffers, getCityCoords } from "./selectors.js";
 
@@ -26,7 +26,8 @@ const mapStateToProps = ({ hotels, auth }) => {
 
 const mapDispatchToProps = {
   getData,
-  setCity
+  setCity,
+  setFavoriteAsync
 };
 
 export default connect(
