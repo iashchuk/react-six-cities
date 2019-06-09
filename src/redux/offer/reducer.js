@@ -2,7 +2,8 @@ import * as types from "./types";
 
 const initialState = {
   offer: null,
-  city: ``
+  city: ``,
+  comments: []
 };
 
 export const offerReducer = (state = initialState, { type, payload }) => {
@@ -12,6 +13,12 @@ export const offerReducer = (state = initialState, { type, payload }) => {
         ...state,
         offer: payload,
         city: payload.city
+      };
+
+    case types.LOAD_COMMENTS:
+      return {
+        ...state,
+        comments: payload
       };
 
     default:
