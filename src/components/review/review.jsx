@@ -38,7 +38,7 @@ Review.propTypes = {
   user: PropTypes.object,
   rating: PropTypes.number,
   comment: PropTypes.string,
-  date: PropTypes.instanceOf(Date)
+  date: PropTypes.string
 };
 
 export default Review;

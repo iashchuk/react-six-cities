@@ -13,7 +13,13 @@ class Favorites extends Component {
   }
 
   render() {
-    const { email, avatarUrl, isAuthenticated, favorite } = this.props;
+    const {
+      email,
+      avatarUrl,
+      isAuthenticated,
+      favorite,
+      setFavoriteAsync
+    } = this.props;
     return (
       <>
         <SvgSprite />
@@ -23,7 +29,10 @@ class Favorites extends Component {
           isAuthenticated={isAuthenticated}
         />
         {favorite.length ? (
-          <FavoritesFull favorite={favorite} />
+          <FavoritesFull
+            favorite={favorite}
+            setFavoriteAsync={setFavoriteAsync}
+          />
         ) : (
           <FavoritesEmpty />
         )}

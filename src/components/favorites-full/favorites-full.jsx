@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import FavoritesItem from "../favorites-item/favorites-item.jsx";
 
-const FavoritesFull = ({ favorite }) => {
+const FavoritesFull = ({ favorite, setFavoriteAsync }) => {
   return (
     <main className="page__main page__main--favorites">
       <div className="page__favorites-container container">
@@ -16,6 +16,7 @@ const FavoritesFull = ({ favorite }) => {
                   key={index}
                   city={item.city}
                   offers={item.offers}
+                  setFavoriteAsync={setFavoriteAsync}
                 />
               );
             })}

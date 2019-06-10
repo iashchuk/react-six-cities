@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import FavoritesCard from "../favorites-card/favorites-card.jsx";
 
-const FavoritesItem = ({ city, offers }) => {
+const FavoritesItem = ({ city, offers, setFavoriteAsync }) => {
   return (
     <li className="favorites__locations-items">
       <div className="favorites__locations locations locations--current">
@@ -23,6 +23,8 @@ const FavoritesItem = ({ city, offers }) => {
               rating={item.rating}
               image={item.image}
               type={item.type}
+              isFavorite={item.isFavorite}
+              setFavoriteAsync={() => setFavoriteAsync(item.id, 0)}
             />
           );
         })}

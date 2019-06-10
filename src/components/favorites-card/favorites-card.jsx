@@ -1,7 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
+import cn from "classnames";
 
-const FavoritesCard = ({ title, price, rating, image, type }) => {
+const FavoritesCard = ({
+  title,
+  price,
+  rating,
+  image,
+  type,
+  isFavorite,
+  setFavoriteAsync
+}) => {
   return (
     <article className="favorites__card place-card">
       <div className="favorites__image-wrapper place-card__image-wrapper">
@@ -22,8 +31,11 @@ const FavoritesCard = ({ title, price, rating, image, type }) => {
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
           <button
-            className="place-card__bookmark-button place-card__bookmark-button--active button"
+            className={cn(`place-card__bookmark-button button`, {
+              [`place-card__bookmark-button--active`]: isFavorite
+            })}
             type="button"
+            onClick={setFavoriteAsync}
           >
             <svg className="place-card__bookmark-icon" width="18" height="19">
               <use xlinkHref="#icon-bookmark" />
