@@ -28,3 +28,13 @@ export const updateOffers = (offer) => {
     payload: modifyOffer(offer)
   };
 };
+
+export const loadFavorite = (favorite) => {
+  const cities = parseCities(favorite);
+  const modifiedFavorite = parseOffers(cities, favorite);
+
+  return {
+    type: types.GET_FAVORITE,
+    payload: modifiedFavorite
+  };
+};

@@ -4,7 +4,8 @@ const initialState = {
   cities: [],
   locations: [],
   offers: [],
-  city: null
+  city: null,
+  favorite: []
 };
 
 export const hotelsReducer = (state = initialState, { type, payload }) => {
@@ -43,6 +44,12 @@ export const hotelsReducer = (state = initialState, { type, payload }) => {
           { city: cityOffers.city, offers: [...before, payload, ...after]},
           ...state.offers.slice(idxCity + 1)
         ]
+      };
+
+    case types.GET_FAVORITE:
+      return {
+        ...state,
+        favorite: payload
       };
 
     default:
