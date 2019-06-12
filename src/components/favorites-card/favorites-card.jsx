@@ -63,7 +63,9 @@ FavoritesCard.propTypes = {
   type: PropTypes.string,
   rating: PropTypes.number,
   price: PropTypes.number,
-  image: PropTypes.string
+  image: PropTypes.string,
+  isFavorite: PropTypes.bool,
+  setFavoriteAsync: PropTypes.func
 };
 
 // title, price, rating, image, type

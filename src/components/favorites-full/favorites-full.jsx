@@ -28,7 +28,8 @@ const FavoritesFull = ({ favorite, setFavoriteAsync }) => {
 };
 
 FavoritesFull.propTypes = {
-  favorite: PropTypes.array
+  favorite: PropTypes.array,
+  setFavoriteAsync: PropTypes.func
 };
 
 export default FavoritesFull;

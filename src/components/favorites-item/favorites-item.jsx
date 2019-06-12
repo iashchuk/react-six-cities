@@ -35,7 +35,8 @@ const FavoritesItem = ({ city, offers, setFavoriteAsync }) => {
 
 FavoritesItem.propTypes = {
   offers: PropTypes.array,
-  city: PropTypes.string
+  city: PropTypes.string,
+  setFavoriteAsync: PropTypes.func
 };
 
 export default FavoritesItem;
