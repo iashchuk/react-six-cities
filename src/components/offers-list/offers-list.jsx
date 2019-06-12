@@ -51,7 +51,7 @@ OffersList.propTypes = {
         isPremium: PropTypes.bool
       })
   ),
-  city: PropTypes.string.isRequired,
+  city: PropTypes.string,
   activeItem: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   setActiveItem: PropTypes.func,
   setFavoriteAsync: PropTypes.func

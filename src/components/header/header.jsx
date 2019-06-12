@@ -4,7 +4,9 @@ import { Link } from "react-router-dom";
 
 const BASE_URL = `https://es31-server.appspot.com/six-cities`;
 
-const Header = ({ email, avatarUrl, isAuthenticated }) => {
+const Header = ({ user, isAuthenticated }) => {
+  const { email, avatarUrl } = user;
+
   return (
     <header className="header">
       <div className="container">
@@ -62,8 +64,7 @@ const Header = ({ email, avatarUrl, isAuthenticated }) => {
 };
 
 Header.propTypes = {
-  email: PropTypes.string,
-  avatarUrl: PropTypes.string,
+  user: PropTypes.object,
   isAuthenticated: PropTypes.bool
 };
 

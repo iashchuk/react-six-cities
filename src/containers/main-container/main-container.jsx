@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 
 import Main from "../../components/main/main.jsx";
-import { getData, setFavoriteAsync } from "../../redux/fetch/actions";
+import { setFavoriteAsync } from "../../redux/fetch/actions";
 import { setCity } from "../../redux/hotels/actions";
 import { getCityOffers, getCityCoords } from "./selectors.js";
 
@@ -10,13 +10,8 @@ export const MainContainer = (props) => {
   return <Main {...props} />;
 };
 
-const mapStateToProps = ({ hotels, auth }) => {
-  const { user } = auth;
+const mapStateToProps = ({ hotels }) => {
   return {
-    isAuthenticated: auth.isAuthenticated,
-    isAuthorizationRequired: auth.isAuthorizationRequired,
-    avatarUrl: user.avatarUrl,
-    email: user.email,
     cities: hotels.cities,
     offers: getCityOffers([hotels.offers, hotels.city]),
     city: hotels.city,
@@ -25,7 +20,6 @@ const mapStateToProps = ({ hotels, auth }) => {
 };
 
 const mapDispatchToProps = {
-  getData,
   setCity,
   setFavoriteAsync
 };

@@ -1,5 +1,5 @@
 import * as types from "./types.js";
-import { loadHotels, updateOffers } from "../hotels/actions.js";
+import { loadHotels, updateOffers, loadFavorite } from "../hotels/actions.js";
 import { loadOffer, loadComments } from "../offer/actions.js";
 
 export const getData = () => (dispatch, _getState, api) => {
@@ -22,6 +22,14 @@ export const getComments = (id) => (dispatch, _getState, api) => {
   dispatch(loadingStart());
   return api.get(`/comments/${id}`).then((response) => {
     dispatch(loadComments(response.data));
+    dispatch(loadingFinish());
+  });
+};
+
+export const getFavorite = () => (dispatch, _getState, api) => {
+  dispatch(loadingStart());
+  return api.get(`/favorite`).then((response) => {
+    dispatch(loadFavorite(response.data));
     dispatch(loadingFinish());
   });
 };

@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 
 import Favorites from "../../components/favorites/favorites.jsx";
 
+import { getFavorite, setFavoriteAsync } from "../../redux/fetch/actions.js";
 import { getFavoritesOffers } from "./selectors";
 
 export const FavoritesContainer = (props) => {
@@ -16,8 +17,17 @@ const mapStateToProps = ({ auth, hotels }) => {
     isAuthenticated: auth.isAuthenticated,
     isAuthorizationRequired: auth.isAuthorizationRequired,
     avatarUrl: user.avatarUrl,
-    email: user.email
+    email: user.email,
+    favorite: hotels.favorite
   };
 };
 
-export default connect(mapStateToProps)(FavoritesContainer);
+const mapDispatchToProps = {
+  getFavorite,
+  setFavoriteAsync
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(FavoritesContainer);
