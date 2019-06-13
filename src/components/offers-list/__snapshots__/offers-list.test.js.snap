@@ -6,7 +6,6 @@ exports[`OffersList renders correctly 1`] = `
 >
   <article
     className="cities__place-card place-card"
-    onClick={[Function]}
   >
     <div
       className="place-card__mark"
@@ -17,19 +16,15 @@ exports[`OffersList renders correctly 1`] = `
     </div>
     <div
       className="cities__image-wrapper place-card__image-wrapper"
+      onClick={[Function]}
     >
-      <a
-        href="/offer/1"
-        onClick={[Function]}
-      >
-        <img
-          alt="Place image"
-          className="place-card__image"
-          height="200"
-          src="apartment-01.jpg"
-          width="260"
-        />
-      </a>
+      <img
+        alt="Place image"
+        className="place-card__image"
+        height="200"
+        src="apartment-01.jpg"
+        width="260"
+      />
     </div>
     <div
       className="place-card__info"
@@ -112,23 +107,18 @@ exports[`OffersList renders correctly 1`] = `
   </article>
   <article
     className="cities__place-card place-card"
-    onClick={[Function]}
   >
     <div
       className="cities__image-wrapper place-card__image-wrapper"
+      onClick={[Function]}
     >
-      <a
-        href="/offer/2"
-        onClick={[Function]}
-      >
-        <img
-          alt="Place image"
-          className="place-card__image"
-          height="200"
-          src="room.jpg"
-          width="260"
-        />
-      </a>
+      <img
+        alt="Place image"
+        className="place-card__image"
+        height="200"
+        src="room.jpg"
+        width="260"
+      />
     </div>
     <div
       className="place-card__info"
