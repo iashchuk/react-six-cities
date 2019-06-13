@@ -27,23 +27,23 @@ const Card = ({
       className={cn(`cities__place-card place-card`, {
         [`place-card--active`]: isActive
       })}
-      onClick={onCardClick}
     >
       {isPremium && (
         <div className="place-card__mark">
           <span>Premium</span>
         </div>
       )}
-      <div className="cities__image-wrapper place-card__image-wrapper">
-        <Link to={`/offer/${id}`}>
-          <img
-            className="place-card__image"
-            src={image}
-            width="260"
-            height="200"
-            alt="Place image"
-          />
-        </Link>
+      <div
+        className="cities__image-wrapper place-card__image-wrapper"
+        onClick={onCardClick}
+      >
+        <img
+          className="place-card__image"
+          src={image}
+          width="260"
+          height="200"
+          alt="Place image"
+        />
       </div>
       <div className="place-card__info">
         <div className="place-card__price-wrapper">
