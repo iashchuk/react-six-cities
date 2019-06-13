@@ -8,6 +8,7 @@ import Map from "../map/map.jsx";
 import withActiveItem from "../../hocs/with-active-item/with-active-item.js";
 import withSortOffers from "../../hocs/with-sort-offers/with-sort-offers.js";
 import { compose } from "../../helpers/compose.js";
+import MainEmpty from "../main-empty/main-empty.jsx";
 
 class Main extends Component {
   render() {
@@ -27,49 +28,49 @@ class Main extends Component {
       setActiveItem
     } = this.props;
 
-    if (!offers.length || !cities.length) {
-      return `Загрузка...`;
-    }
-
     const sortedOffers = sortOffers(offers, sortType);
 
     return (
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
         <TabsList tabs={cities} city={city} setCity={setCity} />
-        <div className="cities__places-wrapper">
-          <div className="cities__places-container container">
-            <section className="cities__places places">
-              <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{`${
-                offers.length
-              } places to stay in ${city}`}</b>
-              <Form
-                isSortMenuOpen={isSortMenuOpen}
-                sortType={sortType}
-                setSortType={setSortType}
-                toggleSortMenu={toggleSortMenu}
-              />
-              <OffersList
-                key={sortType}
-                activeItem={activeItem}
-                cards={sortedOffers}
-                city={city}
-                setActiveItem={setActiveItem}
-                setFavoriteAsync={setFavoriteAsync}
-              />
-            </section>
-            <div className="cities__right-section">
-              <section className="cities__map map map--main">
-                <Map
+        {offers.length ? (
+          <div className="cities__places-wrapper">
+            <div className="cities__places-container container">
+              <section className="cities__places places">
+                <h2 className="visually-hidden">Places</h2>
+                <b className="places__found">{`${
+                  offers.length
+                } places to stay in ${city}`}</b>
+                <Form
+                  isSortMenuOpen={isSortMenuOpen}
+                  sortType={sortType}
+                  setSortType={setSortType}
+                  toggleSortMenu={toggleSortMenu}
+                />
+                <OffersList
+                  key={sortType}
                   activeItem={activeItem}
-                  cards={offers}
-                  city={[cityCoords.latitude, cityCoords.longitude]}
+                  cards={sortedOffers}
+                  city={city}
+                  setActiveItem={setActiveItem}
+                  setFavoriteAsync={setFavoriteAsync}
                 />
               </section>
+              <div className="cities__right-section">
+                <section className="cities__map map map--main">
+                  <Map
+                    activeItem={activeItem}
+                    cards={offers}
+                    city={[cityCoords.latitude, cityCoords.longitude]}
+                  />
+                </section>
+              </div>
             </div>
           </div>
-        </div>
+        ) : (
+          <MainEmpty city={city} />
+        )}
       </main>
     );
   }
