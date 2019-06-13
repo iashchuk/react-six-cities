@@ -68,5 +68,4 @@ FavoritesCard.propTypes = {
   setFavoriteAsync: PropTypes.func
 };
 
-// title, price, rating, image, type
 export default FavoritesCard;

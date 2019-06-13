@@ -1,14 +1,16 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+
 import TabsList from "../tabs-list/tabs-list.jsx";
 import OffersList from "../offers-list/offers-list.jsx";
 import Form from "../form/form.jsx";
 import Map from "../map/map.jsx";
+import MainEmpty from "../main-empty/main-empty.jsx";
 
 import withActiveItem from "../../hocs/with-active-item/with-active-item.js";
 import withSortOffers from "../../hocs/with-sort-offers/with-sort-offers.js";
+
 import { compose } from "../../helpers/compose.js";
-import MainEmpty from "../main-empty/main-empty.jsx";
 
 class Main extends Component {
   render() {
