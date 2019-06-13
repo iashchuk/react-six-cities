@@ -5,20 +5,33 @@ import OffersList from "../offers-list/offers-list.jsx";
 import Form from "../form/form.jsx";
 import Map from "../map/map.jsx";
 
+import withActiveItem from "../../hocs/with-active-item/with-active-item.js";
+import withSortOffers from "../../hocs/with-sort-offers/with-sort-offers.js";
+import { compose } from "../../helpers/compose.js";
+
 class Main extends Component {
   render() {
     const {
+      isSortMenuOpen,
+      sortType,
+      setSortType,
+      toggleSortMenu,
+      activeItem,
       city,
       cityCoords,
       cities,
       offers,
       setCity,
-      setFavoriteAsync
+      setFavoriteAsync,
+      sortOffers,
+      setActiveItem
     } = this.props;
 
     if (!offers.length || !cities.length) {
       return `Загрузка...`;
     }
+
+    const sortedOffers = sortOffers(offers, sortType);
 
     return (
       <main className="page__main page__main--index">
@@ -31,16 +44,25 @@ class Main extends Component {
               <b className="places__found">{`${
                 offers.length
               } places to stay in ${city}`}</b>
-              <Form />
+              <Form
+                isSortMenuOpen={isSortMenuOpen}
+                sortType={sortType}
+                setSortType={setSortType}
+                toggleSortMenu={toggleSortMenu}
+              />
               <OffersList
-                cards={offers}
+                key={sortType}
+                activeItem={activeItem}
+                cards={sortedOffers}
                 city={city}
+                setActiveItem={setActiveItem}
                 setFavoriteAsync={setFavoriteAsync}
               />
             </section>
             <div className="cities__right-section">
               <section className="cities__map map map--main">
                 <Map
+                  activeItem={activeItem}
                   cards={offers}
                   city={[cityCoords.latitude, cityCoords.longitude]}
                 />
@@ -68,12 +90,21 @@ Main.propTypes = {
   email: PropTypes.string,
   avatarUrl: PropTypes.string,
   isAuthenticated: PropTypes.bool,
+  isSortMenuOpen: PropTypes.bool,
+  sortType: PropTypes.string,
   cities: PropTypes.arrayOf(PropTypes.string),
   city: PropTypes.string,
   cityCoords: PropTypes.object,
-
+  activeItem: PropTypes.number,
   setCity: PropTypes.func,
-  setFavoriteAsync: PropTypes.func
+  setFavoriteAsync: PropTypes.func,
+  setSortType: PropTypes.func,
+  toggleSortMenu: PropTypes.func,
+  sortOffers: PropTypes.func,
+  setActiveItem: PropTypes.func
 };
 
-export default Main;
+export default compose(
+    withActiveItem,
+    withSortOffers
+)(Main);

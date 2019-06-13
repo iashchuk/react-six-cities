@@ -1,46 +1,73 @@
 import React from "react";
+import PropTypes from "prop-types";
+import cn from "classnames";
+import { SortCases } from "../../helpers/sort-cases.js";
 
-const Form = () => {
+const Form = ({ isSortMenuOpen, sortType, setSortType, toggleSortMenu }) => {
   return (
     <form className="places__sorting" action="#" method="get">
       <span className="places__sorting-caption">Sort by</span>
-      <span className="places__sorting-type" tabIndex="0">
-        Popular
+      <span
+        className="places__sorting-type"
+        tabIndex="0"
+        onClick={toggleSortMenu}
+      >
+        {sortType}
         <svg className="places__sorting-arrow" width="7" height="4">
           <use xlinkHref="#icon-arrow-select" />
         </svg>
       </span>
-      <ul className="places__options places__options--custom">
-        <li className="places__option places__option--active" tabIndex="0">
+      <ul
+        className={cn(`places__options places__options--custom`, {
+          [`places__options--opened`]: isSortMenuOpen
+        })}
+      >
+        <li
+          className={cn(`places__option`, {
+            [`places__option--active`]: sortType === SortCases.POPULAR
+          })}
+          tabIndex="0"
+          onClick={setSortType}
+        >
           Popular
         </li>
-        <li className="places__option" tabIndex="0">
+        <li
+          className={cn(`places__option`, {
+            [`places__option--active`]: sortType === SortCases.PRICE_LOW
+          })}
+          tabIndex="0"
+          onClick={setSortType}
+        >
           Price: low to high
         </li>
-        <li className="places__option" tabIndex="0">
+        <li
+          className={cn(`places__option`, {
+            [`places__option--active`]: sortType === SortCases.PRICE_HIGH
+          })}
+          tabIndex="0"
+          onClick={setSortType}
+        >
           Price: high to low
         </li>
-        <li className="places__option" tabIndex="0">
+        <li
+          className={cn(`places__option`, {
+            [`places__option--active`]: sortType === SortCases.TOP_RATED
+          })}
+          tabIndex="0"
+          onClick={setSortType}
+        >
           Top rated first
         </li>
       </ul>
-
-      <select className="places__sorting-type" id="places-sorting">
-        <option className="places__option" value="popular">
-          Popular
-        </option>
-        <option className="places__option" value="to-high">
-          Price: low to high
-        </option>
-        <option className="places__option" value="to-low">
-          Price: high to low
-        </option>
-        <option className="places__option" value="top-rated">
-          Top rated first
-        </option>
-      </select>
     </form>
   );
+};
+
+Form.propTypes = {
+  isSortMenuOpen: PropTypes.bool,
+  sortType: PropTypes.string,
+  setSortType: PropTypes.func,
+  toggleSortMenu: PropTypes.func
 };
 
 export default Form;
