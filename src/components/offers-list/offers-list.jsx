@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import Card from "../card/card.jsx";
-import withActiveItem from "../../hocs/with-active-item/with-active-item.js";
 
 const OffersList = ({
   cards,
@@ -57,4 +56,4 @@ OffersList.propTypes = {
   setFavoriteAsync: PropTypes.func
 };
 
-export default withActiveItem(OffersList);
+export default OffersList;
