@@ -28,7 +28,7 @@ if (process.env.NODE_ENV !== `test`) {
   middlewares.push(logger);
 }
 
-const api = createAPI(() => history.push(`/login`));
+const api = createAPI();
 middlewares.push(thunk.withExtraArgument(api));
 
 const devtools = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
