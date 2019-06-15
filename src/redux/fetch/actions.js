@@ -1,6 +1,17 @@
 import * as types from "./types.js";
 import { loadHotels, updateOffers, loadFavorite } from "../hotels/actions.js";
 import { loadOffer, loadComments } from "../offer/actions.js";
+import { history } from "../index";
+
+const FORBIDDEN_REQUEST_STATUS = 403;
+
+export const setRedirect = (error) => {
+  if (error.response.status) {
+    if (error.response.status === FORBIDDEN_REQUEST_STATUS) {
+      history.push(`/login`);
+    }
+  }
+};
 
 export const getData = () => (dispatch, _getState, api) => {
   dispatch(loadingStart());
@@ -47,7 +58,7 @@ export const setFavoriteAsync = (hotelId, status) => (
       }
     })
     .catch((error) => {
-      throw error;
+      setRedirect(error);
     });
 };
 
