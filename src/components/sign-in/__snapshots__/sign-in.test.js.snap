@@ -61,7 +61,9 @@ exports[`SignIn renders correctly 1`] = `
         >
           Sign in
         </button>
-        <span />
+        <span
+          className="error"
+        />
       </form>
     </section>
     <section
@@ -72,7 +74,8 @@ exports[`SignIn renders correctly 1`] = `
       >
         <a
           className="locations__item-link"
-          href="#"
+          href="/"
+          onClick={[Function]}
         >
           <span>
             Amsterdam
