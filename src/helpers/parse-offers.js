@@ -1,8 +1,8 @@
 export const parseOffers = (locations, hotels) => {
-  return locations.map((city) => {
-    return {
-      city,
-      offers: hotels
+  return new Map(
+      locations.map((city) => [
+        city,
+        hotels
         .filter((hotel) => hotel.city.name === city)
         .map((item) => {
           return {
@@ -19,6 +19,6 @@ export const parseOffers = (locations, hotels) => {
             rating: (item.rating / 5) * 100
           };
         })
-    };
-  });
+      ])
+  );
 };

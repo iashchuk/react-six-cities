@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import Favorites from "../../components/favorites/favorites.jsx";
 
 import { getFavorite, setFavoriteAsync } from "../../redux/fetch/actions.js";
+import { setCity } from "../../redux/hotels/actions.js";
 import { getFavoritesOffers } from "./selectors";
 
 export const FavoritesContainer = (props) => {
@@ -11,18 +12,14 @@ export const FavoritesContainer = (props) => {
 };
 
 const mapStateToProps = ({ auth, hotels }) => {
-  const { user } = auth;
   return {
-    offers: getFavoritesOffers(hotels.offers),
     isAuthenticated: auth.isAuthenticated,
-    isAuthorizationRequired: auth.isAuthorizationRequired,
-    avatarUrl: user.avatarUrl,
-    email: user.email,
-    favorite: hotels.favorite
+    favorite: getFavoritesOffers([hotels.favorite])
   };
 };
 
 const mapDispatchToProps = {
+  setCity,
   getFavorite,
   setFavoriteAsync
 };

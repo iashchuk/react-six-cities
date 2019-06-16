@@ -33,7 +33,7 @@ const TabsList = ({ tabs, city, activeItem, setActiveItem, setCity }) => {
 
 TabsList.propTypes = {
   tabs: PropTypes.arrayOf(PropTypes.string),
-  city: PropTypes.string.isRequired,
+  city: PropTypes.string,
   activeItem: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   setActiveItem: PropTypes.func,
   setCity: PropTypes.func

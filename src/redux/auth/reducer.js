@@ -4,7 +4,10 @@ const initialState = {
   isAuthorizationRequired: false,
   isAuthenticated: false,
   user: {},
-  authError: null
+  errors: {
+    setAuth: null,
+    checkAuth: null
+  }
 };
 
 export const authReducer = (state = initialState, { type, payload }) => {
@@ -26,7 +29,7 @@ export const authReducer = (state = initialState, { type, payload }) => {
         ...state,
         isAuthenticated: true,
         user: payload,
-        authError: null
+        errors: { ...state.errors, checkAuth: null, setAuth: null }
       };
 
     case types.SET_AUTH_ERROR:
@@ -34,7 +37,15 @@ export const authReducer = (state = initialState, { type, payload }) => {
         ...state,
         isAuthenticated: false,
         user: {},
-        authError: payload
+        errors: { ...state.errors, setAuth: payload }
+      };
+
+    case types.SET_CHECK_AUTH_ERROR:
+      return {
+        ...state,
+        isAuthenticated: false,
+        user: {},
+        errors: { ...state.errors, checkAuth: payload }
       };
 
     default:

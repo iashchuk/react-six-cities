@@ -2,11 +2,15 @@ import { createSelector } from "reselect";
 
 export const getOfferNeighbourhoods = createSelector(
     (f) => f,
-    ([offers, city]) => {
-      const currentCity = offers.find((item) => item.city === city);
-      if (!currentCity) {
+    ([offers, offer]) => {
+      if (!offer) {
         return [];
       }
-      return currentCity.offers.slice(0, 3);
+      return (
+        offers
+        .get(offer.city)
+        .filter((item) => item.id !== offer.id)
+        .slice(0, 3) || []
+      );
     }
 );

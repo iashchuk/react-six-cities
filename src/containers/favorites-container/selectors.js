@@ -2,13 +2,12 @@ import { createSelector } from "reselect";
 
 export const getFavoritesOffers = createSelector(
     (f) => f,
-    (offers) => {
-      const test = offers.map((item) => {
+    ([offers]) => {
+      return Array.from(offers).map(([city, cards]) => {
         return {
-          city: item.city,
-          offers: item.offers.filter((offer) => offer.isFavorite)
+          city,
+          offers: cards
         };
       });
-      return test;
     }
 );

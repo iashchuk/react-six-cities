@@ -21,7 +21,6 @@ const Card = ({
     evt.preventDefault();
     setActiveItem();
   };
-
   return (
     <article
       className={cn(`cities__place-card place-card`, {

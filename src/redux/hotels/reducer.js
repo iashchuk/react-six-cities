@@ -3,9 +3,9 @@ import * as types from "./types";
 const initialState = {
   cities: [],
   locations: [],
-  offers: [],
+  offers: null,
   city: null,
-  favorite: []
+  favorite: new Map()
 };
 
 export const hotelsReducer = (state = initialState, { type, payload }) => {
@@ -26,24 +26,10 @@ export const hotelsReducer = (state = initialState, { type, payload }) => {
       };
 
     case types.UPDATE_OFFERS:
-      const cityOffers = state.offers.find(
-          (item) => item.city === payload.city
-      );
-      const idxCity = state.offers.findIndex(
-          (item) => item.city === payload.city
-      );
-
-      const idx = cityOffers.offers.findIndex((item) => item.id === payload.id);
-      const before = cityOffers.offers.slice(0, idx);
-      const after = cityOffers.offers.slice(idx + 1);
-
       return {
         ...state,
-        offers: [
-          ...state.offers.slice(0, idxCity),
-          { city: cityOffers.city, offers: [...before, payload, ...after]},
-          ...state.offers.slice(idxCity + 1)
-        ]
+        offers: updateFavoritesOffers(payload, state.offers),
+        favorite: updateFavoritesOffers(payload, state.favorite)
       };
 
     case types.GET_FAVORITE:
@@ -55,4 +41,14 @@ export const hotelsReducer = (state = initialState, { type, payload }) => {
     default:
       return state;
   }
+};
+
+const updateFavoritesOffers = (offer, offers) => {
+  const cityOffers = offers.get(offer.city) || [];
+  const offerIndex = cityOffers.findIndex((item) => item.id === offer.id);
+  return offers.set(offer.city, [
+    ...cityOffers.slice(0, offerIndex),
+    offer,
+    ...cityOffers.slice(offerIndex + 1)
+  ]);
 };

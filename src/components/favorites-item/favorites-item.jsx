@@ -1,30 +1,36 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 import FavoritesCard from "../favorites-card/favorites-card.jsx";
 
-const FavoritesItem = ({ city, offers, setFavoriteAsync }) => {
+const FavoritesItem = ({ city, offers, setCity, setFavoriteAsync }) => {
   return (
     <li className="favorites__locations-items">
       <div className="favorites__locations locations locations--current">
         <div className="locations__item">
-          <a className="locations__item-link" href="#">
+          <Link
+            className="locations__item-link"
+            to="/"
+            onClick={() => setCity(city)}
+          >
             <span>{city}</span>
-          </a>
+          </Link>
         </div>
       </div>
       <div className="favorites__places">
-        {offers.map((item) => {
+        {offers.map((item, index) => {
           return (
             <FavoritesCard
-              key={item.id}
+              key={index}
+              id={item.id}
               title={item.title}
               price={item.price}
               rating={item.rating}
               image={item.image}
               type={item.type}
               isFavorite={item.isFavorite}
-              setFavoriteAsync={() => setFavoriteAsync(item.id, 0)}
+              setFavoriteAsync={() => setFavoriteAsync(item.id, 1)}
             />
           );
         })}
@@ -36,7 +42,8 @@ const FavoritesItem = ({ city, offers, setFavoriteAsync }) => {
 FavoritesItem.propTypes = {
   offers: PropTypes.array,
   city: PropTypes.string,
-  setFavoriteAsync: PropTypes.func
+  setFavoriteAsync: PropTypes.func,
+  setCity: PropTypes.func
 };
 
 export default FavoritesItem;

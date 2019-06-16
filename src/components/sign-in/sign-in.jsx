@@ -1,8 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import withLogin from "../../hocs/with-login/with-login.js";
 
-const SignIn = ({ authError, handleInputChange, handleFormSubmit }) => {
+const START_CITY = `Amsterdam`;
+
+const SignIn = ({ errors, setCity, handleInputChange, handleFormSubmit }) => {
   return (
     <main className="page__main page__main--login">
       <div className="page__login-container container">
@@ -39,14 +42,18 @@ const SignIn = ({ authError, handleInputChange, handleFormSubmit }) => {
             <button className="login__submit form__submit button" type="submit">
               Sign in
             </button>
-            <span>{authError}</span>
+            <span className="error">{errors.setAuth}</span>
           </form>
         </section>
         <section className="locations locations--login locations--current">
           <div className="locations__item">
-            <a className="locations__item-link" href="#">
-              <span>Amsterdam</span>
-            </a>
+            <Link
+              to="./"
+              className="locations__item-link"
+              onClick={() => setCity(START_CITY)}
+            >
+              <span>{START_CITY}</span>
+            </Link>
           </div>
         </section>
       </div>
@@ -55,13 +62,8 @@ const SignIn = ({ authError, handleInputChange, handleFormSubmit }) => {
 };
 
 SignIn.propTypes = {
-  authError: PropTypes.string,
-  email: PropTypes.string,
-  avatarUrl: PropTypes.string,
-  isAuthenticated: PropTypes.bool,
-  isAuthorizationRequired: PropTypes.bool,
-  loginAsync: PropTypes.func,
-  setAuthRequired: PropTypes.func,
+  errors: PropTypes.object,
+  setCity: PropTypes.func,
   handleInputChange: PropTypes.func,
   handleFormSubmit: PropTypes.func
 };

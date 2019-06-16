@@ -9,11 +9,12 @@ export const LayoutContainer = (props) => {
   return <Layout {...props} />;
 };
 
-const mapStateToProps = ({ auth, router }) => {
+const mapStateToProps = ({ auth, router, hotels }) => {
   return {
     isAuthenticated: auth.isAuthenticated,
     user: auth.user,
-    location: router.location
+    location: router.location,
+    offers: hotels.offers
   };
 };
 

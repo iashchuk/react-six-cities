@@ -2,6 +2,8 @@ import * as types from "./types";
 import { history } from "../index.js";
 import { parseAuthData } from "../../helpers/parse-auth-data.js";
 
+const BAD_REQUEST_STATUS = 400;
+
 export const loginAsync = (email, password) => (dispatch, _getState, api) => {
   return api
     .post(`/login`, { email, password })
@@ -12,10 +14,8 @@ export const loginAsync = (email, password) => (dispatch, _getState, api) => {
       }
     })
     .catch((error) => {
-      if (error.response.status) {
-        if (error.response.status === 400) {
-          dispatch(setAuthError(error.response.data.error));
-        }
+      if (error.response.status === BAD_REQUEST_STATUS) {
+        dispatch(setAuthError(error.response.data.error));
       }
     });
 };
@@ -30,11 +30,7 @@ export const checkLoginAsync = () => {
         }
       })
       .catch((error) => {
-        if (error.response.status) {
-          if (error.response.status === 403) {
-            dispatch(setAuthError(error.response.data.error));
-          }
-        }
+        dispatch(setCheckAuthError(error.response.data.error));
       });
   };
 };
@@ -50,6 +46,13 @@ export const login = (authData) => {
 export const setAuthError = (error) => {
   return {
     type: types.SET_AUTH_ERROR,
+    payload: error
+  };
+};
+
+export const setCheckAuthError = (error) => {
+  return {
+    type: types.SET_CHECK_AUTH_ERROR,
     payload: error
   };
 };

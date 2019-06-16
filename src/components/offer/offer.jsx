@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-
+import cn from "classnames";
 import OffersList from "../offers-list/offers-list.jsx";
 import Map from "../map/map.jsx";
 import ReviewsList from "../reviews-list/reviews-list.jsx";
@@ -21,18 +21,26 @@ class Offer extends Component {
   }
 
   render() {
-    const { offers, offer, comments, isAuthenticated } = this.props;
+    const {
+      offers,
+      offer,
+      comments,
+      isAuthenticated,
+      setFavoriteAsync
+    } = this.props;
 
     if (!offer) {
       return `Загрузка...`;
     }
 
     const {
+      id,
       cityLocation,
       bedrooms,
       rating,
       maxAdults,
       isPremium,
+      isFavorite,
       images,
       title,
       type,
@@ -70,8 +78,13 @@ class Offer extends Component {
               <div className="property__name-wrapper">
                 <h1 className="property__name">{title}</h1>
                 <button
-                  className="property__bookmark-button button"
+                  className={cn(`property__bookmark-button button`, {
+                    [`property__bookmark-button--active`]: isFavorite
+                  })}
                   type="button"
+                  onClick={() =>
+                    setFavoriteAsync(this.props.match.params.id, 1)
+                  }
                 >
                   <svg
                     className="property__bookmark-icon"
@@ -146,7 +159,8 @@ class Offer extends Component {
           </div>
           <section className="property__map map map--offer">
             <Map
-              cards={offers}
+              activePin={id}
+              cards={offers.concat([offer])}
               city={[cityLocation.latitude, cityLocation.longitude]}
             />
           </section>
@@ -156,7 +170,7 @@ class Offer extends Component {
             <h2 className="near-places__title">
               Other places in the neighbourhood
             </h2>
-            <OffersList cards={offers} />
+            <OffersList cards={offers} setFavoriteAsync={setFavoriteAsync} />
           </section>
         </div>
       </main>
@@ -174,7 +188,8 @@ Offer.propTypes = {
   match: PropTypes.object,
   getData: PropTypes.func,
   getOffer: PropTypes.func,
-  getComments: PropTypes.func
+  getComments: PropTypes.func,
+  setFavoriteAsync: PropTypes.func
 };
 
 export default Offer;

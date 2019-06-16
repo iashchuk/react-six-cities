@@ -7,7 +7,7 @@ class Map extends Component {
     super(props);
     this.settings = {
       center: props.city,
-      zoom: 12,
+      zoom: 13,
       zoomControl: false,
       marker: true
     };
@@ -18,8 +18,9 @@ class Map extends Component {
 
   componentDidUpdate(prevProps) {
     if (
-      this.props.activeItem !== prevProps.activeItem ||
-      this.props.cards !== prevProps.cards
+      (this.props.activeItem !== prevProps.activeItem ||
+        this.props.cards !== prevProps.cards,
+      this.props.city !== prevProps.city)
     ) {
       this._layerGroup.clearLayers();
       this._map.setView(this.props.city, this.settings.zoom);
@@ -42,8 +43,9 @@ class Map extends Component {
   }
 
   _addMarkers() {
-    const { cards, activeItem } = this.props;
-    const getIcon = (id) => (id === activeItem ? this._activeIcon : this._icon);
+    const { cards, activeItem, activePin } = this.props;
+    const getIcon = (id) =>
+      id === (activeItem || activePin) ? this._activeIcon : this._icon;
     this._layerGroup = leaflet.layerGroup().addTo(this._map);
 
     cards.map(({ id, location: { latitude, longitude }, title }) =>
@@ -86,6 +88,7 @@ Map.propTypes = {
       })
   ),
   city: PropTypes.arrayOf(PropTypes.number),
+  activePin: PropTypes.number,
   activeItem: PropTypes.number
 };
 
