@@ -7,7 +7,7 @@ class Map extends Component {
     super(props);
     this.settings = {
       center: props.city,
-      zoom: 12,
+      zoom: 13,
       zoomControl: false,
       marker: true
     };
