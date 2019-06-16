@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import withLogin from "../../hocs/with-login/with-login.js";
 
 const SignIn = ({ authError, handleInputChange, handleFormSubmit }) => {
@@ -39,14 +40,14 @@ const SignIn = ({ authError, handleInputChange, handleFormSubmit }) => {
             <button className="login__submit form__submit button" type="submit">
               Sign in
             </button>
-            <span>{authError}</span>
+            <span className="error">{authError}</span>
           </form>
         </section>
         <section className="locations locations--login locations--current">
           <div className="locations__item">
-            <a className="locations__item-link" href="#">
+            <Link to="./" className="locations__item-link">
               <span>Amsterdam</span>
-            </a>
+            </Link>
           </div>
         </section>
       </div>
