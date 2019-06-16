@@ -63,13 +63,7 @@ const SignIn = ({ errors, setCity, handleInputChange, handleFormSubmit }) => {
 
 SignIn.propTypes = {
   errors: PropTypes.object,
-  email: PropTypes.string,
-  avatarUrl: PropTypes.string,
-  isAuthenticated: PropTypes.bool,
-  isAuthorizationRequired: PropTypes.bool,
-  loginAsync: PropTypes.func,
   setCity: PropTypes.func,
-  setAuthRequired: PropTypes.func,
   handleInputChange: PropTypes.func,
   handleFormSubmit: PropTypes.func
 };

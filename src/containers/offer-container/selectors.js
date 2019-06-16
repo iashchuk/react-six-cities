@@ -6,6 +6,11 @@ export const getOfferNeighbourhoods = createSelector(
       if (!offer) {
         return [];
       }
-      return offers.get(offer.city).slice(0, 3) || [];
+      return (
+        offers
+        .get(offer.city)
+        .filter((item) => item.id !== offer.id)
+        .slice(0, 3) || []
+      );
     }
 );
