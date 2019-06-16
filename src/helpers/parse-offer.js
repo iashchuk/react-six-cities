@@ -1,6 +1,5 @@
 export const parseOffer = (id, hotels) => {
   const offer = hotels.find((item) => item.id === Number(id));
-
   const modifiedOffer = {
     ...offer,
     city: offer.city.name,

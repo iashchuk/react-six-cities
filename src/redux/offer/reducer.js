@@ -1,8 +1,7 @@
 import * as types from "./types";
 
 const initialState = {
-  offer: null,
-  city: ``,
+  currentOffer: null,
   comments: []
 };
 
@@ -11,8 +10,7 @@ export const offerReducer = (state = initialState, { type, payload }) => {
     case types.LOAD_OFFER:
       return {
         ...state,
-        offer: payload,
-        city: payload.city
+        currentOffer: payload
       };
 
     case types.LOAD_COMMENTS:

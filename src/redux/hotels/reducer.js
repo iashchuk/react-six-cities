@@ -3,7 +3,7 @@ import * as types from "./types";
 const initialState = {
   cities: [],
   locations: [],
-  offers: [],
+  offers: null,
   city: null,
   favorite: []
 };

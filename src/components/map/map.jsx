@@ -18,8 +18,9 @@ class Map extends Component {
 
   componentDidUpdate(prevProps) {
     if (
-      this.props.activeItem !== prevProps.activeItem ||
-      this.props.cards !== prevProps.cards
+      (this.props.activeItem !== prevProps.activeItem ||
+        this.props.cards !== prevProps.cards,
+      this.props.city !== prevProps.city)
     ) {
       this._layerGroup.clearLayers();
       this._map.setView(this.props.city, this.settings.zoom);

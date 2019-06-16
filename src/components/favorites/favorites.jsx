@@ -28,7 +28,6 @@ class Favorites extends Component {
 
 Favorites.propTypes = {
   favorite: PropTypes.array,
-  email: PropTypes.string,
   getFavorite: PropTypes.func,
   setFavoriteAsync: PropTypes.func
 };

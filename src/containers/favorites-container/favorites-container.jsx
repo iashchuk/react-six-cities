@@ -11,14 +11,9 @@ export const FavoritesContainer = (props) => {
 };
 
 const mapStateToProps = ({ auth, hotels }) => {
-  const { user } = auth;
   return {
-    offers: getFavoritesOffers(hotels.offers),
     isAuthenticated: auth.isAuthenticated,
-    isAuthorizationRequired: auth.isAuthorizationRequired,
-    avatarUrl: user.avatarUrl,
-    email: user.email,
-    favorite: hotels.favorite
+    favorite: getFavoritesOffers(hotels.favorite)
   };
 };
 
