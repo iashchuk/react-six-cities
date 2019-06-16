@@ -15,7 +15,7 @@ const mapStateToProps = ({ auth }) => {
     isAuthorizationRequired: auth.isAuthorizationRequired,
     avatarUrl: user.avatarUrl,
     email: user.email,
-    authError: auth.authError
+    errors: auth.errors
   };
 };
 

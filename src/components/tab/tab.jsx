@@ -15,7 +15,6 @@ const Tab = ({ label, isActive, setActiveItem, setCity }) => {
         className={cn(`locations__item-link tabs__item`, {
           [`tabs__item--active`]: isActive
         })}
-        href="#"
         onClick={onClick}
       >
         <span>{label}</span>

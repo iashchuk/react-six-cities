@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import withLogin from "../../hocs/with-login/with-login.js";
 
-const SignIn = ({ authError, handleInputChange, handleFormSubmit }) => {
+const SignIn = ({ errors, handleInputChange, handleFormSubmit }) => {
   return (
     <main className="page__main page__main--login">
       <div className="page__login-container container">
@@ -40,7 +40,7 @@ const SignIn = ({ authError, handleInputChange, handleFormSubmit }) => {
             <button className="login__submit form__submit button" type="submit">
               Sign in
             </button>
-            <span className="error">{authError}</span>
+            <span className="error">{errors.setAuth}</span>
           </form>
         </section>
         <section className="locations locations--login locations--current">
@@ -56,7 +56,7 @@ const SignIn = ({ authError, handleInputChange, handleFormSubmit }) => {
 };
 
 SignIn.propTypes = {
-  authError: PropTypes.string,
+  errors: PropTypes.object,
   email: PropTypes.string,
   avatarUrl: PropTypes.string,
   isAuthenticated: PropTypes.bool,

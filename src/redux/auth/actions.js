@@ -22,11 +22,16 @@ export const loginAsync = (email, password) => (dispatch, _getState, api) => {
 
 export const checkLoginAsync = () => {
   return (dispatch, _getState, api) => {
-    return api.get(`/login`).then((response) => {
-      if (response.data) {
-        dispatch(login(response.data));
-      }
-    });
+    return api
+      .get(`/login`)
+      .then((response) => {
+        if (response.data) {
+          dispatch(login(response.data));
+        }
+      })
+      .catch((error) => {
+        dispatch(setCheckAuthError(error.response.data.error));
+      });
   };
 };
 
@@ -41,6 +46,13 @@ export const login = (authData) => {
 export const setAuthError = (error) => {
   return {
     type: types.SET_AUTH_ERROR,
+    payload: error
+  };
+};
+
+export const setCheckAuthError = (error) => {
+  return {
+    type: types.SET_CHECK_AUTH_ERROR,
     payload: error
   };
 };
