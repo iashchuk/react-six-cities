@@ -1,6 +1,5 @@
 export const modifyOffer = (offer) => {
   return {
-    ...offer,
     id: offer.id,
     city: offer.city.name,
     title: offer.title,

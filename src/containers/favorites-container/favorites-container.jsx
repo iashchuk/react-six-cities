@@ -13,7 +13,7 @@ export const FavoritesContainer = (props) => {
 const mapStateToProps = ({ auth, hotels }) => {
   return {
     isAuthenticated: auth.isAuthenticated,
-    favorite: getFavoritesOffers(hotels.favorite)
+    favorite: getFavoritesOffers([hotels.favorite])
   };
 };
 

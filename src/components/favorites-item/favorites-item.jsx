@@ -14,17 +14,17 @@ const FavoritesItem = ({ city, offers, setFavoriteAsync }) => {
         </div>
       </div>
       <div className="favorites__places">
-        {offers.map((item) => {
+        {offers.map((item, index) => {
           return (
             <FavoritesCard
-              key={item.id}
+              key={index}
               title={item.title}
               price={item.price}
               rating={item.rating}
               image={item.image}
               type={item.type}
               isFavorite={item.isFavorite}
-              setFavoriteAsync={() => setFavoriteAsync(item.id, 0)}
+              setFavoriteAsync={() => setFavoriteAsync(item.id, 1)}
             />
           );
         })}

@@ -17,18 +17,19 @@
       flex-direction: column;
       height: 100vh;
       max-height: 100%;
-      overflow: hidden;
+      overflow-x: hidden;
     }
 
-    .page__main--property {
-      overflow-y: scroll;
+    .page__main--property,
+    .page__main--favorites {
+      overflow-y: auto;
+      overflow-x: hidden;
     }
 
     .cities__place-card:hover {
       opacity: 0.6;
       cursor: pointer;
     }
-
 
     .places__sorting-caption {
       margin-right: 5px;
@@ -56,6 +57,11 @@
     .error {
       font-size: 12px;
       color: tomato;
+    }
+
+    .property__bookmark-button--active .property__bookmark-icon {
+      stroke: #4481c3;
+      fill: #4481c3;
     }
 
   </style>

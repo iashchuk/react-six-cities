@@ -11,10 +11,12 @@ class Favorites extends Component {
 
   render() {
     const { favorite, setFavoriteAsync } = this.props;
+
     return (
       <>
         {favorite.length ? (
           <FavoritesFull
+            key={favorite.size}
             favorite={favorite}
             setFavoriteAsync={setFavoriteAsync}
           />

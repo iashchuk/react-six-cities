@@ -10,10 +10,10 @@ const FavoritesFull = ({ favorite, setFavoriteAsync }) => {
         <section className="favorites">
           <h1 className="favorites__title">Saved listing</h1>
           <ul className="favorites__list">
-            {favorite.map((item, index) => {
+            {favorite.map((item) => {
               return (
                 <FavoritesItem
-                  key={index}
+                  key={item.city}
                   city={item.city}
                   offers={item.offers}
                   setFavoriteAsync={setFavoriteAsync}
