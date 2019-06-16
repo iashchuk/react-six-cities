@@ -3,7 +3,9 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import withLogin from "../../hocs/with-login/with-login.js";
 
-const SignIn = ({ errors, handleInputChange, handleFormSubmit }) => {
+const START_CITY = `Amsterdam`;
+
+const SignIn = ({ errors, setCity, handleInputChange, handleFormSubmit }) => {
   return (
     <main className="page__main page__main--login">
       <div className="page__login-container container">
@@ -45,8 +47,12 @@ const SignIn = ({ errors, handleInputChange, handleFormSubmit }) => {
         </section>
         <section className="locations locations--login locations--current">
           <div className="locations__item">
-            <Link to="./" className="locations__item-link">
-              <span>Amsterdam</span>
+            <Link
+              to="./"
+              className="locations__item-link"
+              onClick={() => setCity(START_CITY)}
+            >
+              <span>{START_CITY}</span>
             </Link>
           </div>
         </section>
@@ -62,6 +68,7 @@ SignIn.propTypes = {
   isAuthenticated: PropTypes.bool,
   isAuthorizationRequired: PropTypes.bool,
   loginAsync: PropTypes.func,
+  setCity: PropTypes.func,
   setAuthRequired: PropTypes.func,
   handleInputChange: PropTypes.func,
   handleFormSubmit: PropTypes.func

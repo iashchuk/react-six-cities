@@ -10,7 +10,7 @@ class Favorites extends Component {
   }
 
   render() {
-    const { favorite, setFavoriteAsync } = this.props;
+    const { favorite, setCity, setFavoriteAsync } = this.props;
 
     return (
       <>
@@ -18,6 +18,7 @@ class Favorites extends Component {
           <FavoritesFull
             key={favorite.size}
             favorite={favorite}
+            setCity={setCity}
             setFavoriteAsync={setFavoriteAsync}
           />
         ) : (
@@ -31,7 +32,8 @@ class Favorites extends Component {
 Favorites.propTypes = {
   favorite: PropTypes.array,
   getFavorite: PropTypes.func,
-  setFavoriteAsync: PropTypes.func
+  setFavoriteAsync: PropTypes.func,
+  setCity: PropTypes.func
 };
 
 export default withPrivateRoute(Favorites);
