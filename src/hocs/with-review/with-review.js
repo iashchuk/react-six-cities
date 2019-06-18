@@ -35,7 +35,8 @@ const withReview = (Component) => {
       });
     }
 
-    _onSubmit() {
+    _onSubmit(evt) {
+      evt.preventDefault();
       const { rating, comment } = this.state;
       const { hotelId } = this.props;
       this.props.sendReviewAsync(hotelId, rating, comment);

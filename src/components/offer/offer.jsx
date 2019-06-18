@@ -26,7 +26,8 @@ class Offer extends Component {
       offer,
       comments,
       isAuthenticated,
-      setFavoriteAsync
+      setFavoriteAsync,
+      sendReviewAsync
     } = this.props;
 
     if (!offer) {
@@ -154,7 +155,9 @@ class Offer extends Component {
                 </div>
               </div>
               <ReviewsList comments={comments} />
-              {isAuthenticated && <ReviewForm />}
+              {isAuthenticated && (
+                <ReviewForm hotelId={id} sendReviewAsync={sendReviewAsync} />
+              )}
             </div>
           </div>
           <section className="property__map map map--offer">

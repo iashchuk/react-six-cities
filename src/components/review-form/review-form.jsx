@@ -1,34 +1,42 @@
 import React, { Fragment } from "react";
+import withReview from "../../hocs/with-review/with-review.js";
 
-const rating = [
-  { count: 5, title: `perfect` },
-  { count: 4, title: `good` },
-  { count: 3, title: `not bad` },
-  { count: 2, title: `badly` },
-  { count: 1, title: `terribly` }
-];
+const ratingCases = [`perfect`, `good`, `not bad`, `badly`, `terribly`];
 
-const ReviewForm = () => {
+const ReviewForm = ({
+  isDisabled,
+  comment,
+  setRating,
+  setComment,
+  onSubmit
+}) => {
   return (
-    <form className="reviews__form form" action="#" method="post">
+    <form
+      className="reviews__form form"
+      action="#"
+      method="post"
+      onSubmit={onSubmit}
+    >
       <label className="reviews__label form__label" htmlFor="review">
         Your review
       </label>
       <div className="reviews__rating-form form__rating">
-        {rating.map((item) => {
+        {ratingCases.map((item, index) => {
+          const count = ratingCases.length - index;
           return (
-            <Fragment key={item.title}>
+            <Fragment key={item}>
               <input
                 className="form__rating-input visually-hidden"
                 name="rating"
-                value={item.count}
-                id={`${item.count}-stars`}
+                value={count}
+                id={`${count}-stars`}
                 type="radio"
+                onChange={setRating}
               />
               <label
-                htmlFor={`${item.count}-stars`}
+                htmlFor={`${count}-stars`}
                 className="reviews__rating-label form__rating-label"
-                title={item.title}
+                title={item}
               >
                 <svg className="form__star-image" width="37" height="33">
                   <use xlinkHref="#icon-star" />
@@ -43,6 +51,8 @@ const ReviewForm = () => {
         id="review"
         name="review"
         placeholder="Tell how was your stay, what you like and what can be improved"
+        value={comment}
+        onChange={setComment}
       />
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
@@ -53,7 +63,7 @@ const ReviewForm = () => {
         <button
           className="reviews__submit form__submit button"
           type="submit"
-          disabled=""
+          disabled={isDisabled}
         >
           Submit
         </button>
@@ -62,4 +72,4 @@ const ReviewForm = () => {
   );
 };
 
-export default ReviewForm;
+export default withReview(ReviewForm);

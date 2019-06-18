@@ -2,6 +2,22 @@ import * as types from "./types.js";
 import { parseOffer } from "../../helpers/parse-offer.js";
 import { parseComments } from "../../helpers/parse-comments.js";
 import { modifyOffer } from "../../helpers/modify-offer.js";
+import { modifyComment } from "../../helpers/modify-comment.js";
+
+export const sendReviewAsync = (hotelId, rating, comment) => (
+    dispatch,
+    _getState,
+    api
+) => {
+  return api
+    .post(`/comments/${hotelId}`, { rating, comment })
+    .then((response) => {
+      if (response.data) {
+        dispatch(updateComments(response.data));
+      }
+    })
+    .catch(() => {});
+};
 
 export const loadOffer = (id, hotels) => {
   const offer = parseOffer(id, hotels);
@@ -25,5 +41,12 @@ export const updateOffer = (offer) => {
   return {
     type: types.UPDATE_OFFER,
     payload: modifyOffer(offer)
+  };
+};
+
+export const updateComments = (comment) => {
+  return {
+    type: types.UPDATE_COMMENTS,
+    payload: modifyComment(comment)
   };
 };
