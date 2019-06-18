@@ -30,7 +30,7 @@ export const offerReducer = (state = initialState, { type, payload }) => {
     case types.UPDATE_COMMENTS:
       return {
         ...state,
-        comments: [...state.comments, payload]
+        comments: payload
       };
 
     default:

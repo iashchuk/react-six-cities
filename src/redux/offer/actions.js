@@ -2,7 +2,6 @@ import * as types from "./types.js";
 import { parseOffer } from "../../helpers/parse-offer.js";
 import { parseComments } from "../../helpers/parse-comments.js";
 import { modifyOffer } from "../../helpers/modify-offer.js";
-import { modifyComment } from "../../helpers/modify-comment.js";
 
 export const sendReviewAsync = (hotelId, rating, comment) => (
     dispatch,
@@ -44,9 +43,10 @@ export const updateOffer = (offer) => {
   };
 };
 
-export const updateComments = (comment) => {
+export const updateComments = (data) => {
+  const comments = parseComments(data);
   return {
     type: types.UPDATE_COMMENTS,
-    payload: modifyComment(comment)
+    payload: comments
   };
 };
