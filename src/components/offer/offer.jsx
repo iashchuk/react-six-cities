@@ -193,10 +193,12 @@ Offer.propTypes = {
   offer: PropTypes.object,
   offers: PropTypes.array,
   comments: PropTypes.array,
+  sendFormError: PropTypes.string,
   match: PropTypes.object,
   getData: PropTypes.func,
   getOffer: PropTypes.func,
   getComments: PropTypes.func,
+  sendReviewAsync: PropTypes.func,
   setFavoriteAsync: PropTypes.func
 };
 

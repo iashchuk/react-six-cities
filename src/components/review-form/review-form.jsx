@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import PropTypes from "prop-types";
 import withReview from "../../hocs/with-review/with-review.js";
 
 const ratingCases = [`perfect`, `good`, `not bad`, `badly`, `terribly`];
@@ -82,6 +83,16 @@ const ReviewForm = ({
       </div>
     </form>
   );
+};
+ReviewForm.propTypes = {
+  isSubmitDisabled: PropTypes.bool,
+  isFormDisabled: PropTypes.bool,
+  comment: PropTypes.string,
+  rating: PropTypes.number,
+  sendFormError: PropTypes.string,
+  setRating: PropTypes.func,
+  setComment: PropTypes.func,
+  handleSubmitForm: PropTypes.func
 };
 
 export default withReview(ReviewForm);
