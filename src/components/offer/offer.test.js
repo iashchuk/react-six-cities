@@ -89,6 +89,7 @@ describe(`Offer`, () => {
     const getOffer = jest.fn();
     const getComments = jest.fn();
     const setFavoriteAsync = jest.fn();
+    const sendReviewAsync = jest.fn();
     Map.prototype.componentDidMount = jest.fn();
     const component = renderer
       .create(
@@ -102,6 +103,7 @@ describe(`Offer`, () => {
               getOffer={getOffer}
               getComments={getComments}
               setFavoriteAsync={setFavoriteAsync}
+              sendReviewAsync={sendReviewAsync}
             />
           </Router>
       )

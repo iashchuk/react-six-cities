@@ -7,6 +7,7 @@ import {
   getComments,
   setFavoriteAsync
 } from "../../redux/fetch/actions";
+import { sendReviewAsync } from "../../redux/offer/actions";
 import { getOfferNeighbourhoods } from "./selectors.js";
 
 export const OfferContainer = (props) => {
@@ -18,14 +19,16 @@ const mapStateToProps = ({ offer, hotels, auth }) => {
     isAuthenticated: auth.isAuthenticated,
     offer: offer.currentOffer,
     offers: getOfferNeighbourhoods([hotels.offers, offer.currentOffer]),
-    comments: offer.comments
+    comments: offer.comments,
+    sendFormError: offer.errors.sendForm
   };
 };
 
 const mapDispatchToProps = {
   getOffer,
   getComments,
-  setFavoriteAsync
+  setFavoriteAsync,
+  sendReviewAsync
 };
 
 export default connect(

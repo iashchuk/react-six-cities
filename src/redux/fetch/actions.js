@@ -16,34 +16,66 @@ export const setRedirect = (error) => {
 
 export const getData = () => (dispatch, _getState, api) => {
   dispatch(loadingStart());
-  return api.get(`/hotels`).then((response) => {
-    dispatch(loadHotels(response.data));
-    dispatch(loadingFinish());
-  });
+  return api
+    .get(`/hotels`)
+    .then((response) => {
+      dispatch(loadHotels(response.data));
+      dispatch(loadingFinish());
+    })
+    .catch((error) => {
+      const loadingError = (error.response && error.response.data) || {};
+      dispatch(
+          setLoadingError(`getData: ${loadingError.error || error.message}`)
+      );
+    });
 };
 
 export const getOffer = (id) => (dispatch, _getState, api) => {
   dispatch(loadingStart());
-  return api.get(`/hotels`).then((response) => {
-    dispatch(loadOffer(id, response.data));
-    dispatch(loadingFinish());
-  });
+  return api
+    .get(`/hotels`)
+    .then((response) => {
+      dispatch(loadOffer(id, response.data));
+      dispatch(loadingFinish());
+    })
+    .catch((error) => {
+      const loadingError = (error.response && error.response.data) || {};
+      dispatch(
+          setLoadingError(`getOffer: ${loadingError.error || error.message}`)
+      );
+    });
 };
 
 export const getComments = (id) => (dispatch, _getState, api) => {
   dispatch(loadingStart());
-  return api.get(`/comments/${id}`).then((response) => {
-    dispatch(loadComments(response.data));
-    dispatch(loadingFinish());
-  });
+  return api
+    .get(`/comments/${id}`)
+    .then((response) => {
+      dispatch(loadComments(response.data));
+      dispatch(loadingFinish());
+    })
+    .catch((error) => {
+      const loadingError = (error.response && error.response.data) || {};
+      dispatch(
+          setLoadingError(`getComments: ${loadingError.error || error.message}`)
+      );
+    });
 };
 
 export const getFavorite = () => (dispatch, _getState, api) => {
   dispatch(loadingStart());
-  return api.get(`/favorite`).then((response) => {
-    dispatch(loadFavorite(response.data));
-    dispatch(loadingFinish());
-  });
+  return api
+    .get(`/favorite`)
+    .then((response) => {
+      dispatch(loadFavorite(response.data));
+      dispatch(loadingFinish());
+    })
+    .catch((error) => {
+      const loadingError = (error.response && error.response.data) || {};
+      dispatch(
+          setLoadingError(`getFavorite: ${loadingError.error || error.message}`)
+      );
+    });
 };
 
 export const setFavoriteAsync = (hotelId, status) => (
@@ -73,5 +105,12 @@ const loadingStart = () => {
 const loadingFinish = () => {
   return {
     type: types.LOADING_FINISH
+  };
+};
+
+export const setLoadingError = (error) => {
+  return {
+    type: types.SET_LOADING_ERROR,
+    payload: error
   };
 };

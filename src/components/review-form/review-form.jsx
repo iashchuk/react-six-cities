@@ -1,103 +1,72 @@
-import React from "react";
+import React, { Fragment } from "react";
+import PropTypes from "prop-types";
+import withReview from "../../hocs/with-review/with-review.js";
 
-const ReviewForm = () => {
+const ratingCases = [`perfect`, `good`, `not bad`, `badly`, `terribly`];
+
+const ReviewForm = ({
+  isSubmitDisabled,
+  isFormDisabled,
+  comment,
+  rating,
+  sendFormError,
+  setRating,
+  setComment,
+  handleSubmitForm
+}) => {
   return (
-    <form className="reviews__form form" action="#" method="post">
+    <form
+      className="reviews__form form"
+      action="#"
+      method="post"
+      onSubmit={handleSubmitForm}
+    >
       <label className="reviews__label form__label" htmlFor="review">
         Your review
       </label>
       <div className="reviews__rating-form form__rating">
-        <input
-          className="form__rating-input visually-hidden"
-          name="rating"
-          value="5"
-          id="5-stars"
-          type="radio"
-        />
-        <label
-          htmlFor="5-stars"
-          className="reviews__rating-label form__rating-label"
-          title="perfect"
-        >
-          <svg className="form__star-image" width="37" height="33">
-            <use xlinkHref="#icon-star" />
-          </svg>
-        </label>
-
-        <input
-          className="form__rating-input visually-hidden"
-          name="rating"
-          value="4"
-          id="4-stars"
-          type="radio"
-        />
-        <label
-          htmlFor="4-stars"
-          className="reviews__rating-label form__rating-label"
-          title="good"
-        >
-          <svg className="form__star-image" width="37" height="33">
-            <use xlinkHref="#icon-star" />
-          </svg>
-        </label>
-
-        <input
-          className="form__rating-input visually-hidden"
-          name="rating"
-          value="3"
-          id="3-stars"
-          type="radio"
-        />
-        <label
-          htmlFor="3-stars"
-          className="reviews__rating-label form__rating-label"
-          title="not bad"
-        >
-          <svg className="form__star-image" width="37" height="33">
-            <use xlinkHref="#icon-star" />
-          </svg>
-        </label>
-
-        <input
-          className="form__rating-input visually-hidden"
-          name="rating"
-          value="2"
-          id="2-stars"
-          type="radio"
-        />
-        <label
-          htmlFor="2-stars"
-          className="reviews__rating-label form__rating-label"
-          title="badly"
-        >
-          <svg className="form__star-image" width="37" height="33">
-            <use xlinkHref="#icon-star" />
-          </svg>
-        </label>
-
-        <input
-          className="form__rating-input visually-hidden"
-          name="rating"
-          value="1"
-          id="1-star"
-          type="radio"
-        />
-        <label
-          htmlFor="1-star"
-          className="reviews__rating-label form__rating-label"
-          title="terribly"
-        >
-          <svg className="form__star-image" width="37" height="33">
-            <use xlinkHref="#icon-star" />
-          </svg>
-        </label>
+        {ratingCases.map((item, index) => {
+          const count = ratingCases.length - index;
+          return (
+            <Fragment key={item}>
+              <input
+                className="form__rating-input visually-hidden"
+                name="rating"
+                value={count}
+                id={`${count}-stars`}
+                type="radio"
+                onChange={setRating}
+                checked={count === Number(rating)}
+                disabled={isFormDisabled && !sendFormError}
+              />
+              <label
+                htmlFor={`${count}-stars`}
+                className="reviews__rating-label form__rating-label"
+                title={item}
+              >
+                <svg className="form__star-image" width="37" height="33">
+                  <use xlinkHref="#icon-star" />
+                </svg>
+              </label>
+            </Fragment>
+          );
+        })}
       </div>
       <textarea
         className="reviews__textarea form__textarea"
         id="review"
         name="review"
         placeholder="Tell how was your stay, what you like and what can be improved"
+        value={comment}
+        onChange={setComment}
+        disabled={isFormDisabled && !sendFormError}
       />
+      {sendFormError && (
+        <span className={`form__error error`}>
+          При отправке формы возникла ошибка: {sendFormError}. Пожалуйста,
+          попробуйте позже.
+        </span>
+      )}
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
           To submit review please make sure to set
@@ -107,7 +76,7 @@ const ReviewForm = () => {
         <button
           className="reviews__submit form__submit button"
           type="submit"
-          disabled=""
+          disabled={isSubmitDisabled}
         >
           Submit
         </button>
@@ -115,5 +84,15 @@ const ReviewForm = () => {
     </form>
   );
 };
+ReviewForm.propTypes = {
+  isSubmitDisabled: PropTypes.bool,
+  isFormDisabled: PropTypes.bool,
+  comment: PropTypes.string,
+  rating: PropTypes.number,
+  sendFormError: PropTypes.string,
+  setRating: PropTypes.func,
+  setComment: PropTypes.func,
+  handleSubmitForm: PropTypes.func
+};
 
-export default ReviewForm;
+export default withReview(ReviewForm);

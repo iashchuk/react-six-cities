@@ -2,7 +2,10 @@ import * as types from "./types";
 
 const initialState = {
   currentOffer: null,
-  comments: []
+  comments: [],
+  errors: {
+    sendForm: null
+  }
 };
 
 export const offerReducer = (state = initialState, { type, payload }) => {
@@ -25,6 +28,24 @@ export const offerReducer = (state = initialState, { type, payload }) => {
         currentOffer: {
           ...state.currentOffer,
           isFavorite: !state.currentOffer.isFavorite
+        }
+      };
+    case types.UPDATE_COMMENTS:
+      return {
+        ...state,
+        comments: payload,
+        errors: {
+          ...state.errors,
+          sendForm: null
+        }
+      };
+
+    case types.SET_REVIEW_FORM_ERROR:
+      return {
+        ...state,
+        errors: {
+          ...state.errors,
+          sendForm: payload
         }
       };
 

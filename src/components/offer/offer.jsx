@@ -26,7 +26,9 @@ class Offer extends Component {
       offer,
       comments,
       isAuthenticated,
-      setFavoriteAsync
+      sendFormError,
+      setFavoriteAsync,
+      sendReviewAsync
     } = this.props;
 
     if (!offer) {
@@ -154,7 +156,13 @@ class Offer extends Component {
                 </div>
               </div>
               <ReviewsList comments={comments} />
-              {isAuthenticated && <ReviewForm />}
+              {isAuthenticated && (
+                <ReviewForm
+                  hotelId={id}
+                  sendFormError={sendFormError}
+                  sendReviewAsync={sendReviewAsync}
+                />
+              )}
             </div>
           </div>
           <section className="property__map map map--offer">
@@ -185,10 +193,12 @@ Offer.propTypes = {
   offer: PropTypes.object,
   offers: PropTypes.array,
   comments: PropTypes.array,
+  sendFormError: PropTypes.string,
   match: PropTypes.object,
   getData: PropTypes.func,
   getOffer: PropTypes.func,
   getComments: PropTypes.func,
+  sendReviewAsync: PropTypes.func,
   setFavoriteAsync: PropTypes.func
 };
 
