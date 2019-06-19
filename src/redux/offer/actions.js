@@ -15,7 +15,10 @@ export const sendReviewAsync = (hotelId, rating, comment) => (
         dispatch(updateComments(response.data));
       }
     })
-    .catch(() => {});
+    .catch((error) => {
+      const formError = (error.response && error.response.data) || {};
+      dispatch(setReviewFormError(formError.error || error.message));
+    });
 };
 
 export const loadOffer = (id, hotels) => {
@@ -48,5 +51,12 @@ export const updateComments = (data) => {
   return {
     type: types.UPDATE_COMMENTS,
     payload: comments
+  };
+};
+
+export const setReviewFormError = (error) => {
+  return {
+    type: types.SET_REVIEW_FORM_ERROR,
+    payload: error
   };
 };

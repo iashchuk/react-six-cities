@@ -26,6 +26,7 @@ class Offer extends Component {
       offer,
       comments,
       isAuthenticated,
+      sendFormError,
       setFavoriteAsync,
       sendReviewAsync
     } = this.props;
@@ -156,7 +157,11 @@ class Offer extends Component {
               </div>
               <ReviewsList comments={comments} />
               {isAuthenticated && (
-                <ReviewForm hotelId={id} sendReviewAsync={sendReviewAsync} />
+                <ReviewForm
+                  hotelId={id}
+                  sendFormError={sendFormError}
+                  sendReviewAsync={sendReviewAsync}
+                />
               )}
             </div>
           </div>
