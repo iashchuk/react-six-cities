@@ -12,12 +12,16 @@ const withPrivateRoute = (Component) => {
         match: { url }
       } = this.props;
 
-      if (!isAuthenticated) {
-        return <Redirect to="/login" />;
+      if (url === PATH_SIGN_IN) {
+        if (!isAuthenticated) {
+          return <Component {...this.props} />;
+        } else {
+          return <Redirect to="/" />;
+        }
       }
 
-      if (isAuthenticated && url === PATH_SIGN_IN) {
-        return <Redirect to="/" />;
+      if (!isAuthenticated) {
+        return <Redirect to="/login" />;
       }
 
       return <Component {...this.props} />;
