@@ -6,7 +6,7 @@ import FavoritesEmpty from "../favorites-empty/favorites-empty.jsx";
 import withPrivateRoute from "../../hocs/with-private/with-private.js";
 class Favorites extends Component {
   componentDidMount() {
-    this.props.getFavorite();
+    this.props.getFavoriteAsync();
   }
 
   render() {
@@ -31,7 +31,7 @@ class Favorites extends Component {
 
 Favorites.propTypes = {
   favorite: PropTypes.array,
-  getFavorite: PropTypes.func,
+  getFavoriteAsync: PropTypes.func,
   setFavoriteAsync: PropTypes.func,
   setCity: PropTypes.func
 };

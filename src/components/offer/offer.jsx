@@ -8,15 +8,15 @@ import ReviewForm from "../review-form/review-form.jsx";
 
 class Offer extends Component {
   componentDidMount() {
-    const { match, getOffer, getComments } = this.props;
+    const { match, getOfferAsync, getCommentsAsync } = this.props;
     const id = match.params.id;
-    getOffer(id);
-    getComments(id);
+    getOfferAsync(id);
+    getCommentsAsync(id);
   }
 
   componentDidUpdate(prevProps) {
     if (this.props.match.params.id !== prevProps.match.params.id) {
-      this.props.getOffer(this.props.match.params.id);
+      this.props.getOfferAsync(this.props.match.params.id);
     }
   }
 
@@ -196,8 +196,8 @@ Offer.propTypes = {
   sendFormError: PropTypes.string,
   match: PropTypes.object,
   getData: PropTypes.func,
-  getOffer: PropTypes.func,
-  getComments: PropTypes.func,
+  getOfferAsync: PropTypes.func,
+  getCommentsAsync: PropTypes.func,
   sendReviewAsync: PropTypes.func,
   setFavoriteAsync: PropTypes.func
 };

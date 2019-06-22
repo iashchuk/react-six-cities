@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 
 import Layout from "../../components/layout/layout.jsx";
-import { getData } from "../../redux/fetch/actions";
+import { getDataAsync } from "../../redux/hotels/actions";
 import { checkLoginAsync } from "../../redux/auth/actions";
 
 export const LayoutContainer = (props) => {
@@ -20,7 +20,7 @@ const mapStateToProps = ({ auth, router, hotels }) => {
 
 const mapDispatchToProps = {
   checkLoginAsync,
-  getData
+  getDataAsync
 };
 
 export default connect(

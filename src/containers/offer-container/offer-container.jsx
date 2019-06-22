@@ -2,11 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 
 import Offer from "../../components/offer/offer.jsx";
-import {
-  getOffer,
-  getComments,
-  setFavoriteAsync
-} from "../../redux/fetch/actions";
+import { getOfferAsync, getCommentsAsync } from "../../redux/offer/actions";
+import { setFavoriteAsync } from "../../redux/hotels/actions";
 import { sendReviewAsync } from "../../redux/offer/actions";
 import { getOfferNeighbourhoods } from "./selectors.js";
 
@@ -25,8 +22,8 @@ const mapStateToProps = ({ offer, hotels, auth }) => {
 };
 
 const mapDispatchToProps = {
-  getOffer,
-  getComments,
+  getOfferAsync,
+  getCommentsAsync,
   setFavoriteAsync,
   sendReviewAsync
 };

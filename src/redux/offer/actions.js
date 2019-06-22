@@ -1,7 +1,44 @@
 import * as types from "./types.js";
+import {
+  loadingStart,
+  loadingFinish,
+  setLoadingError
+} from "../fetch/actions.js";
 import { parseOffer } from "../../helpers/parse-offer.js";
 import { parseComments } from "../../helpers/parse-comments.js";
 import { modifyOffer } from "../../helpers/modify-offer.js";
+
+export const getOfferAsync = (id) => (dispatch, _getState, api) => {
+  dispatch(loadingStart());
+  return api
+    .get(`/hotels`)
+    .then((response) => {
+      dispatch(loadOffer(id, response.data));
+      dispatch(loadingFinish());
+    })
+    .catch((error) => {
+      const loadingError = (error.response && error.response.data) || {};
+      dispatch(
+          setLoadingError(`getOffer: ${loadingError.error || error.message}`)
+      );
+    });
+};
+
+export const getCommentsAsync = (id) => (dispatch, _getState, api) => {
+  dispatch(loadingStart());
+  return api
+    .get(`/comments/${id}`)
+    .then((response) => {
+      dispatch(loadComments(response.data));
+      dispatch(loadingFinish());
+    })
+    .catch((error) => {
+      const loadingError = (error.response && error.response.data) || {};
+      dispatch(
+          setLoadingError(`getComments: ${loadingError.error || error.message}`)
+      );
+    });
+};
 
 export const sendReviewAsync = (hotelId, rating, comment) => (
     dispatch,
