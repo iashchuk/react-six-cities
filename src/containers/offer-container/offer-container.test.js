@@ -6,8 +6,8 @@ import { OfferContainer } from "./offer-container.jsx";
 configure({ adapter: new Adapter() });
 
 const isAuthenticated = true;
-const getOffer = jest.fn();
-const getComments = jest.fn();
+const getOfferAsync = jest.fn();
+const getCommentsAsync = jest.fn();
 const setFavoriteAsync = jest.fn();
 const sendReviewAsync = jest.fn();
 
@@ -16,8 +16,8 @@ describe(`OfferContainer`, () => {
     const component = shallow(
         <OfferContainer
           isAuthenticated={isAuthenticated}
-          getOffer={getOffer}
-          getComments={getComments}
+          getOfferAsync={getOfferAsync}
+          getCommentsAsync={getCommentsAsync}
           setFavoriteAsync={setFavoriteAsync}
           sendReviewAsync={sendReviewAsync}
         />

@@ -6,7 +6,7 @@ import { LayoutContainer } from "./layout-container.jsx";
 configure({ adapter: new Adapter() });
 
 const isAuthenticated = true;
-const getData = jest.fn();
+const getDataAsync = jest.fn();
 const checkLoginAsync = jest.fn();
 
 describe(`LayoutContainer`, () => {
@@ -14,7 +14,7 @@ describe(`LayoutContainer`, () => {
     const component = shallow(
         <LayoutContainer
           isAuthenticated={isAuthenticated}
-          getData={getData}
+          getDataAsync={getDataAsync}
           checkLoginAsync={checkLoginAsync}
         />
     );

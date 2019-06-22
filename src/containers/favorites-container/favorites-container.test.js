@@ -11,7 +11,7 @@ const match = {
 };
 
 const setCity = jest.fn();
-const getFavorite = jest.fn();
+const getFavoriteAsync = jest.fn();
 const setFavoriteAsync = jest.fn();
 
 describe(`FavoritesContainer`, () => {
@@ -21,7 +21,7 @@ describe(`FavoritesContainer`, () => {
           isAuthenticated={isAuthenticated}
           match={match}
           setCity={setCity}
-          getFavorite={getFavorite}
+          getFavoriteAsync={getFavoriteAsync}
           setFavoriteAsync={setFavoriteAsync}
         />
     );

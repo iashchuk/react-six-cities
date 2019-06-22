@@ -29,7 +29,7 @@ const match = {
 
 describe(`Favorites`, () => {
   it(`renders correctly`, () => {
-    const getFavorite = jest.fn();
+    const getFavoriteAsync = jest.fn();
     const setFavoriteAsync = jest.fn();
     const setCity = jest.fn();
 
@@ -40,7 +40,7 @@ describe(`Favorites`, () => {
               isAuthenticated={isAuthenticated}
               match={match}
               favorite={favorite}
-              getFavorite={getFavorite}
+              getFavoriteAsync={getFavoriteAsync}
               setFavoriteAsync={setFavoriteAsync}
               setCity={setCity}
             />

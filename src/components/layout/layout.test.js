@@ -30,7 +30,7 @@ const location = {
 };
 
 const checkLoginAsync = jest.fn();
-const getData = jest.fn();
+const getDataAsync = jest.fn();
 
 describe(`Layout`, () => {
   it(`renders correctly`, () => {
@@ -42,7 +42,7 @@ describe(`Layout`, () => {
               location={location}
               user={user}
               offers={offers}
-              getData={getData}
+              getDataAsync={getDataAsync}
               checkLoginAsync={checkLoginAsync}
             />
           </Router>
