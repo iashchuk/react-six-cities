@@ -5,6 +5,7 @@ import OffersList from "../offers-list/offers-list.jsx";
 import Map from "../map/map.jsx";
 import ReviewsList from "../reviews-list/reviews-list.jsx";
 import ReviewForm from "../review-form/review-form.jsx";
+import withActiveItem from "../../hocs/with-active-item/with-active-item.js";
 
 class Offer extends Component {
   componentDidMount() {
@@ -25,7 +26,9 @@ class Offer extends Component {
       offers,
       offer,
       comments,
+      activeItem,
       isAuthenticated,
+      setActiveItem,
       sendFormError,
       setFavoriteAsync,
       sendReviewAsync
@@ -167,7 +170,7 @@ class Offer extends Component {
           </div>
           <section className="property__map map map--offer">
             <Map
-              activePin={id}
+              activeItem={id}
               cards={offers.concat([offer])}
               city={[cityLocation.latitude, cityLocation.longitude]}
             />
@@ -178,7 +181,12 @@ class Offer extends Component {
             <h2 className="near-places__title">
               Other places in the neighbourhood
             </h2>
-            <OffersList cards={offers} setFavoriteAsync={setFavoriteAsync} />
+            <OffersList
+              cards={offers}
+              activeItem={activeItem}
+              setActiveItem={setActiveItem}
+              setFavoriteAsync={setFavoriteAsync}
+            />
           </section>
         </div>
       </main>
@@ -188,6 +196,7 @@ class Offer extends Component {
 
 Offer.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
+  activeItem: PropTypes.number,
   email: PropTypes.string,
   avatarUrl: PropTypes.string,
   offer: PropTypes.object,
@@ -197,9 +206,10 @@ Offer.propTypes = {
   match: PropTypes.object,
   getData: PropTypes.func,
   getOfferAsync: PropTypes.func,
+  setActiveItem: PropTypes.func,
   getCommentsAsync: PropTypes.func,
   sendReviewAsync: PropTypes.func,
   setFavoriteAsync: PropTypes.func
 };
 
-export default Offer;
+export default withActiveItem(Offer);
