@@ -43,7 +43,7 @@ export const hotelsReducer = (state = initialState, { type, payload }) => {
   }
 };
 
-const updateFavoritesOffers = (offer, offers) => {
+export const updateFavoritesOffers = (offer, offers) => {
   const cityOffers = offers.get(offer.city) || [];
   const offerIndex = cityOffers.findIndex((item) => item.id === offer.id);
   return offers.set(offer.city, [
