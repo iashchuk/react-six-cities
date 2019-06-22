@@ -10,12 +10,8 @@ export const SignInContainer = (props) => {
 };
 
 const mapStateToProps = ({ auth }) => {
-  const { user } = auth;
   return {
     isAuthenticated: auth.isAuthenticated,
-    isAuthorizationRequired: auth.isAuthorizationRequired,
-    avatarUrl: user.avatarUrl,
-    email: user.email,
     errors: auth.errors
   };
 };

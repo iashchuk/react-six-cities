@@ -86,8 +86,8 @@ const match = {
 
 describe(`Offer`, () => {
   it(`renders correctly`, () => {
-    const getOffer = jest.fn();
-    const getComments = jest.fn();
+    const getOfferAsync = jest.fn();
+    const getCommentsAsync = jest.fn();
     const setFavoriteAsync = jest.fn();
     const sendReviewAsync = jest.fn();
     Map.prototype.componentDidMount = jest.fn();
@@ -100,8 +100,8 @@ describe(`Offer`, () => {
               offer={offer}
               offers={offers}
               comments={comments}
-              getOffer={getOffer}
-              getComments={getComments}
+              getOfferAsync={getOfferAsync}
+              getCommentsAsync={getCommentsAsync}
               setFavoriteAsync={setFavoriteAsync}
               sendReviewAsync={sendReviewAsync}
             />

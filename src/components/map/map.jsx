@@ -43,9 +43,8 @@ class Map extends Component {
   }
 
   _addMarkers() {
-    const { cards, activeItem, activePin } = this.props;
-    const getIcon = (id) =>
-      id === (activeItem || activePin) ? this._activeIcon : this._icon;
+    const { cards, activeItem } = this.props;
+    const getIcon = (id) => (id === activeItem ? this._activeIcon : this._icon);
     this._layerGroup = leaflet.layerGroup().addTo(this._map);
 
     cards.map(({ id, location: { latitude, longitude }, title }) =>
@@ -88,7 +87,6 @@ Map.propTypes = {
       })
   ),
   city: PropTypes.arrayOf(PropTypes.number),
-  activePin: PropTypes.number,
   activeItem: PropTypes.number
 };
 

@@ -88,7 +88,7 @@ ReviewForm.propTypes = {
   isSubmitDisabled: PropTypes.bool,
   isFormDisabled: PropTypes.bool,
   comment: PropTypes.string,
-  rating: PropTypes.number,
+  rating: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   sendFormError: PropTypes.string,
   setRating: PropTypes.func,
   setComment: PropTypes.func,

@@ -1,8 +1,75 @@
 import * as types from "./types.js";
+import {
+  loadingStart,
+  loadingFinish,
+  setLoadingError
+} from "../fetch/actions.js";
+import { updateOffer } from "../offer/actions.js";
+import { history } from "../index";
 import { parseLocations } from "../../helpers/parse-locations.js";
 import { parseOffers } from "../../helpers/parse-offers.js";
 import { parseCities } from "../../helpers/parse-cities.js";
 import { modifyOffer } from "../../helpers/modify-offer.js";
+
+const FORBIDDEN_REQUEST_STATUS = 403;
+
+export const setRedirect = (error) => {
+  if (error.response) {
+    if (error.response.status === FORBIDDEN_REQUEST_STATUS) {
+      history.push(`/login`);
+    }
+  }
+};
+
+export const getDataAsync = () => (dispatch, _getState, api) => {
+  dispatch(loadingStart());
+  return api
+    .get(`/hotels`)
+    .then((response) => {
+      dispatch(loadHotels(response.data));
+      dispatch(loadingFinish());
+    })
+    .catch((error) => {
+      const loadingError = (error.response && error.response.data) || {};
+      dispatch(
+          setLoadingError(`getData: ${loadingError.error || error.message}`)
+      );
+    });
+};
+
+export const getFavoriteAsync = () => (dispatch, _getState, api) => {
+  dispatch(loadingStart());
+  return api
+    .get(`/favorite`)
+    .then((response) => {
+      dispatch(loadFavorite(response.data));
+      dispatch(loadingFinish());
+    })
+    .catch((error) => {
+      const loadingError = (error.response && error.response.data) || {};
+      dispatch(
+          setLoadingError(`getFavorite: ${loadingError.error || error.message}`)
+      );
+    });
+};
+
+export const setFavoriteAsync = (hotelId, status) => (
+    dispatch,
+    _getState,
+    api
+) => {
+  return api
+    .post(`/favorite/${hotelId}/${status}`)
+    .then((response) => {
+      if (response.data) {
+        dispatch(updateOffers(response.data));
+        dispatch(updateOffer(response.data));
+      }
+    })
+    .catch((error) => {
+      setRedirect(error);
+    });
+};
 
 export const loadHotels = (hotels) => {
   const cities = parseCities(hotels);

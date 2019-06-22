@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import withPrivateRoute from "../../hocs/with-private/with-private.js";
+
 import FavoritesFull from "../favorites-full/favorites-full.jsx";
 import FavoritesEmpty from "../favorites-empty/favorites-empty.jsx";
-
+import withPrivateRoute from "../../hocs/with-private/with-private.js";
 class Favorites extends Component {
   componentDidMount() {
-    this.props.getFavorite();
+    this.props.getFavoriteAsync();
   }
 
   render() {
@@ -31,7 +31,7 @@ class Favorites extends Component {
 
 Favorites.propTypes = {
   favorite: PropTypes.array,
-  getFavorite: PropTypes.func,
+  getFavoriteAsync: PropTypes.func,
   setFavoriteAsync: PropTypes.func,
   setCity: PropTypes.func
 };

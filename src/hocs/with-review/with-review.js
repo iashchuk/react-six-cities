@@ -38,16 +38,20 @@ const withReview = (Component) => {
       });
     }
 
-    _handleSubmitForm(evt) {
-      evt.preventDefault();
-      const { rating, comment } = this.state;
-      const { hotelId } = this.props;
-      this.props.sendReviewAsync(hotelId, rating, comment);
+    _resetReview() {
       this.setState({
         rating: 0,
         comment: ``,
         isFormDisabled: true
       });
+    }
+
+    _handleSubmitForm(evt) {
+      evt.preventDefault();
+      const { rating, comment } = this.state;
+      const { hotelId } = this.props;
+      this.props.sendReviewAsync(hotelId, rating, comment);
+      this._resetReview();
     }
 
     render() {

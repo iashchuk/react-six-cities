@@ -8,7 +8,7 @@ import SvgSprite from "../svg-sprite/svg-sprite.jsx";
 class Layout extends Component {
   componentDidMount() {
     this.props.checkLoginAsync();
-    this.props.getData();
+    this.props.getDataAsync();
   }
 
   render() {
@@ -36,7 +36,7 @@ Layout.propTypes = {
   location: PropTypes.object,
   user: PropTypes.object,
   isAuthenticated: PropTypes.bool,
-  getData: PropTypes.func,
+  getDataAsync: PropTypes.func,
   checkLoginAsync: PropTypes.func
 };
 

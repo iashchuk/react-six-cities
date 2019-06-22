@@ -6,6 +6,12 @@ import SignIn from "./sign-in.jsx";
 const errors = {
   setAuth: null
 };
+
+const isAuthenticated = true;
+const match = {
+  url: `/login`
+};
+
 const setCity = jest.fn();
 const loginAsync = jest.fn();
 
@@ -14,7 +20,13 @@ describe(`SignIn`, () => {
     const component = renderer
       .create(
           <Router>
-            <SignIn errors={errors} setCity={setCity} loginAsync={loginAsync} />
+            <SignIn
+              isAuthenticated={isAuthenticated}
+              match={match}
+              errors={errors}
+              setCity={setCity}
+              loginAsync={loginAsync}
+            />
           </Router>
       )
       .toJSON();
