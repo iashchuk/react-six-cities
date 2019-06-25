@@ -298,7 +298,7 @@ exports[`Offer renders correctly 1`] = `
                   className="reviews__time"
                   dateTime="2019-04-24"
                 >
-                  June 3rd
+                  June 2019
                 </time>
               </div>
             </li>

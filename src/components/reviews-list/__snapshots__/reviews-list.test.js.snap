@@ -72,7 +72,7 @@ exports[`ReviewsList renders correctly 1`] = `
           className="reviews__time"
           dateTime="2019-04-24"
         >
-          December 17th
+          December 1995
         </time>
       </div>
     </li>

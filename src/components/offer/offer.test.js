@@ -77,6 +77,7 @@ const comments = [
 ];
 
 const isAuthenticated = true;
+const isFormSending = false;
 
 const match = {
   params: {
@@ -96,6 +97,7 @@ describe(`Offer`, () => {
           <Router>
             <Offer
               isAuthenticated={isAuthenticated}
+              isFormSending={isFormSending}
               match={match}
               offer={offer}
               offers={offers}

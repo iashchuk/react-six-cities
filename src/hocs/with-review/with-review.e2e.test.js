@@ -22,10 +22,3 @@ it(`should set comment`, () => {
   component.props().setComment({ target: { value: `Some text` }});
   expect(component.props().comment).toEqual(`Some text`);
 });
-
-it(`should set disabled form`, () => {
-  const component = shallow(<WithReview sendReviewAsync={sendReviewAsync} />);
-  expect(component.state().isFormDisabled).toEqual(false);
-  component.instance()._resetReview();
-  expect(component.state().isFormDisabled).toEqual(true);
-});
