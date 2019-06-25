@@ -1,7 +1,7 @@
 import { createSelector } from "reselect";
 
 export const getFavoritesOffers = createSelector(
-    (f) => f,
+    (cb) => cb,
     ([offers]) => {
       return Array.from(offers).map(([city, cards]) => {
         return {
