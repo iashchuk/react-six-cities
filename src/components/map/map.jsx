@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import leaflet from "leaflet";
 
-class Map extends Component {
+class Map extends PureComponent {
   constructor(props) {
     super(props);
     this.settings = {

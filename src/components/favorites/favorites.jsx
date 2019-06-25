@@ -1,10 +1,10 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 
 import FavoritesFull from "../favorites-full/favorites-full.jsx";
 import FavoritesEmpty from "../favorites-empty/favorites-empty.jsx";
 import withPrivateRoute from "../../hocs/with-private/with-private.js";
-class Favorites extends Component {
+class Favorites extends PureComponent {
   componentDidMount() {
     this.props.getFavoriteAsync();
   }

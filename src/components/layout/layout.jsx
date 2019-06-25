@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import cn from "classnames";
 import Header from "../header/header.jsx";
 import Footer from "../footer/footer.jsx";
 import SvgSprite from "../svg-sprite/svg-sprite.jsx";
 
-class Layout extends Component {
+class Layout extends PureComponent {
   componentDidMount() {
     this.props.checkLoginAsync();
     this.props.getDataAsync();

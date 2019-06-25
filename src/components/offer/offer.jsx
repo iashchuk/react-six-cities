@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import cn from "classnames";
 import OffersList from "../offers-list/offers-list.jsx";
@@ -7,7 +7,7 @@ import ReviewsList from "../reviews-list/reviews-list.jsx";
 import ReviewForm from "../review-form/review-form.jsx";
 import withActiveItem from "../../hocs/with-active-item/with-active-item.js";
 
-class Offer extends Component {
+class Offer extends PureComponent {
   componentDidMount() {
     const { match, getOfferAsync, getCommentsAsync } = this.props;
     const id = match.params.id;
