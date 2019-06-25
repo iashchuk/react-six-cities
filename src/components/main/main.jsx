@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
 import TabsList from "../tabs-list/tabs-list.jsx";
@@ -12,71 +12,67 @@ import withSortOffers from "../../hocs/with-sort-offers/with-sort-offers.js";
 
 import { compose } from "../../helpers/compose.js";
 
-class Main extends Component {
-  render() {
-    const {
-      isSortMenuOpen,
-      sortType,
-      setSortType,
-      toggleSortMenu,
-      activeItem,
-      city,
-      cityCoords,
-      cities,
-      offers,
-      setCity,
-      setFavoriteAsync,
-      sortOffers,
-      setActiveItem
-    } = this.props;
+const Main = ({
+  isSortMenuOpen,
+  sortType,
+  setSortType,
+  toggleSortMenu,
+  activeItem,
+  city,
+  cityCoords,
+  cities,
+  offers,
+  setCity,
+  setFavoriteAsync,
+  sortOffers,
+  setActiveItem
+}) => {
+  const sortedOffers = sortOffers(offers, sortType);
 
-    const sortedOffers = sortOffers(offers, sortType);
-
-    return (
-      <main className="page__main page__main--index">
-        <h1 className="visually-hidden">Cities</h1>
-        <TabsList tabs={cities} city={city} setCity={setCity} />
-        {sortedOffers.length ? (
-          <div className="cities__places-wrapper">
-            <div className="cities__places-container container">
-              <section className="cities__places places">
-                <h2 className="visually-hidden">Places</h2>
-                <b className="places__found">{`${
-                  sortedOffers.length
-                } places to stay in ${city}`}</b>
-                <Form
-                  isSortMenuOpen={isSortMenuOpen}
-                  sortType={sortType}
-                  setSortType={setSortType}
-                  toggleSortMenu={toggleSortMenu}
-                />
-                <OffersList
-                  key={sortType}
+  return (
+    <main className="page__main page__main--index">
+      <h1 className="visually-hidden">Cities</h1>
+      <TabsList tabs={cities} city={city} setCity={setCity} />
+      {sortedOffers.length ? (
+        <div className="cities__places-wrapper">
+          <div className="cities__places-container container">
+            <section className="cities__places places">
+              <h2 className="visually-hidden">Places</h2>
+              <b className="places__found">{`${
+                sortedOffers.length
+              } places to stay in ${city}`}</b>
+              <Form
+                isSortMenuOpen={isSortMenuOpen}
+                sortType={sortType}
+                setSortType={setSortType}
+                toggleSortMenu={toggleSortMenu}
+              />
+              <OffersList
+                key={sortType}
+                activeItem={activeItem}
+                cards={sortedOffers}
+                city={city}
+                setActiveItem={setActiveItem}
+                setFavoriteAsync={setFavoriteAsync}
+              />
+            </section>
+            <div className="cities__right-section">
+              <section className="cities__map map map--main">
+                <Map
                   activeItem={activeItem}
-                  cards={sortedOffers}
-                  city={city}
-                  setActiveItem={setActiveItem}
-                  setFavoriteAsync={setFavoriteAsync}
+                  cards={offers}
+                  city={[cityCoords.latitude, cityCoords.longitude]}
                 />
               </section>
-              <div className="cities__right-section">
-                <section className="cities__map map map--main">
-                  <Map
-                    activeItem={activeItem}
-                    cards={offers}
-                    city={[cityCoords.latitude, cityCoords.longitude]}
-                  />
-                </section>
-              </div>
             </div>
           </div>
-        ) : (
-          <MainEmpty city={city} />
-        )}
-      </main>
-    );
-  }
-}
+        </div>
+      ) : (
+        <MainEmpty city={city} />
+      )}
+    </main>
+  );
+};
 
 Main.propTypes = {
   offers: PropTypes.arrayOf(

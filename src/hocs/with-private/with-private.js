@@ -1,32 +1,25 @@
-import React, { PureComponent } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { Redirect } from "react-router-dom";
 
 const PATH_SIGN_IN = `/login`;
 
 const withPrivateRoute = (Component) => {
-  class WithPrivate extends PureComponent {
-    render() {
-      const {
-        isAuthenticated,
-        match: { url }
-      } = this.props;
-
-      if (url === PATH_SIGN_IN) {
-        if (!isAuthenticated) {
-          return <Component {...this.props} />;
-        } else {
-          return <Redirect to="/" />;
-        }
-      }
-
+  const WithPrivate = ({ isAuthenticated, match: { url }, ...props }) => {
+    if (url === PATH_SIGN_IN) {
       if (!isAuthenticated) {
-        return <Redirect to="/login" />;
+        return <Component {...props} />;
+      } else {
+        return <Redirect to="/" />;
       }
-
-      return <Component {...this.props} />;
     }
-  }
+
+    if (!isAuthenticated) {
+      return <Redirect to="/login" />;
+    }
+
+    return <Component {...props} />;
+  };
 
   WithPrivate.propTypes = {
     isAuthenticated: PropTypes.bool.isRequired,
