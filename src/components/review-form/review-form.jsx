@@ -6,7 +6,7 @@ const ratingCases = [`perfect`, `good`, `not bad`, `badly`, `terribly`];
 
 const ReviewForm = ({
   isSubmitDisabled,
-  isFormDisabled,
+  isFormSending,
   comment,
   rating,
   sendFormError,
@@ -37,7 +37,7 @@ const ReviewForm = ({
                 type="radio"
                 onChange={setRating}
                 checked={count === Number(rating)}
-                disabled={isFormDisabled && !sendFormError}
+                disabled={isFormSending}
               />
               <label
                 htmlFor={`${count}-stars`}
@@ -59,19 +59,19 @@ const ReviewForm = ({
         placeholder="Tell how was your stay, what you like and what can be improved"
         value={comment}
         onChange={setComment}
-        disabled={isFormDisabled && !sendFormError}
+        disabled={isFormSending}
       />
       {sendFormError && (
         <span className={`form__error error`}>
-          При отправке формы возникла ошибка: {sendFormError}. Пожалуйста,
-          попробуйте позже.
+          При отправке формы возникла ошибка: {sendFormError}. Пожалуйста, попробуйте
+          позже.
         </span>
       )}
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
           To submit review please make sure to set
-          <span className="reviews__star">rating</span> and describe your stay
-          with at least <b className="reviews__text-amount">50 characters</b>.
+          <span className="reviews__star">rating</span> and describe your stay with at
+          least <b className="reviews__text-amount">50 characters</b>.
         </p>
         <button
           className="reviews__submit form__submit button"
@@ -86,7 +86,7 @@ const ReviewForm = ({
 };
 ReviewForm.propTypes = {
   isSubmitDisabled: PropTypes.bool,
-  isFormDisabled: PropTypes.bool,
+  isFormSending: PropTypes.bool,
   comment: PropTypes.string,
   rating: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   sendFormError: PropTypes.string,

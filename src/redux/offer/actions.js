@@ -1,9 +1,5 @@
 import * as types from "./types.js";
-import {
-  loadingStart,
-  loadingFinish,
-  setLoadingError
-} from "../fetch/actions.js";
+import { loadingStart, loadingFinish, setLoadingError } from "../fetch/actions.js";
 import { parseOffer } from "../../helpers/parse-offer.js";
 import { parseComments } from "../../helpers/parse-comments.js";
 import { modifyOffer } from "../../helpers/modify-offer.js";
@@ -18,9 +14,7 @@ export const getOfferAsync = (id) => (dispatch, _getState, api) => {
     })
     .catch((error) => {
       const loadingError = (error.response && error.response.data) || {};
-      dispatch(
-          setLoadingError(`getOffer: ${loadingError.error || error.message}`)
-      );
+      dispatch(setLoadingError(`getOffer: ${loadingError.error || error.message}`));
     });
 };
 
@@ -34,9 +28,7 @@ export const getCommentsAsync = (id) => (dispatch, _getState, api) => {
     })
     .catch((error) => {
       const loadingError = (error.response && error.response.data) || {};
-      dispatch(
-          setLoadingError(`getComments: ${loadingError.error || error.message}`)
-      );
+      dispatch(setLoadingError(`getComments: ${loadingError.error || error.message}`));
     });
 };
 
@@ -45,11 +37,13 @@ export const sendReviewAsync = (hotelId, rating, comment) => (
     _getState,
     api
 ) => {
+  dispatch(setStartReviewSending());
   return api
     .post(`/comments/${hotelId}`, { rating, comment })
     .then((response) => {
       if (response.data) {
         dispatch(updateComments(response.data));
+        dispatch(setFinishReviewSending());
       }
     })
     .catch((error) => {
@@ -95,5 +89,17 @@ export const setReviewFormError = (error) => {
   return {
     type: types.SET_REVIEW_FORM_ERROR,
     payload: error
+  };
+};
+
+export const setStartReviewSending = () => {
+  return {
+    type: types.SET_START_REVIEW_SENDING
+  };
+};
+
+export const setFinishReviewSending = () => {
+  return {
+    type: types.SET_FINISH_REVIEW_SENDING
   };
 };

@@ -27,7 +27,7 @@ const Review = ({ user, rating, comment, date }) => {
         </div>
         <p className="reviews__text">{comment}</p>
         <time className="reviews__time" dateTime="2019-04-24">
-          {moment(new Date(date)).format(`MMMM Do`)}
+          {moment(new Date(date)).format(`MMMM YYYY`)}
         </time>
       </div>
     </li>

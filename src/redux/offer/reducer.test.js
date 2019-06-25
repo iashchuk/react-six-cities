@@ -6,6 +6,7 @@ const initialState = {
     isFavorite: false
   },
   comments: [],
+  isFormSending: false,
   errors: {
     sendForm: null
   }
@@ -88,10 +89,7 @@ describe(`LOAD_COMMENTS action`, () => {
 
 describe(`UPDATE_OFFER action`, () => {
   it(`should load offer`, () => {
-    const state = offerReducer(
-        { ...initialState },
-        { type: types.UPDATE_OFFER }
-    );
+    const state = offerReducer({ ...initialState }, { type: types.UPDATE_OFFER });
     expect(state).toEqual({
       ...initialState,
       currentOffer: {
@@ -131,6 +129,32 @@ describe(`SET_REVIEW_FORM_ERROR: action`, () => {
         ...state.errors,
         sendForm: sendFormError
       }
+    });
+  });
+});
+
+describe(`SET_START_REVIEW_SENDING: action`, () => {
+  it(`should set start send review`, () => {
+    const state = offerReducer(
+        { ...initialState },
+        { type: types.SET_START_REVIEW_SENDING }
+    );
+    expect(state).toEqual({
+      ...initialState,
+      isFormSending: true
+    });
+  });
+});
+
+describe(`SET_FINISH_REVIEW_SENDING: action`, () => {
+  it(`should set finish send review `, () => {
+    const state = offerReducer(
+        { ...initialState, isFormSending: true },
+        { type: types.SET_FINISH_REVIEW_SENDING }
+    );
+    expect(state).toEqual({
+      ...initialState,
+      isFormSending: false
     });
   });
 });

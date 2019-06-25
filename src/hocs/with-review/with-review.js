@@ -13,8 +13,7 @@ const withReview = (Component) => {
 
       this.state = {
         rating: 0,
-        comment: ``,
-        isFormDisabled: false
+        comment: ``
       };
 
       this._setRating = this._setRating.bind(this);
@@ -41,8 +40,7 @@ const withReview = (Component) => {
     _resetReview() {
       this.setState({
         rating: 0,
-        comment: ``,
-        isFormDisabled: true
+        comment: ``
       });
     }
 
@@ -55,12 +53,11 @@ const withReview = (Component) => {
     }
 
     render() {
-      const { comment, rating, isFormDisabled } = this.state;
+      const { comment, rating } = this.state;
       const isSubmitDisabled = !rating || comment.length < commentLength.MIN;
       return (
         <Component
           {...this.props}
-          isFormDisabled={isFormDisabled}
           isSubmitDisabled={isSubmitDisabled}
           rating={rating}
           comment={comment}

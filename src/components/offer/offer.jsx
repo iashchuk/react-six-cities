@@ -27,6 +27,7 @@ class Offer extends Component {
       offer,
       comments,
       activeItem,
+      isFormSending,
       isAuthenticated,
       setActiveItem,
       sendFormError,
@@ -63,11 +64,7 @@ class Offer extends Component {
               {images.map((item, index) => {
                 return (
                   <div key={index} className="property__image-wrapper">
-                    <img
-                      className="property__image"
-                      src={item}
-                      alt="Photo studio"
-                    />
+                    <img className="property__image" src={item} alt="Photo studio" />
                   </div>
                 );
               })}
@@ -87,15 +84,9 @@ class Offer extends Component {
                     [`property__bookmark-button--active`]: isFavorite
                   })}
                   type="button"
-                  onClick={() =>
-                    setFavoriteAsync(this.props.match.params.id, 1)
-                  }
+                  onClick={() => setFavoriteAsync(this.props.match.params.id, 1)}
                 >
-                  <svg
-                    className="property__bookmark-icon"
-                    width="31"
-                    height="33"
-                  >
+                  <svg className="property__bookmark-icon" width="31" height="33">
                     <use xlinkHref="#icon-bookmark" />
                   </svg>
                   <span className="visually-hidden">To bookmarks</span>
@@ -106,14 +97,10 @@ class Offer extends Component {
                   <span style={{ width: `${(rating / 5) * 100}%` }} />
                   <span className="visually-hidden">Rating</span>
                 </div>
-                <span className="property__rating-value rating__value">
-                  {rating}
-                </span>
+                <span className="property__rating-value rating__value">{rating}</span>
               </div>
               <ul className="property__features">
-                <li className="property__feature property__feature--entire">
-                  {type}
-                </li>
+                <li className="property__feature property__feature--entire">{type}</li>
                 <li className="property__feature property__feature--bedrooms">
                   {bedrooms} Bedrooms
                 </li>
@@ -150,9 +137,7 @@ class Offer extends Component {
                     />
                   </div>
                   <span className="property__user-name">{host.name}</span>
-                  {host.isPro && (
-                    <span className="property__user-status">Pro</span>
-                  )}
+                  {host.isPro && <span className="property__user-status">Pro</span>}
                 </div>
                 <div className="property__description">
                   <p className="property__text">{description}</p>
@@ -162,6 +147,7 @@ class Offer extends Component {
               {isAuthenticated && (
                 <ReviewForm
                   hotelId={id}
+                  isFormSending={isFormSending}
                   sendFormError={sendFormError}
                   sendReviewAsync={sendReviewAsync}
                 />
@@ -178,9 +164,7 @@ class Offer extends Component {
         </section>
         <div className="container">
           <section className="near-places places">
-            <h2 className="near-places__title">
-              Other places in the neighbourhood
-            </h2>
+            <h2 className="near-places__title">Other places in the neighbourhood</h2>
             <OffersList
               cards={offers}
               activeItem={activeItem}
@@ -196,6 +180,7 @@ class Offer extends Component {
 
 Offer.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
+  isFormSending: PropTypes.bool.isRequired,
   activeItem: PropTypes.number,
   email: PropTypes.string,
   avatarUrl: PropTypes.string,

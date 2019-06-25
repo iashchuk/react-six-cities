@@ -14,6 +14,7 @@ export const OfferContainer = (props) => {
 const mapStateToProps = ({ offer, hotels, auth }) => {
   return {
     isAuthenticated: auth.isAuthenticated,
+    isFormSending: offer.isFormSending,
     offer: offer.currentOffer,
     offers: getOfferNeighbourhoods([hotels.offers, offer.currentOffer]),
     comments: offer.comments,

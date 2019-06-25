@@ -3,6 +3,7 @@ import * as types from "./types";
 const initialState = {
   currentOffer: null,
   comments: [],
+  isFormSending: false,
   errors: {
     sendForm: null
   }
@@ -45,8 +46,21 @@ export const offerReducer = (state = initialState, { type, payload }) => {
         ...state,
         errors: {
           ...state.errors,
-          sendForm: payload
+          sendForm: payload,
+          isFormSending: false
         }
+      };
+
+    case types.SET_START_REVIEW_SENDING:
+      return {
+        ...state,
+        isFormSending: true
+      };
+
+    case types.SET_FINISH_REVIEW_SENDING:
+      return {
+        ...state,
+        isFormSending: false
       };
 
     default:
