@@ -18,7 +18,7 @@ const withReview = (Component) => {
 
       this._setRating = this._setRating.bind(this);
       this._setComment = this._setComment.bind(this);
-      this._handleSubmitForm = this._handleSubmitForm.bind(this);
+      this._onSubmitForm = this._onSubmitForm.bind(this);
     }
 
     _setRating(evt) {
@@ -44,7 +44,7 @@ const withReview = (Component) => {
       });
     }
 
-    _handleSubmitForm(evt) {
+    _onSubmitForm(evt) {
       evt.preventDefault();
       const { rating, comment } = this.state;
       const { hotelId } = this.props;
@@ -63,7 +63,7 @@ const withReview = (Component) => {
           comment={comment}
           setRating={this._setRating}
           setComment={this._setComment}
-          handleSubmitForm={this._handleSubmitForm}
+          onSubmitForm={this._onSubmitForm}
         />
       );
     }

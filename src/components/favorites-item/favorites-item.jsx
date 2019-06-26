@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import FavoritesCard from "../favorites-card/favorites-card.jsx";
 
-const FavoritesItem = ({ city, offers, setCity, setFavoriteAsync }) => {
+const FavoritesItem = ({ city, offers, onCityClick, setFavoriteAsync }) => {
   return (
     <li className="favorites__locations-items">
       <div className="favorites__locations locations locations--current">
@@ -12,7 +12,7 @@ const FavoritesItem = ({ city, offers, setCity, setFavoriteAsync }) => {
           <Link
             className="locations__item-link"
             to="/"
-            onClick={() => setCity(city)}
+            onClick={() => onCityClick(city)}
           >
             <span>{city}</span>
           </Link>
@@ -30,7 +30,7 @@ const FavoritesItem = ({ city, offers, setCity, setFavoriteAsync }) => {
               image={item.image}
               type={item.type}
               isFavorite={item.isFavorite}
-              setFavoriteAsync={() => setFavoriteAsync(item.id, 1)}
+              onBookmarkClick={() => setFavoriteAsync(item.id, 1)}
             />
           );
         })}
@@ -43,7 +43,7 @@ FavoritesItem.propTypes = {
   offers: PropTypes.array,
   city: PropTypes.string,
   setFavoriteAsync: PropTypes.func,
-  setCity: PropTypes.func
+  onCityClick: PropTypes.func
 };
 
 export default FavoritesItem;

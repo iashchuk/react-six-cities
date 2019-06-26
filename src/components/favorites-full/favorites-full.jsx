@@ -16,7 +16,7 @@ const FavoritesFull = ({ favorite, setCity, setFavoriteAsync }) => {
                   key={item.city}
                   city={item.city}
                   offers={item.offers}
-                  setCity={setCity}
+                  onCityClick={setCity}
                   setFavoriteAsync={setFavoriteAsync}
                 />
               );

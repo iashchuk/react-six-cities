@@ -29,8 +29,8 @@ const OffersList = ({
             isPremium={item.isPremium}
             isActive={isActive}
             isFavorite={item.isFavorite}
-            setActiveItem={() => setActiveItem(item.id)}
-            setFavoriteAsync={() => setFavoriteAsync(item.id, 1)}
+            onImageClick={() => setActiveItem(item.id)}
+            onBookmarkClick={() => setFavoriteAsync(item.id, 1)}
           />
         );
       })}

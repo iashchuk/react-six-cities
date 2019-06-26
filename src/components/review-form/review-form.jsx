@@ -12,14 +12,14 @@ const ReviewForm = ({
   sendFormError,
   setRating,
   setComment,
-  handleSubmitForm
+  onSubmitForm
 }) => {
   return (
     <form
       className="reviews__form form"
       action="#"
       method="post"
-      onSubmit={handleSubmitForm}
+      onSubmit={onSubmitForm}
     >
       <label className="reviews__label form__label" htmlFor="review">
         Your review
@@ -92,7 +92,7 @@ ReviewForm.propTypes = {
   sendFormError: PropTypes.string,
   setRating: PropTypes.func,
   setComment: PropTypes.func,
-  handleSubmitForm: PropTypes.func
+  onSubmitForm: PropTypes.func
 };
 
 export default withReview(ReviewForm);

@@ -14,12 +14,12 @@ const Card = ({
   isPremium,
   isFavorite,
   isActive,
-  setActiveItem,
-  setFavoriteAsync
+  onImageClick,
+  onBookmarkClick
 }) => {
   const onCardClick = (evt) => {
     evt.preventDefault();
-    setActiveItem();
+    onImageClick();
   };
   return (
     <article
@@ -58,7 +58,7 @@ const Card = ({
               [`place-card__bookmark-button--active`]: isFavorite
             })}
             type="button"
-            onClick={setFavoriteAsync}
+            onClick={onBookmarkClick}
           >
             <svg className="place-card__bookmark-icon" width="18" height="19">
               <use xlinkHref="#icon-bookmark" />
@@ -99,8 +99,8 @@ Card.propTypes = {
   isActive: PropTypes.bool,
   onCardTitleClick: PropTypes.func,
   onCardHover: PropTypes.func,
-  setActiveItem: PropTypes.func,
-  setFavoriteAsync: PropTypes.func
+  onImageClick: PropTypes.func,
+  onBookmarkClick: PropTypes.func
 };
 
 export default Card;
