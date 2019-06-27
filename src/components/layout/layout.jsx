@@ -1,5 +1,6 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
+import Cookies from "js-cookie";
 import cn from "classnames";
 import Header from "../header/header.jsx";
 import Footer from "../footer/footer.jsx";
@@ -7,7 +8,9 @@ import SvgSprite from "../svg-sprite/svg-sprite.jsx";
 
 class Layout extends PureComponent {
   componentDidMount() {
-    this.props.checkLoginAsync();
+    if (Cookies.get(`authTokenLocal`)) {
+      this.props.checkLoginAsync();
+    }
     this.props.getDataAsync();
   }
 

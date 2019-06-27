@@ -1,14 +1,16 @@
 import * as types from "./types";
 import { history } from "../index.js";
 import { parseAuthData } from "../../helpers/parse-auth-data.js";
+import Cookies from "js-cookie";
 
 export const loginAsync = (email, password) => (dispatch, _getState, api) => {
   return api
     .post(`/login`, { email, password })
     .then((response) => {
       if (response.data) {
-        history.push(`/`);
         dispatch(login(response.data));
+        Cookies.set(`authTokenLocal`, `dGVzdEB0ZXN0LnJ1`, { expires: 7 });
+        history.push(`/`);
       }
     })
     .catch((error) => {

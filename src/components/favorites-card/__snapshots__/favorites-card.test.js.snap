@@ -43,7 +43,6 @@ exports[`FavoritesCard renders correctly 1`] = `
       </div>
       <button
         className="place-card__bookmark-button button place-card__bookmark-button--active"
-        onClick={[MockFunction]}
         type="button"
       >
         <svg
