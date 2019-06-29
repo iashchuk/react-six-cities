@@ -1,7 +1,7 @@
 import { createSelector } from "reselect";
 
 export const getOfferNeighbourhoods = createSelector(
-    (f) => f,
+    (cb) => cb,
     ([offers, offer]) => {
       if (!offer) {
         return [];

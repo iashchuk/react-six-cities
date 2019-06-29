@@ -1,3 +1,3 @@
-export const compose = (...funcs) => (component) => {
-  return funcs.reduceRight((prevResult, f) => f(prevResult), component);
+export const compose = (...functions) => (component) => {
+  return functions.reduceRight((prevResult, f) => f(prevResult), component);
 };

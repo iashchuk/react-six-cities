@@ -1,14 +1,14 @@
 import { createSelector } from "reselect";
 
 export const getCityOffers = createSelector(
-    (f) => f,
+    (cb) => cb,
     ([offers, city]) => {
       return offers.get(city) || [];
     }
 );
 
 export const getCityCoords = createSelector(
-    (f) => f,
+    (cb) => cb,
     ([locations, city]) => {
       const currentCity = locations.find((item) => item.city === city);
       if (!currentCity) {
