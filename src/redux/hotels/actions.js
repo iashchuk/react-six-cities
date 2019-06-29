@@ -1,9 +1,5 @@
 import * as types from "./types.js";
-import {
-  loadingStart,
-  loadingFinish,
-  setLoadingError
-} from "../fetch/actions.js";
+import { loadingStart, loadingFinish, setLoadingError } from "../fetch/actions.js";
 import { updateOffer } from "../offer/actions.js";
 import { history } from "../index";
 import { parseLocations } from "../../helpers/parse-locations.js";
@@ -31,9 +27,7 @@ export const getDataAsync = () => (dispatch, _getState, api) => {
     })
     .catch((error) => {
       const loadingError = (error.response && error.response.data) || {};
-      dispatch(
-          setLoadingError(`getData: ${loadingError.error || error.message}`)
-      );
+      dispatch(setLoadingError(`getData: ${loadingError.error || error.message}`));
     });
 };
 
@@ -47,23 +41,23 @@ export const getFavoriteAsync = () => (dispatch, _getState, api) => {
     })
     .catch((error) => {
       const loadingError = (error.response && error.response.data) || {};
-      dispatch(
-          setLoadingError(`getFavorite: ${loadingError.error || error.message}`)
-      );
+      dispatch(setLoadingError(`getFavorite: ${loadingError.error || error.message}`));
     });
 };
 
-export const setFavoriteAsync = (hotelId, status) => (
-    dispatch,
-    _getState,
-    api
-) => {
+export const setFavoriteAsync = (hotelId, status) => (dispatch, _getState, api) => {
+  const { currentOffer } = _getState().offer;
+  const { offers } = _getState().hotels;
   return api
     .post(`/favorite/${hotelId}/${status}`)
     .then((response) => {
       if (response.data) {
-        dispatch(updateOffers(response.data));
-        dispatch(updateOffer(response.data));
+        if (offers) {
+          dispatch(updateOffers(response.data));
+        }
+        if (currentOffer && currentOffer.id === hotelId) {
+          dispatch(updateOffer(response.data));
+        }
       }
     })
     .catch((error) => {

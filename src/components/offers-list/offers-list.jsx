@@ -3,17 +3,12 @@ import PropTypes from "prop-types";
 
 import Card from "../card/card.jsx";
 
-const OffersList = ({
-  cards,
-  city,
-  activeItem,
-  setActiveItem,
-  setFavoriteAsync
-}) => {
+const OffersList = ({ cards, city, activeItem, setActiveItem, setFavoriteAsync }) => {
   return (
     <div className="cities__places-list places__list tabs__content">
       {cards.map((item) => {
         const isActive = activeItem === item.id;
+        const newFavoriteStatus = Number(!item.isFavorite);
 
         return (
           <Card
@@ -30,7 +25,7 @@ const OffersList = ({
             isActive={isActive}
             isFavorite={item.isFavorite}
             onImageClick={() => setActiveItem(item.id)}
-            onBookmarkClick={() => setFavoriteAsync(item.id, 1)}
+            onBookmarkClick={() => setFavoriteAsync(item.id, newFavoriteStatus)}
           />
         );
       })}

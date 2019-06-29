@@ -56,6 +56,8 @@ class Offer extends PureComponent {
       description
     } = offer;
 
+    const newFavoriteStatus = Number(!isFavorite);
+
     return (
       <main className="page__main page__main--property">
         <section className="property">
@@ -84,7 +86,9 @@ class Offer extends PureComponent {
                     [`property__bookmark-button--active`]: isFavorite
                   })}
                   type="button"
-                  onClick={() => setFavoriteAsync(this.props.match.params.id, 1)}
+                  onClick={() =>
+                    setFavoriteAsync(id, newFavoriteStatus)
+                  }
                 >
                   <svg className="property__bookmark-icon" width="31" height="33">
                     <use xlinkHref="#icon-bookmark" />
