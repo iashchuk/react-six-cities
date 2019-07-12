@@ -1,11 +1,27 @@
-import axios from "axios";
-
-export const createAPI = () => {
-  const api = axios.create({
-    baseURL: `https://es31-server.appspot.com/six-cities`,
-    timeout: 5000,
-    withCredentials: true
-  });
-
-  return api;
+export const request = {
+  get: {
+    login() {
+      return `/login`;
+    },
+    hotels() {
+      return `/hotels`;
+    },
+    favorite() {
+      return `/favorite`;
+    },
+    comments(hotelId) {
+      return `/comments/${hotelId}`;
+    }
+  },
+  post: {
+    login() {
+      return `/login`;
+    },
+    favorite(hotelId, status) {
+      return `/favorite/${hotelId}/${status}`;
+    },
+    comments(hotelId) {
+      return `/comments/${hotelId}`;
+    }
+  }
 };

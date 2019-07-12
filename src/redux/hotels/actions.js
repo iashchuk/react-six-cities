@@ -1,4 +1,6 @@
 import * as types from "./types.js";
+import { request } from "../../api/index.js";
+
 import { loadingStart, loadingFinish, setLoadingError } from "../fetch/actions.js";
 import { updateOffer } from "../offer/actions.js";
 import { history } from "../index";
@@ -20,7 +22,7 @@ export const setRedirect = (error) => {
 export const getDataAsync = () => (dispatch, _getState, api) => {
   dispatch(loadingStart());
   return api
-    .get(`/hotels`)
+    .get(request.get.hotels())
     .then((response) => {
       dispatch(loadHotels(response.data));
       dispatch(loadingFinish());
@@ -34,7 +36,7 @@ export const getDataAsync = () => (dispatch, _getState, api) => {
 export const getFavoriteAsync = () => (dispatch, _getState, api) => {
   dispatch(loadingStart());
   return api
-    .get(`/favorite`)
+    .get(request.get.favorite())
     .then((response) => {
       dispatch(loadFavorite(response.data));
       dispatch(loadingFinish());
@@ -49,7 +51,7 @@ export const setFavoriteAsync = (hotelId, status) => (dispatch, _getState, api) 
   const { currentOffer } = _getState().offer;
   const { offers } = _getState().hotels;
   return api
-    .post(`/favorite/${hotelId}/${status}`)
+    .post(request.post.favorite(hotelId, status))
     .then((response) => {
       if (response.data) {
         if (offers) {

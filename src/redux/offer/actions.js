@@ -1,4 +1,6 @@
 import * as types from "./types.js";
+import { request } from "../../api/index.js";
+
 import { loadingStart, loadingFinish, setLoadingError } from "../fetch/actions.js";
 import { parseOffer } from "../../helpers/parse-offer.js";
 import { parseComments } from "../../helpers/parse-comments.js";
@@ -7,7 +9,7 @@ import { modifyOffer } from "../../helpers/modify-offer.js";
 export const getOfferAsync = (id) => (dispatch, _getState, api) => {
   dispatch(loadingStart());
   return api
-    .get(`/hotels`)
+    .get(request.get.hotels())
     .then((response) => {
       dispatch(loadOffer(id, response.data));
       dispatch(loadingFinish());
@@ -21,7 +23,7 @@ export const getOfferAsync = (id) => (dispatch, _getState, api) => {
 export const getCommentsAsync = (id) => (dispatch, _getState, api) => {
   dispatch(loadingStart());
   return api
-    .get(`/comments/${id}`)
+    .get(request.get.comments(id))
     .then((response) => {
       dispatch(loadComments(response.data));
       dispatch(loadingFinish());
@@ -39,7 +41,7 @@ export const sendReviewAsync = (hotelId, rating, comment) => (
 ) => {
   dispatch(setStartReviewSending());
   return api
-    .post(`/comments/${hotelId}`, { rating, comment })
+    .post(request.post.comments(hotelId), { rating, comment })
     .then((response) => {
       if (response.data) {
         dispatch(updateComments(response.data));

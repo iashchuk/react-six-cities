@@ -1,11 +1,12 @@
+import Cookies from "js-cookie";
 import * as types from "./types";
 import { history } from "../index.js";
 import { parseAuthData } from "../../helpers/parse-auth-data.js";
-import Cookies from "js-cookie";
+import { request } from "../../api/index.js";
 
 export const loginAsync = (email, password) => (dispatch, _getState, api) => {
   return api
-    .post(`/login`, { email, password })
+    .post(request.post.login(), { email, password })
     .then((response) => {
       if (response.data) {
         dispatch(login(response.data));
@@ -22,7 +23,7 @@ export const loginAsync = (email, password) => (dispatch, _getState, api) => {
 export const checkLoginAsync = () => {
   return (dispatch, _getState, api) => {
     return api
-      .get(`/login`)
+      .get(request.get.login())
       .then((response) => {
         if (response.data) {
           dispatch(login(response.data));
